@@ -28,5 +28,10 @@
     "webpack": "^5.36.2",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.1"
   }
 }
