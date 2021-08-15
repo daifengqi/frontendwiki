@@ -1,11 +1,10 @@
 import React from "react";
-
-import "./App.css";
+import Info from "./components/Info/Info.jsx";
 
 function User() {
   return (
     <>
-      <p>Hello，这个页面用作写用户信息个人页面。</p>
+      <Info />
     </>
   );
 }
