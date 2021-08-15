@@ -1,0 +1,11 @@
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  height: 1.5rem;
+  padding: 0.5rem 2rem;
+}
+
+.navElement {
+  display: inline-flex;
+  margin: 0 1rem;
+}

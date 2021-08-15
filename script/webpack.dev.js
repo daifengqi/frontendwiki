@@ -1,15 +1,11 @@
 const path = require("path");
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common.js");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = {
+module.exports = merge(common, {
   mode: "development",
-  entry: "./src/index.js",
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "tristana",
-      template: "public/index.html",
-    }),
-  ],
+  devtool: "inline-source-map",
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
     hot: true,
@@ -17,35 +13,4 @@ module.exports = {
     compress: true,
     port: "3000",
   },
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        loader: "babel-loader",
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(css|less)$/,
-        use: [
-          {
-            loader: "style-loader",
-          },
-          {
-            loader: "css-loader",
-            options: {
-              importLoaders: 1,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(png|svg|jpg|gif|jpeg)$/,
-        loader: "file-loader",
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        loader: "file-loader",
-      },
-    ],
-  },
-};
+});
