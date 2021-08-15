@@ -20,6 +20,7 @@ module.exports = {
       template: path.join(__dirname, "../public/app/index.html"),
       filename: "index.html",
       chunks: ["index"],
+      favicon: path.join(__dirname, "../public/image/wiki.svg"),
       inject: true,
       minify: {
         html5: true,
@@ -34,6 +35,7 @@ module.exports = {
       template: path.join(__dirname, "../public/user/index.html"),
       filename: "user.html",
       chunks: ["user"],
+      favicon: path.join(__dirname, "../public/image/wiki.svg"),
       inject: true,
       minify: {
         html5: true,
