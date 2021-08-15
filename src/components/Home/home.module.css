@@ -1,0 +1,11 @@
+.titleBlock {
+  width: 50%;
+  background-color: transparent;
+  padding: 3rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+}
