@@ -1,12 +1,12 @@
 import React from "react";
-import Home from "./components/Home/Home.jsx";
+import Main from "../src/packageIndex/pages/Main/Main.jsx";
 
 import "./App.css";
 
 function App() {
   return (
     <>
-      <Home />
+      <Main/>
     </>
   );
 }
