@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from 'classnames';
 import styles from "./nav.module.css";
 
 function Nav() {
@@ -6,14 +7,14 @@ function Nav() {
     <>
       <div className={styles.nav}>
         <div className={styles.navContent}>
-          <a href="./index.html" className={styles.navElement}>
+          <a href="./index.html" className={classNames(styles.navElement, styles.left)}>
             Frontend Wiki
           </a>
           <div>
-            <a className={styles.navElement} href="./index.html">
+            <a className={classNames(styles.navElement, styles.right)} href="./index.html">
               主页
             </a>
-            <a className={styles.navElement} href="./user.html">
+            <a className={classNames(styles.navElement, styles.right)} href="./user.html">
               个人
             </a>
           </div>
