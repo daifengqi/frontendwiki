@@ -8,7 +8,7 @@ function InfoBanner() {
                 <div className={styles.Container}>
                     <div className={styles.Content}>
                         <img
-                            src="https://gravatar.loli.top/avatar/87e0f8d2f0f70987061cec6376cb7f97?s=200&r=G&d="
+                            src="https://gravatar.loli.top/avatar/avatar/bc3ac8bffa2f5b90b23b3b3f3f4396a1?s=200&d=mm&r=g"
                             alt="Username"
                             className={styles.Avatar}
                         />
