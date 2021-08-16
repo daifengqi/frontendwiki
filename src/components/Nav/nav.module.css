@@ -1,11 +1,27 @@
 .nav {
+  height: 4rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.navContent {
   display: flex;
-  justify-content: flex-end;
-  height: 1.5rem;
-  padding: 0.5rem 2rem;
+  justify-content: space-between;
+  width: 800px;
+  margin: 0 auto;
+  color: #1d1d1f;
 }
 
 .navElement {
   display: inline-flex;
-  margin: 0 1rem;
+  position: relative;
+  margin: 0 2rem;
+  text-decoration: none;
+  letter-spacing: 3px;
+  color: rgb(255, 255, 255);
+  line-height: 4rem;
 }

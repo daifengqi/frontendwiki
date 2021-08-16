@@ -1,0 +1,27 @@
+.flexRow,
+.flexColumn,
+.flexCenter {
+  display: flex;
+  align-items: center;
+}
+
+.flexRow {
+  flex-direction: row !important;
+}
+
+.flexColumn,
+.flexCenter {
+  flex-direction: column;
+}
+
+.flexCenter {
+  justify-content: center;
+}
+.flexRowNone {
+  display: flex;
+  flex-direction: row;
+}
+
+.main {
+  width: 100%;
+}
