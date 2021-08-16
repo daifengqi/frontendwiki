@@ -1,11 +1,26 @@
 .nav {
-  display: flex;
-  justify-content: flex-end;
-  height: 1.5rem;
-  padding: 0.5rem 2rem;
+    height: 4rem;
+    background: #fbfbfd;
+}
+
+.navTitle {
+
+}
+
+.navContent {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin: 0 auto;
+    color: #1D1D1F;
 }
 
 .navElement {
-  display: inline-flex;
-  margin: 0 1rem;
+    display: inline-flex;
+    position: relative;
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #000;
+    line-height: 4rem;
+    transition: all .3s ease-in;
 }
