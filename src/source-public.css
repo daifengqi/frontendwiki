@@ -1,24 +1,27 @@
-.flexRow, .flexColumn, .flexCenter {
-    display: flex;
-    align-items: center;
+.flexRow,
+.flexColumn,
+.flexCenter {
+  display: flex;
+  align-items: center;
 }
 
 .flexRow {
-    flex-direction: row !important;
+  flex-direction: row !important;
 }
 
-.flexColumn, .flexCenter {
-    flex-direction: column;
+.flexColumn,
+.flexCenter {
+  flex-direction: column;
 }
 
 .flexCenter {
-    justify-content: center;
+  justify-content: center;
 }
-.flexRowNone{
-    display: flex;
-    flex-direction: row;
+.flexRowNone {
+  display: flex;
+  flex-direction: row;
 }
 
-.main{
-    width: 100%;
+.main {
+  width: 100%;
 }
