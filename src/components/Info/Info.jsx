@@ -12,6 +12,9 @@ function Info() {
       <InfoBanner />
       <div className={styles.container}>
         <InfoSidebar />
+        <div className={styles.content}>
+            <h3 className={styles.notice}>还什么都没有哦~</h3>
+        </div>
       </div>
     </>
   );

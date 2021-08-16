@@ -1,8 +1,28 @@
 .container {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
 
   width: 800px;
-  margin: 20px auto;
+  margin: 20px auto 50px;
+}
+
+
+.content {
+  width: 610px;
+  min-height: 50px;
+
+  color: rgb(29, 29, 31);
+  background: #fbfbfd;
+
+  border-radius: 10px;
+}
+
+.notice {
+  text-align: center;
+  font-weight: 200;
+  font-size: 40px;
+  opacity: 0.6;
+
+  margin: 200px 0;
 }

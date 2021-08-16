@@ -1,5 +1,5 @@
 .Sidebar {
-    width: 200px;
+    width: 150px;
     height: auto;
 
     padding: 0;
@@ -40,7 +40,7 @@
     text-decoration: none;
     letter-spacing: 1px;
 
-    transition: background .2s;
+    transition: background .2s ease-in;
     opacity: 0.7;
 }
 
