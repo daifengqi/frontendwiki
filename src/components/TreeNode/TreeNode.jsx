@@ -2,29 +2,69 @@ import React from "react";
 import styles from "./index.module.css";
 import { useState } from "react";
 
+function NodeContent(props){
+  return(
+    <div className={"flexColumn "+styles.NodeContent}>
+      <div className={"flexRow "+styles.LabelContain}>
+          {
+            props.labelCollections?props.labelCollections.map(item=>{
+              return (
+                <div className={"flexCenter "+styles.labelItem} key={item}>
+                  {item}
+                </div>
+              )
+            }):<></>
+          }
+      </div>
+    </div>
+  )
+}
+
 class TreeNode extends React.Component {
   constructor(props) {
     super(props);
   }
-  clickNode=e=>{
-    console.log(this.props.data.id)
-    //修改showNodeID为id；
-  }
   render() {
     return (
-      <div onClick={this.clickNode}
-        className={styles.treeNodeMain + " flexCenter"}
-        style={{
-          "--bgColor--": this.props.data.bgColor,
-          "--color--": this.props.data.color,
-        }}
-      >
-        {this.props.data.content}
+      <div className={styles.nodeContain}>
+        <div
+          onClick={() => {
+            this.props.changeNodeID(this.props.data.id);
+          }}
+          className={
+            styles.treeNodeMain +
+            " flexCenter " +
+            (this.props.data.id === this.props.showNodeID
+              ? styles.treeNodeMainActive
+              : "")
+          }
+          style={{
+            "--bgColor--": this.props.data.bgColor,
+            "--color--": this.props.data.color,
+          }}
+        >
+          {this.props.data.content}
+        </div>
+        <div
+          className={
+            styles.showNodeArea +
+            " " +
+            (this.props.data.id === this.props.showNodeID
+              ? styles.showNodeAreaShow
+              : "")
+          }
+        >
+          <NodeContent labelCollections={['CSS','高阶']}/>
+        </div>
       </div>
     );
   }
-  componentDidMount() {
-    console.log("e");
+  componentDidMount() {}
+  shouldComponentUpdate(next) {
+    if (!next.showNodeID) return true;
+    if (this.props.data.id === next.showNodeID) return true;
+    if (this.props.data.id === next.lastID) return true;
+    return false;
   }
 }
 
@@ -42,60 +82,69 @@ class Tree extends React.Component {
             {
               bgColor: "red",
               color: "white",
-              content: "test20",
+              content: "test1-0",
               id: "10",
               childrens: [
                 {
                   bgColor: "red",
                   color: "white",
-                  content: "test30",
+                  content: "test1-0-0",
                   id: "100",
                   childrens: [],
                 },
                 {
                   bgColor: "red",
                   color: "white",
-                  content: "test31",
+                  content: "test1-0-1",
                   id: "101",
                   childrens: [],
                 },
               ],
             },
             {
-                bgColor: "red",
-                color: "white",
-                content: "test21",
-                id: "12",
-                childrens: [
-                ],
-              },
+              bgColor: "red",
+              color: "white",
+              content: "test1-1",
+              id: "12",
+              childrens: [],
+            },
           ],
         },
         {
           bgColor: "red",
           color: "white",
-          content: "test1",
+          content: "test2",
           id: "2",
           childrens: [
             {
               bgColor: "red",
               color: "white",
-              content: "test22",
+              content: "test2-0",
               id: "20",
               childrens: [],
             },
           ],
         },
       ],
-      showNodeID:"1"
+      showNodeID: null,
     };
+  }
+  changeNodeID(id) {
+    this.setState({
+      showNodeID: this.state.showNodeID === id ? null : id,
+      lastID: this.state.showNodeID,
+    });
   }
   getNode(data) {
     return data.map((item) => {
-      console.log(item);
       return (
         <div key={item.id}>
-          <TreeNode data={item} showNodeID={this.state.showNodeID}/>
+          <TreeNode
+            data={item}
+            showNodeID={this.state.showNodeID}
+            lastID={this.state.lastID}
+            changeNodeID={this.changeNodeID.bind(this)}
+          />
           <div className="flexRowNone">{this.getNode(item.childrens)}</div>
         </div>
       );
@@ -106,4 +155,4 @@ class Tree extends React.Component {
   }
 }
 
-export { TreeNode, Tree };
+export { Tree };
