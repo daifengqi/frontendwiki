@@ -1,12 +1,12 @@
 .nav {
     height: 4rem;
-    background: #fbfbfd;
+    background: #fbfbfd54;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
 }
-
-.navTitle {
-
-}
-
 .navContent {
     display: flex;
     justify-content: space-between;
@@ -20,6 +20,6 @@
     position: relative;
     margin: 0 1rem;
     text-decoration: none;
-    color: #000;
+    color: rgb(255, 255, 255);
     line-height: 4rem;
 }

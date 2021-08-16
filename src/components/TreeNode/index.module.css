@@ -1,0 +1,11 @@
+.treeNodeMain{
+    background-color: var(--bgColor--);
+    color: var(--color--);
+    padding: .375rem .75rem;
+    border-radius: .5625rem;
+    box-sizing: border-box;
+    box-shadow: 0 0 .2rem .1rem var(--bgColor--);
+    cursor: pointer;
+    margin: .375rem;
+    margin-left: .5625rem;
+}
