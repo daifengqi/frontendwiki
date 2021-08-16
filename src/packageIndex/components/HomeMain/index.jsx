@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./index.module.css";
-import {useState} from 'react';
+import {TreeNode,Tree} from '../TreeNode/TreeNode.jsx';
 
-function HomeMain(showMain){
+function HomeMain(){
     return (
-        <div id="mainContent" className={styles.homeMainContain+" flexColumn"} style={showMain?{transform:'translateY:-100vh'}:{}}>
+        <div id="mainContent" className={styles.homeMainContain+" flexColumn"}>
             <div className={styles.homeMain}>
-                123
+                <Tree/>
             </div>
         </div>
     )

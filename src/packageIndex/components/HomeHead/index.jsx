@@ -1,6 +1,5 @@
-import React from "react";
+import React,{useEffect} from "react";
 import styles from "./index.module.css";
-
 
 
 function HomeHead() {
@@ -21,19 +20,50 @@ function HomeHead() {
     );
 }
 
-function HomeTopBar(){
-    return(
-        <div className={"main flexRow "+styles.homeTopBar}>
-            <div className={styles.topBarButton}>
-                注册
-            </div>
-            <div className={styles.topBarButton}>
-                登录
-            </div>
-        </div>
-    )
-}
 
+class HomeTopBar extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+            dark:true
+        }
+    }
+    componentDidMount(){
+        window.addEventListener('scroll',this.handleScroll)
+    }
+    handleScroll=(e)=>{
+        let top=document.documentElement.scrollTop;
+        if(top>=(document.documentElement.clientHeight+50)){
+            return;
+        }else if(top<=(document.documentElement.clientHeight-80)){
+            return;
+        }
+        if (top>=document.documentElement.clientHeight-50) {
+            this.setState({
+                dark:false
+            })
+        }else{
+            this.setState({
+                dark:true
+            })
+        }
+    }
+    componentWillUnmount(){
+        window.removeEventListener('scroll');
+    }
+    render(){
+        return(
+            <div className={styles.homeTopBar+" main flexRow "+(this.state.dark?'':styles.homeTopBarDark)} >
+                <div className={styles.topBarButton}>
+                    注册
+                </div>
+                <div className={styles.topBarButton}>
+                    登录
+                </div>
+            </div>
+        )
+    }
+}
 function HomeBottom() {
     return (
         <div className={styles.homeBottom + " flexCenter"} onClick={()=>document.getElementById('mainContent').scrollIntoView({behavior:'smooth'})}>

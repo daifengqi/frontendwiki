@@ -53,7 +53,7 @@
 }
 .homeTopBar{
   height: 8vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: rgba(66, 66, 66, 0.12);
@@ -69,4 +69,7 @@
   color: white;
   cursor: pointer;
   margin-right: 2rem;
+}
+.homeTopBarDark{
+    background-color: rgba(22, 22, 22, 0.815);
 }

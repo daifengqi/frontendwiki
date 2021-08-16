@@ -1,8 +1,11 @@
 .homeMainContain{
     width: 100%;
-    min-height: 100vh;
+    padding-top: 8vh;
+    min-height: 92vh;
     background-color: white;
+
 }
 .homeMain{
     width: 80vw;
+    display: flex;
 }

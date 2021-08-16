@@ -14,6 +14,11 @@
 .flexCenter {
     justify-content: center;
 }
+.flexRowNone{
+    display: flex;
+    flex-direction: row;
+}
+
 .main{
     width: 100%;
 }
