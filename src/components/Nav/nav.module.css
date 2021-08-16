@@ -1,26 +1,27 @@
 .nav {
-    height: 4rem;
-    background: #fbfbfd54;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    width: 100%;
+  height: 4rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
 }
+
 .navContent {
-    display: flex;
-    justify-content: space-between;
-    width: 800px;
-    margin: 0 auto;
-    color: #1D1D1F;
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  margin: 0 auto;
+  color: #1d1d1f;
 }
 
 .navElement {
-    display: inline-flex;
-    position: relative;
-    margin: 0 1rem;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    line-height: 4rem;
-    transition: all .3s ease-in;
+  display: inline-flex;
+  position: relative;
+  margin: 0 2rem;
+  text-decoration: none;
+  letter-spacing: 3px;
+  color: rgb(255, 255, 255);
+  line-height: 4rem;
 }
