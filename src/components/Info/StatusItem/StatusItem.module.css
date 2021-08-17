@@ -1,0 +1,22 @@
+.Item {
+    width: 140px;
+    border-radius: 10px;
+
+    background: #fbfbfd;
+
+    text-align: center;
+}
+
+.Item p {
+    font-size: 1.5rem;
+    font-weight: 200;
+    margin: 20px 0 0;
+}
+
+.Item h3{
+    font-size: 16px;
+    font-weight: 400;
+    color: #86868b;
+
+    margin: 10px 0 20px;
+}
