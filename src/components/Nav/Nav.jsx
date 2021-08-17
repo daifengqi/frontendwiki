@@ -2,26 +2,38 @@ import React from "react";
 import classNames from 'classnames';
 import styles from "./nav.module.css";
 
-function Nav() {
-  return (
-    <>
-      <div className={styles.nav}>
-        <div className={styles.navContent}>
-          <a href="./index.html" className={classNames(styles.navElement, styles.left)}>
-            Frontend Wiki
-          </a>
-          <div>
-            <a className={classNames(styles.navElement, styles.right)} href="./index.html">
-              主页
-            </a>
-            <a className={classNames(styles.navElement, styles.right)} href="./user.html">
-              个人
-            </a>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+class Nav extends React.Component {
+    constructor(props) {
+        super(props);
+        this.props = props;
+    }
+
+    render() {
+        let navStyle = [styles.nav];
+        const { page } = this.props;
+        if(page === 'Info')
+            navStyle.push(styles.Info)
+
+        return (
+            <>
+                <div className={classNames(navStyle)}>
+                    <div className={styles.navContent}>
+                        <a href="./index.html" className={classNames(styles.navElement, styles.left)}>
+                            Frontend Wiki
+                        </a>
+                        <div>
+                            <a className={classNames(styles.navElement, styles.right)} href="./index.html">
+                                主页
+                            </a>
+                            <a className={classNames(styles.navElement, styles.right)} href="./user.html">
+                                个人
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </>
+        );
+    }
 }
 
 export default Nav;
