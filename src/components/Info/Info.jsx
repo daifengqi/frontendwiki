@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "../Nav/Nav.jsx";
-import InfoBanner from "../InfoBanner/InfoBanner.jsx";
-import InfoSidebar from "../InfoSidebar/InfoSidebar.jsx";
+import InfoBanner from "./InfoBanner/InfoBanner.jsx";
+import InfoSidebar from "./InfoSideBar/InfoSidebar.jsx";
 
 import styles from "./info.module.css";
 
