@@ -1,0 +1,51 @@
+.Sidebar {
+    width: 150px;
+    height: auto;
+
+    padding: 0;
+    margin: 0;
+}
+
+.Item {
+    padding: 0;
+    margin: 0 0 30px;
+
+    min-height: 50px;
+
+    background: #fbfbfd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.Item ul {
+    padding: 0;
+    margin: 0;
+}
+
+.Item ul li {
+    display: block;
+    padding: 0;
+
+    list-style-type: none;
+    text-align: center;
+
+}
+
+.Item ul li a {
+    display: block;
+    padding: 15px 15px;
+
+    color: rgb(29, 29, 31);
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+
+    transition: background .1s ease-in;
+    opacity: 0.7;
+}
+
+.Item ul li:hover > a{
+    background: #07f;
+    color: rgb(245, 245, 247);
+    opacity: 1;
+}

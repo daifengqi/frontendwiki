@@ -25,3 +25,11 @@
   color: rgb(255, 255, 255);
   line-height: 4rem;
 }
+
+.left {
+  margin: 0;
+}
+
+.right {
+  margin: 0 2rem 0 0;
+}
