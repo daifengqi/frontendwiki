@@ -23,8 +23,8 @@ function Info() {
                 <div className={styles.content}>
                     <div className={styles.statusbar}>
                         {
-                            Status.map(item => {
-                                return <StatusItem title={item[0]} count={item[1]} />
+                            Status.map((item) => {
+                                return <StatusItem key={item[0]} title={item[0]} count={item[1]} />
                             })
                         }
                     </div>
