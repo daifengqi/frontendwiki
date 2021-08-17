@@ -8,7 +8,7 @@ import styles from "./info.module.css";
 function Info() {
   return (
     <>
-      <Nav />
+      <Nav page={'Info'}/>
       <InfoBanner />
       <div className={styles.container}>
         <InfoSidebar />
