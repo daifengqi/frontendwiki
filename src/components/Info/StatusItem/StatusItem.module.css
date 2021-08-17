@@ -3,6 +3,7 @@
     border-radius: 10px;
 
     background: #fbfbfd;
+    cursor: default;
 
     text-align: center;
 }
@@ -11,9 +12,10 @@
     font-size: 1.5rem;
     font-weight: 200;
     margin: 20px 0 0;
+    color: RGBA(51, 63, 79, 1);
 }
 
-.Item h3{
+.Item h3 {
     font-size: 16px;
     font-weight: 400;
     color: #86868b;
