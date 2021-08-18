@@ -1,4 +1,5 @@
-@import "/src/source-public.css";
+
+@import '/src/source-public.css';
 
 .titleBlock {
   width: 50%;

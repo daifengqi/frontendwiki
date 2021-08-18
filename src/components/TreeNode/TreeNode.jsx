@@ -1,25 +1,60 @@
 import React from "react";
 import styles from "./index.module.css";
 import { useState } from "react";
+import "regenerator-runtime/runtime";
+import axios from "axios";
 
-function NodeContent(props){
-  return(
-    <div className={"flexColumn "+styles.NodeContent}>
-      <div className={"flexRow "+styles.LabelContain}>
-          {
-            props.labelCollections?props.labelCollections.map(item=>{
-              return (
-                <div className={"flexCenter "+styles.labelItem} key={item}>
-                  {item}
-                </div>
-              )
-            }):<></>
-          }
+function NodeContent(props) {
+  return (
+    <div className={"flexColumn " + styles.NodeContent}>
+      <div className={"flexRow " + styles.LabelContain}>
+        {props.labelCollections ? (
+          props.labelCollections.map((item) => {
+            return (
+              <div className={"flexCenter " + styles.labelItem} key={item}>
+                {item}
+              </div>
+            );
+          })
+        ) : (
+          <></>
+        )}
       </div>
     </div>
-  )
+  );
 }
-
+const styleMap = [
+  {
+    "--bgColor--": "#409EFFAA",
+    color: "white",
+  },
+  {
+    "--bgColor--": "#67C23AAA",
+    color: "white",
+  },
+  {
+    "--bgColor--": "#E6A23CAA",
+    color: "white",
+  },
+  {
+    "--bgColor--": "#F56C6CAA",
+    color: "white",
+  }
+];
+const lineStyleMap = [
+  {
+    "--bgColor--": "#409EFFAA",
+  },
+  {
+    "--bgColor--": "#67C23AAA",
+  },
+  {
+    "--bgColor--": "#E6A23CAA",
+  },
+  {
+    "--bgColor--": "#F56C6CAA",
+  },
+];
 class TreeNode extends React.Component {
   constructor(props) {
     super(props);
@@ -38,10 +73,7 @@ class TreeNode extends React.Component {
               ? styles.treeNodeMainActive
               : "")
           }
-          style={{
-            "--bgColor--": this.props.data.bgColor,
-            "--color--": this.props.data.color,
-          }}
+          style={styleMap[this.props.data.level]}
         >
           {this.props.data.content}
         </div>
@@ -54,8 +86,16 @@ class TreeNode extends React.Component {
               : "")
           }
         >
-          <NodeContent labelCollections={['CSS','高阶']}/>
+          <NodeContent labelCollections={["CSS", "高阶"]} />
         </div>
+        {this.props.data.level == 0 ? (
+          <></>
+        ) : (
+          <div
+            className={styles.nodeLine}
+            style={lineStyleMap[this.props.data.level]}
+          ></div>
+        )}
       </div>
     );
   }
@@ -72,62 +112,59 @@ class Tree extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [
-        {
-          bgColor: "red",
-          color: "white",
-          content: "test1",
-          id: "1",
-          childrens: [
+      showNodeID: null,
+      data: [],
+    };
+  }
+  componentDidMount() {
+    this.getTreeData().then((res) => {
+      this.setState({
+        data: res,
+      });
+    });
+  }
+  async getTreeData() {
+    try {
+      return await axios({
+        url: "http://frontendweiki.org/treeNodeData",
+        method: "get",
+      });
+    } catch (error) {
+      console.log(error);
+      return await new Promise((rs, rj) => {
+        setTimeout(() => {
+          rs([
             {
-              bgColor: "red",
-              color: "white",
-              content: "test1-0",
-              id: "10",
+              content: "CSS",
+              id: "1",
+              level: 0,
               childrens: [
                 {
-                  bgColor: "red",
-                  color: "white",
-                  content: "test1-0-0",
-                  id: "100",
-                  childrens: [],
+                  content: "动画属性",
+                  id: "1-1",
+                  level: 1,
+                  childrens: [
+                    { content: "transition", id: "1-1-1", level: 2, childrens: [] },
+                    { content: "animation", id: "1-1-2", level: 2, childrens: [] },
+                    { content: "贝塞尔函数", id: "1-1-3", level: 2, childrens: [] }
+                  ],
                 },
-                {
-                  bgColor: "red",
-                  color: "white",
-                  content: "test1-0-1",
-                  id: "101",
-                  childrens: [],
-                },
+                { content: "选择器", id: "1-2", level: 1, childrens: [] }
               ],
+              
             },
-            {
-              bgColor: "red",
-              color: "white",
-              content: "test1-1",
-              id: "12",
-              childrens: [],
-            },
-          ],
-        },
-        {
-          bgColor: "red",
-          color: "white",
-          content: "test2",
-          id: "2",
-          childrens: [
-            {
-              bgColor: "red",
-              color: "white",
-              content: "test2-0",
-              id: "20",
-              childrens: [],
-            },
-          ],
-        },
-      ],
-      showNodeID: null,
-    };
+            { content: "HTML", id: "2", level: 0, childrens: [
+              { content: "标签集", id: "2-1", level: 1, childrens: [
+                {content:"div",id:"2-1-1",level:2,childrens:[]}
+              ] },
+              { content: "规范", id: "2-2", level: 1, childrens: [] }
+            ] },
+            { content: "React", id: "3", level: 0, childrens: [] },
+            { content: "JS", id: "4", level: 0, childrens: [] }
+          ]);
+        }, 300);
+      });
+    }
   }
   changeNodeID(id) {
     this.setState({
@@ -138,20 +175,22 @@ class Tree extends React.Component {
   getNode(data) {
     return data.map((item) => {
       return (
-        <div key={item.id}>
+        <div key={item.id} className="flexRowNone">
           <TreeNode
             data={item}
             showNodeID={this.state.showNodeID}
             lastID={this.state.lastID}
             changeNodeID={this.changeNodeID.bind(this)}
           />
-          <div className="flexRowNone">{this.getNode(item.childrens)}</div>
+          <div className="flexColumnNone">{this.getNode(item.childrens)}</div>
         </div>
       );
     });
   }
   render() {
-    return <>{this.getNode(this.state.data)}</>;
+    return (
+      <>{this.state.data.length == 0 ? <></> : this.getNode(this.state.data)}</>
+    );
   }
 }
 
