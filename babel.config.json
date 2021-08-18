@@ -1,3 +1,5 @@
 {
+  // CR: 配个 eslint 吧，代码里面很多lint
+  // 可以去了解一下，eslint 配合 vscode 自动格式化的配置
     "presets": ["@babel/preset-env", "@babel/preset-react"]
   }

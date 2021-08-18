@@ -5,6 +5,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
   entry: {
+    // CR: 从功能看，没太大必要用 mpa，spa 就能满足需求了
     index: "./src/index.js",
     user: "./src/user.js",
   },
@@ -16,6 +17,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name]_[contenthash:8].css",
     }),
+    // CR: 上下两段配置的内容一模一样，有办法优化一下吗？
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "../public/app/index.html"),
       filename: "index.html",

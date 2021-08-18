@@ -5,6 +5,7 @@ import "./normalize.css";
 
 function User() {
   return (
+    // CR: 没必要用 fragment 组件
     <>
       <Info />
     </>
