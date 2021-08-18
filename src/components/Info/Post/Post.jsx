@@ -3,9 +3,9 @@
  * @date 2021-08-18
  */
 import React from 'react';
-import styles from './MyPost.module.css';
+import styles from './Post.module.css';
 
-class MyPost extends React.Component {
+class Post extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -13,10 +13,10 @@ class MyPost extends React.Component {
     render() {
         return (
             <div className={styles.MyPost}>
-                <h3>我的发布👍</h3>
+                <h3>我的发布👋</h3>
             </div>
         );
     }
 }
 
-export default MyPost;
+export default Post;

@@ -13,7 +13,7 @@ class MyFavor extends React.Component {
     render() {
         return (
             <div className={styles.MyFavor}>
-                <h3>我的收藏♥</h3>
+                <h3>我的收藏♥️</h3>
             </div>
         );
     }
