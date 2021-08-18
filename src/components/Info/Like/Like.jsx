@@ -3,9 +3,9 @@
  * @date 2021-08-18
  */
 import React from 'react';
-import styles from './MyLike.module.css';
+import styles from './Like.module.css';
 
-class MyLike extends React.Component {
+class Like extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -19,4 +19,4 @@ class MyLike extends React.Component {
     }
 }
 
-export default MyLike;
+export default Like;

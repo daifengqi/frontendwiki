@@ -3,9 +3,9 @@
  * @date 2021-08-18
  */
 import React from "react";
-import styles from './MyFavor.module.css';
+import styles from './Favor.module.css';
 
-class MyFavor extends React.Component {
+class Favor extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -19,4 +19,4 @@ class MyFavor extends React.Component {
     }
 }
 
-export default MyFavor;
+export default Favor;
