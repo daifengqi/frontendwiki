@@ -2,6 +2,8 @@ import React from "react";
 import classNames from 'classnames';
 import styles from "./nav.module.css";
 
+import { HashRouter as Router, Link } from 'react-router-dom';
+
 class Nav extends React.Component {
     constructor(props) {
         super(props);
@@ -10,9 +12,13 @@ class Nav extends React.Component {
 
     render() {
         let navStyle = [styles.nav];
+        let loginDisplay = 'none';
         const { page } = this.props;
         if(page === 'Info')
+        {
             navStyle.push(styles.Info)
+            loginDisplay = 'inline-block';
+        }
 
         return (
             <>
@@ -28,6 +34,14 @@ class Nav extends React.Component {
                             <a className={classNames(styles.navElement, styles.right)} href="./user.html">
                                 个人
                             </a>
+
+                            <Router>
+                                <Link
+                                    to="/login"
+                                    className={classNames(styles.navElement, styles.right)}
+                                    style={{display: loginDisplay}}
+                                >登录/注册</Link>
+                            </Router>
                         </div>
                     </div>
                 </div>
