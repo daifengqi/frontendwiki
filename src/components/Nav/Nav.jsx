@@ -12,9 +12,13 @@ class Nav extends React.Component {
 
     render() {
         let navStyle = [styles.nav];
+        let loginDisplay = 'none';
         const { page } = this.props;
         if(page === 'Info')
+        {
             navStyle.push(styles.Info)
+            loginDisplay = 'inline-block';
+        }
 
         return (
             <>
@@ -32,7 +36,11 @@ class Nav extends React.Component {
                             </a>
 
                             <Router>
-                                <Link to="/login" className={classNames(styles.navElement, styles.right)}>登录</Link>
+                                <Link
+                                    to="/login"
+                                    className={classNames(styles.navElement, styles.right)}
+                                    style={{display: loginDisplay}}
+                                >登录</Link>
                             </Router>
                         </div>
                     </div>
