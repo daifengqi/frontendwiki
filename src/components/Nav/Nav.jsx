@@ -40,7 +40,7 @@ class Nav extends React.Component {
                                     to="/login"
                                     className={classNames(styles.navElement, styles.right)}
                                     style={{display: loginDisplay}}
-                                >登录</Link>
+                                >登录/注册</Link>
                             </Router>
                         </div>
                     </div>
