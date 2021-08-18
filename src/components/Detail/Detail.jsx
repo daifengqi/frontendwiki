@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styles from "./Detail.module.css";
+
 import Tabs from "./Tabs/Tabs.jsx";
 import Links from "./Links/Links.jsx";
+import Comments from "./Comments/Comments.jsx"
 
 function Detail(props) {
   const [linkList, setlinkList] = useState([
@@ -105,7 +107,7 @@ function Detail(props) {
     <div className={styles.detailPage}>
       <Tabs title={title} tabs={tabs} />
       <Links linkList={linkList} />
-      <div className={styles.LinkComment}>这个是描述</div>
+      <Comments />
     </div>
   );
 }
