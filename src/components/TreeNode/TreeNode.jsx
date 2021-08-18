@@ -25,21 +25,25 @@ function NodeContent(props) {
 }
 const styleMap = [
   {
-    "--bgColor--": "#409EFFAA",
-    color: "white",
+    color: "#ccc",
+    boxShadow:"inset #409EFF20 0px 0px 6px 3px"
   },
   {
-    "--bgColor--": "#67C23AAA",
-    color: "white",
+    color: "#ccc",
+    boxShadow:"inset #F56C6C20 0px 0px 6px 3px"
   },
   {
-    "--bgColor--": "#E6A23CAA",
-    color: "white",
+    color: "#ccc",
+    boxShadow:"inset #67c23a20 0px 0px 6px 3px"
   },
   {
-    "--bgColor--": "#F56C6CAA",
-    color: "white",
-  }
+    color: "#ccc",
+    boxShadow:"inset #E6A23C20 0px 0px 6px 3px"
+  },
+  {
+    color: "#ccc",
+    boxShadow:"inset #90939920 0px 0px 6px 3px"
+  },
 ];
 const lineStyleMap = [
   {
@@ -77,17 +81,14 @@ class TreeNode extends React.Component {
         >
           {this.props.data.content}
         </div>
-        <div
-          className={
-            styles.showNodeArea +
-            " " +
-            (this.props.data.id === this.props.showNodeID
-              ? styles.showNodeAreaShow
-              : "")
-          }
+        {
+          this.props.data.id === this.props.showNodeID?
+          <div
+          className={styles.showNodeArea}
         >
           <NodeContent labelCollections={["CSS", "高阶"]} />
-        </div>
+        </div>:<></>
+        }
         {this.props.data.level == 0 ? (
           <></>
         ) : (
@@ -144,23 +145,47 @@ class Tree extends React.Component {
                   id: "1-1",
                   level: 1,
                   childrens: [
-                    { content: "transition", id: "1-1-1", level: 2, childrens: [] },
-                    { content: "animation", id: "1-1-2", level: 2, childrens: [] },
-                    { content: "贝塞尔函数", id: "1-1-3", level: 2, childrens: [] }
+                    {
+                      content: "transition",
+                      id: "1-1-1",
+                      level: 2,
+                      childrens: [],
+                    },
+                    {
+                      content: "animation",
+                      id: "1-1-2",
+                      level: 2,
+                      childrens: [],
+                    },
+                    {
+                      content: "贝塞尔函数",
+                      id: "1-1-3",
+                      level: 2,
+                      childrens: [],
+                    },
                   ],
                 },
-                { content: "选择器", id: "1-2", level: 1, childrens: [] }
+                { content: "选择器", id: "1-2", level: 1, childrens: [] },
               ],
-              
             },
-            { content: "HTML", id: "2", level: 0, childrens: [
-              { content: "标签集", id: "2-1", level: 1, childrens: [
-                {content:"div",id:"2-1-1",level:2,childrens:[]}
-              ] },
-              { content: "规范", id: "2-2", level: 1, childrens: [] }
-            ] },
+            {
+              content: "HTML",
+              id: "2",
+              level: 0,
+              childrens: [
+                {
+                  content: "标签集",
+                  id: "2-1",
+                  level: 1,
+                  childrens: [
+                    { content: "div", id: "2-1-1", level: 2, childrens: [] },
+                  ],
+                },
+                { content: "规范", id: "2-2", level: 1, childrens: [] },
+              ],
+            },
             { content: "React", id: "3", level: 0, childrens: [] },
-            { content: "JS", id: "4", level: 0, childrens: [] }
+            { content: "JS", id: "4", level: 0, childrens: [] },
           ]);
         }, 300);
       });
