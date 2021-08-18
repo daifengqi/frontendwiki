@@ -1,0 +1,25 @@
+.linksList{
+    padding: 0;
+    list-style: none;
+    overflow: auto;
+    height: 100%;
+}
+
+.link{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 5px;
+    background-color: #eff0f1;
+    margin: 10px 0 0 0;
+}
+
+.linkText{
+    color: #409EFF;
+}
+
+.linkDesc{
+    color: #909399;
+    margin: 10px 0 0;
+    border-top: 1px solid #909399;
+    padding-top: 10px;
+}

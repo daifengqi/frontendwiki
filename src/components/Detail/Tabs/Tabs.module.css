@@ -1,0 +1,26 @@
+.tabsList{
+    padding: 0;
+    list-style: none;
+    overflow: auto;
+    height: 100%;
+    margin: 0 8px 0 20px ;
+}
+
+
+.tabTitle{
+    font-weight: 800;
+}
+
+.tabLink{
+    color: #909399;
+    padding: 5px 0;
+}
+.tabLink:hover{
+    color: #303133;
+}
+.tabLink > label{
+    cursor: pointer;
+}
+.tabLink > input[type="radio"]:checked + label{
+    color: #409EFF;
+}
