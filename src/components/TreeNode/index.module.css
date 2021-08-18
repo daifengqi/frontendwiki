@@ -1,42 +1,36 @@
 .treeNodeMain{
-    background: var(--bgColor--);
+    background:#00000010;
     color: var(color);
     padding: .375rem .75rem;
     border-radius: .5625rem;
     box-sizing: border-box;
-    box-shadow: 0 0 .12rem .08rem var(--bgColor--);
     cursor: pointer;
     position: relative;
-    transition: .6s all ease;
     overflow: visible;
     z-index: 500;
     backdrop-filter: blur(.3125rem);
-}
-.treeNodeMainActive{
-    box-shadow:0 0 .24rem .16rem var(--bgColor--);
 }
 .showNodeArea{
     position: absolute;
     padding: .5625rem;
     display: block;
     z-index: 100000;
-    top: 108%;
-    left: .3rem;
-    transform: scale(0.00001);
-    transform-origin: left;
-    transition: .6s all ease;
+    left: 108%;
+    top: .3rem;
     background-color: rgba(252, 252, 252, .8);
     backdrop-filter: blur(.1875rem);
     box-shadow: 0 .1275rem .375rem .1875rem #cccccccc;
     width: 60vw;
     height: 40vh;
     border-radius: .5625rem;
-    opacity: 0;
     overflow: hidden;
+    transform-origin: left;
+    transform: scaleX(0.00001);
+    opacity: 0;
+    animation: showNodeArea .36s ease forwards;
 }
-.showNodeAreaShow{
-    transform: scale(1);
-    opacity: 1;
+@keyframes showNodeArea {
+    to{transform:scale(1); opacity:1}
 }
 .nodeContain{
     position: relative;
