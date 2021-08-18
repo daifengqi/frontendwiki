@@ -4,6 +4,7 @@ import { useState } from "react";
 
 function NodeContent(props){
   return(
+    // CR：这种 className 可以用数组维护
     <div className={"flexColumn "+styles.NodeContent}>
       <div className={"flexRow "+styles.LabelContain}>
           {
