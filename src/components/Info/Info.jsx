@@ -1,8 +1,13 @@
 import React from "react";
+
 import Nav from "../Nav/Nav.jsx";
 import InfoBanner from "./InfoBanner/InfoBanner.jsx";
 import InfoSidebar from "./InfoSideBar/InfoSidebar.jsx";
 import StatusItem from "./StatusItem/StatusItem.jsx";
+
+// import MyFavor from "./MyFavor/MyFavor.jsx";
+// import MyLike from "./MyLike/MyLike.jsx";
+// import MyPost from "./MyPost/MyPost.jsx";
 
 import styles from "./info.module.css";
 

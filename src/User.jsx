@@ -1,17 +1,15 @@
 import React from "react";
-import Info from "./components/Info/Info.jsx";
-import Login from "./components/Login/Login.jsx";
-
+import routes from "./components/Info/router";
 import "./normalize.css";
 
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
+import {renderRoutes} from "react-router-config";
 
 function User() {
   return (
     <>
         <Router>
-                <Route path="/" exact component={Info} />
-                <Route path="/login" component={Login}/>
+            {renderRoutes(routes)}
         </Router>
     </>
   );
