@@ -1,0 +1,113 @@
+
+
+.optionsFormRight {
+  position: absolute;
+  top: 50%;
+  overflow: hidden;
+  width: 400px;
+  min-height: 450px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
+  left: 30px;
+  transform: translate3d(100%, -50%, 0); 
+}
+
+.optionsFormLeft {
+  position: absolute;
+  top: 50%;
+  overflow: hidden;
+  width: 400px;
+  min-height: 450px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
+  left: 30px;
+  transform: translate3d(0%, -50%, 0); 
+}
+
+ .formsLogin {
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+ .title {
+  margin-top: 50px;
+  margin-left: 20px;
+  margin-bottom: 50px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1em;
+  text-transform: uppercase;
+  color: #e8716d;
+  letter-spacing: 0.1rem;
+}
+.formInput {
+  width: 80%;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  line-height: 25px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 6px 20px 6px 6px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: black;
+  letter-spacing: 0.1rem;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+ .formInput:focus {
+  border-color: #ccc;
+}
+
+ .buttons {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 35px;
+}
+.optionsFormRight .buttomForgot {
+  display: block;
+  margin: auto;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.1rem;
+  border: none;
+  background-color: transparent;
+  color: #ccc;
+  text-decoration: underline;
+  transition: color 0.2s ease-in-out;
+}
+.buttomForgot:hover {
+  color: #b3b3b3;
+}
+.buttonsAction {
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  background-color: #e8716d;
+  width: 300px;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 35px;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: background-color 0.2s ease-in-out;
+}
+.buttonsAction:hover {
+  background-color: #e14641;
+}
+.formsSignup,
+.formsLogin {
+  position: absolute;
+  top: 70px;
+  left: 40px;
+  width: calc(100% - 80px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.5s ease-in-out;
+}
