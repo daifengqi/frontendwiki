@@ -50,7 +50,7 @@ const routes = [
             {
                 path: "/my/history",
                 component: History
-            },
+            }
         ]
     }
 ];
