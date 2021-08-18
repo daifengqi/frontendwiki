@@ -30,6 +30,7 @@
   font-weight: 300;
 }
 
+
 .choiceButton {
   background-color: transparent;
   margin-top: 30px;
@@ -40,5 +41,7 @@
   line-height: 1em;
   letter-spacing: 0.2rem;
 }
-
+.choiceButton:hover {
+  background-color: #232d36;
+}
 
