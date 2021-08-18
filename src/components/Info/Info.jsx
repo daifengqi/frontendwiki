@@ -1,17 +1,58 @@
 import React from "react";
+import { HashRouter as Router } from 'react-router-dom';
+import {renderRoutes} from "react-router-config";
+
 import Nav from "../Nav/Nav.jsx";
+import InfoBanner from "./Banner/InfoBanner.jsx";
+import InfoSidebar from "./SideBar/InfoSidebar.jsx";
+import StatusItem from "./StatusItem/StatusItem.jsx";
+import Sortbar from "./Sortbar/Sortbar.jsx";
 
 import styles from "./info.module.css";
 
-function Info() {
-  return (
-    <>
-      <Nav />
-      <div className={styles.container}>
-        <p>Hello，这个页面用作写用户信息个人页面。</p>
-      </div>
-    </>
-  );
+class Info extends React.Component{
+    constructor(props) {
+        super(props);
+        this.props = props;
+    }
+
+    render() {
+        let Status = [
+            ['点赞次数',63],
+            ['被点赞次数',76],
+            ['收藏数',88],
+            ['被收藏数',1673]
+        ];
+
+        const { route } = this.props;
+        return (
+            <>
+                <Nav page={'Info'}/>
+                <InfoBanner/>
+                <div className={styles.container}>
+                    <InfoSidebar/>
+                    <div className={styles.content}>
+                        <div className={styles.statusbar}>
+                            {
+                                Status.map((item) => {
+                                    return <StatusItem key={item[0]} title={item[0]} count={item[1]} />
+                                })
+                            }
+                        </div>
+
+                        <div className={styles.main}>
+                            <Sortbar />
+                            <Router>
+                                { renderRoutes(route.routes) }
+                            </Router>
+                            <h3 className={styles.notice}>还什么都没有哦~</h3>
+                        </div>
+
+                    </div>
+                </div>
+            </>
+        );
+    }
 }
 
 export default Info;

@@ -1,0 +1,59 @@
+.InfoBanner {
+    position: relative;
+    height: 20rem;
+    background: #909399;
+}
+
+.Container {
+    position: absolute;
+    bottom: 50px;
+    
+    height: 150px;
+    width: 100%;
+}
+
+.Content {
+    width: 800px;
+    height: 150px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: flex-start;
+
+    color: #F5F5F7;
+}
+
+.Avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 10000rem;
+}
+
+.UserInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    margin-left: 30px;
+}
+
+.UserInfo h3 {
+    font-size: 28px;
+    font-weight: bold;
+
+    margin: 0 0 10px;
+}
+
+.UserInfo h3 span {
+    font-size: 20px;
+    font-weight: 200;
+    font-style: italic;
+
+    opacity: 0.2;
+}
+
+.UserInfo p {
+    margin: 0;
+    color: hsla(0,0%,100%,.6);
+}
+
