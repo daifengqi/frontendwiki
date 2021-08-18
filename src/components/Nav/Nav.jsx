@@ -2,6 +2,8 @@ import React from "react";
 import classNames from 'classnames';
 import styles from "./nav.module.css";
 
+import { HashRouter as Router, Link } from 'react-router-dom';
+
 class Nav extends React.Component {
     constructor(props) {
         super(props);
@@ -28,6 +30,10 @@ class Nav extends React.Component {
                             <a className={classNames(styles.navElement, styles.right)} href="./user.html">
                                 个人
                             </a>
+
+                            <Router>
+                                <Link to="/login" className={classNames(styles.navElement, styles.right)}>登录</Link>
+                            </Router>
                         </div>
                     </div>
                 </div>
