@@ -3,7 +3,7 @@
  * @date 2021-08-18
  */
 import React from "react";
-import { Redirect } from "react-router-dom";
+import {Redirect} from "react-router-dom";
 
 import Info from "../Info.jsx";
 import Login from "../../Login/Login.jsx";
@@ -13,13 +13,14 @@ import Like from "../Like/Like.jsx";
 import Post from "../Post/Post.jsx";
 import Comment from "../Comment/Comment.jsx";
 import History from "../History/History.jsx";
+import Index from "../Index.jsx";
 
 
 const routes = [
     {
         path: "/",
         exact: true,
-        render:() => (
+        render: () => (
             <Redirect to={"/my"}/>
         )
     },
@@ -30,7 +31,12 @@ const routes = [
     {
         path: "/my",
         component: Info,
-        routes:[
+        routes: [
+            {
+                path: "/my",
+                exact: true,
+                component: Index
+            },
             {
                 path: "/my/favorite",
                 component: Favor

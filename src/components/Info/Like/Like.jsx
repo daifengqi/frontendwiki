@@ -4,6 +4,9 @@
  */
 import React from 'react';
 import styles from './Like.module.css';
+import common from '../info.module.css';
+import Sortbar from "../Sortbar/Sortbar.jsx";
+import classNames from "classnames";
 
 class Like extends React.Component {
     constructor(props) {
@@ -11,9 +14,12 @@ class Like extends React.Component {
     }
 
     render() {
+
+        console.log(location);
         return (
-            <div className={styles.MyLike}>
+            <div className={classNames(styles.MyLike, common.subPageTitle)}>
                 <h3>我的点赞👍</h3>
+                <Sortbar />
             </div>
         );
     }

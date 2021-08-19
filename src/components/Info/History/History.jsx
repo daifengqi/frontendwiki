@@ -4,6 +4,9 @@
  */
 import React from 'react';
 import styles from './History.module.css';
+import Sortbar from "../Sortbar/Sortbar.jsx";
+import classNames from "classnames";
+import common from "../info.module.css";
 
 class History extends React.Component {
     constructor(props) {
@@ -12,8 +15,9 @@ class History extends React.Component {
 
     render() {
         return (
-            <div className={styles.MyPost}>
+            <div className={classNames(common.subPageTitle, styles.MyPost)}>
                 <h3>我的历史</h3>
+                <Sortbar />
             </div>
         );
     }

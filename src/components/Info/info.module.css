@@ -37,3 +37,10 @@
   background: #fbfbfd;
   border-radius: 10px;
 }
+
+.subPageTitle h3 {
+  padding-inline: 10px;
+  font-size: 24px;
+  font-weight: 400;
+  margin: 10px 0 10px;
+}
