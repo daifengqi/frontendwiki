@@ -13,6 +13,8 @@ class Nav extends React.Component {
     render() {
         let navStyle = [styles.nav];
         let loginDisplay = 'none';
+        // CR: 可以考虑用 useLocation 获取当前页面路径，而不是当下这种传 props 的形式指定
+        // https://reactrouter.com/web/api/Hooks/uselocation
         const { page } = this.props;
         if(page === 'Info')
         {

@@ -125,6 +125,7 @@ class Tree extends React.Component {
       });
     });
   }
+  // CR： 这一大段获取数据的逻辑，通常会单拎出来，不会直接写在组件代码里
   async getTreeData() {
     try {
       return await axios({

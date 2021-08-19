@@ -34,6 +34,7 @@
   margin: 0 2rem 0 0;
 }
 
+/* CR： class name 不规范 */
 .Info {
   background-color: #909399!important;
 }
