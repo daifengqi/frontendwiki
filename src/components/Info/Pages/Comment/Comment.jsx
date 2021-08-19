@@ -4,9 +4,9 @@
  */
 import React from 'react';
 import styles from './Comment.module.css';
-import Sortbar from "../Sortbar/Sortbar.jsx";
+import Sortbar from "../../Components/Sortbar/Sortbar.jsx";
 import classNames from "classnames";
-import common from "../info.module.css";
+import common from "../../info.module.css";
 
 class Comment extends React.Component {
     constructor(props) {

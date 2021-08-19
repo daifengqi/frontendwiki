@@ -3,12 +3,12 @@
  * @date 2021-08-18
  */
 import React from 'react';
-import styles from './Post.module.css';
-import Sortbar from "../Sortbar/Sortbar.jsx";
+import styles from './History.module.css';
+import Sortbar from "../../Components/Sortbar/Sortbar.jsx";
 import classNames from "classnames";
-import common from "../info.module.css";
+import common from "../../info.module.css";
 
-class Post extends React.Component {
+class History extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -16,11 +16,11 @@ class Post extends React.Component {
     render() {
         return (
             <div className={classNames(common.subPageTitle, styles.MyPost)}>
-                <h3>我的发布👋</h3>
+                <h3>我的历史</h3>
                 <Sortbar />
             </div>
         );
     }
 }
 
-export default Post;
+export default History;

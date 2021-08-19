@@ -8,11 +8,11 @@ import {Redirect} from "react-router-dom";
 import Info from "../Info.jsx";
 import Login from "../../Login/Login.jsx";
 
-import Favor from "../Favor/Favor.jsx";
-import Like from "../Like/Like.jsx";
-import Post from "../Post/Post.jsx";
-import Comment from "../Comment/Comment.jsx";
-import History from "../History/History.jsx";
+import Favor from "../Pages/Favor/Favor.jsx";
+import Like from "../Pages/Like/Like.jsx";
+import Post from "../Pages/Post/Post.jsx";
+import Comment from "../Pages/Comment/Comment.jsx";
+import History from "../Pages/History/History.jsx";
 import Index from "../Index.jsx";
 
 

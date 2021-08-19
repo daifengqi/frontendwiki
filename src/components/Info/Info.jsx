@@ -3,9 +3,9 @@ import { HashRouter as Router } from 'react-router-dom';
 import { renderRoutes } from "react-router-config";
 
 import Nav from "../Nav/Nav.jsx";
-import InfoBanner from "./Banner/InfoBanner.jsx";
-import InfoSidebar from "./SideBar/InfoSidebar.jsx";
-import StatusItem from "./StatusItem/StatusItem.jsx";
+import InfoBanner from "./Components/Banner/InfoBanner.jsx";
+import InfoSidebar from "./Components/SideBar/InfoSidebar.jsx";
+import StatusItem from "./Items/StatusItem/StatusItem.jsx";
 
 import styles from "./info.module.css";
 
