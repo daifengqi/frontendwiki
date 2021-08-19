@@ -99,7 +99,7 @@ class Like extends React.Component {
         return (
             <div className={classNames(styles.MyLike, common.subPageTitle)}>
                 <h3>我的点赞👍</h3>
-                <Sortbar data={data}/>
+                <Sortbar data={data} displayType={"link"}/>
             </div>
         );
     }

@@ -99,7 +99,7 @@ class Post extends React.Component {
         return (
             <div className={classNames(common.subPageTitle, styles.MyPost)}>
                 <h3>我的发布👋</h3>
-                <Sortbar data={data}/>
+                <Sortbar data={data} displayType={"link"}/>
             </div>
         );
     }

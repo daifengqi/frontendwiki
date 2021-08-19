@@ -102,7 +102,7 @@ class Favor extends React.Component {
         return (
             <div className={classNames(styles.MyFavor, common.subPageTitle)}>
                 <h3>我的收藏♥️</h3>
-                <Sortbar data={data}/>
+                <Sortbar data={data} displayType={"link"}/>
             </div>
         );
     }
