@@ -1,11 +1,11 @@
 import React from "react";
 import { HashRouter as Router } from 'react-router-dom';
-import {renderRoutes} from "react-router-config";
+import { renderRoutes } from "react-router-config";
 
 import Nav from "../Nav/Nav.jsx";
-import InfoBanner from "./InfoBanner/InfoBanner.jsx";
-import InfoSidebar from "./InfoSideBar/InfoSidebar.jsx";
-import StatusItem from "./StatusItem/StatusItem.jsx";
+import InfoBanner from "./Components/Banner/InfoBanner.jsx";
+import InfoSidebar from "./Components/SideBar/InfoSidebar.jsx";
+import StatusItem from "./Items/StatusItem/StatusItem.jsx";
 
 import styles from "./info.module.css";
 
@@ -38,10 +38,12 @@ class Info extends React.Component{
                                 })
                             }
                         </div>
-                        <Router>
-                            { renderRoutes(route.routes) }
-                        </Router>
-                        <h3 className={styles.notice}>还什么都没有哦~</h3>
+
+                        <div className={styles.main}>
+                            <Router>
+                                { renderRoutes(route.routes) }
+                            </Router>
+                        </div>
                     </div>
                 </div>
             </>
