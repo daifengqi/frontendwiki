@@ -16,7 +16,7 @@ class Nav extends React.Component {
         const { page } = this.props;
         if(page === 'Info')
         {
-            navStyle.push(styles.Info)
+            navStyle.push(styles.dark)
             loginDisplay = 'inline-block';
         }
 
