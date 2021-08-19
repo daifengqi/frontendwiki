@@ -1,0 +1,50 @@
+a:link {
+    text-decoration: none;
+}
+
+.comment_item {
+    -webkit-box-shadow: rgb(150 150 150 / 10%) 0px 0px 20px 0px;
+    -moz-box-shadow: rgba(150,150,150,0.1) 0px 0px 20px 0px;
+    box-shadow: rgb(150 150 150 / 10%) 0px 0px 20px 0px;
+
+    width: 100%;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+
+    background: RGBA(255,255,255,0.8);
+    cursor: pointer;
+}
+
+.comment_content h4 {
+    margin: 0 0 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: RGBA(92,103,112,1);
+}
+
+.comment_title {
+    padding-bottom: 2px;
+    border-bottom: 2px dashed RGBA(92,103,112,0.3);
+}
+
+.comment_date {
+    float: right;
+    opacity: 0.5;
+}
+
+.comment_content p {
+    margin: 0;
+    color: RGB(47,62,75);
+}
+
+.comment_footer {
+    display: flex;
+    justify-content: space-between;
+
+    color: RGB(106,117,126);
+    font-size: 14px;
+    margin-top: 20px;
+}
