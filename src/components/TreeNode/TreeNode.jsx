@@ -134,6 +134,7 @@ class Tree extends React.Component {
       });
     } catch (error) {
       console.log(error);
+      // CR：函数外层已经包了 async 语句，这个时候就不需要 promise ，直接返回对象即可
       return await new Promise((rs, rj) => {
         setTimeout(() => {
           rs([
