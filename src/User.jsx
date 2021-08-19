@@ -1,13 +1,17 @@
 import React from "react";
-import Info from "./components/Info/Info.jsx";
-
+import routes from "./components/Info/router";
 import "./normalize.css";
+
+import { HashRouter as Router } from 'react-router-dom';
+import {renderRoutes} from "react-router-config";
 
 function User() {
   return (
     // CR: 没必要用 fragment 组件
     <>
-      <Info />
+        <Router>
+            {renderRoutes(routes)}
+        </Router>
     </>
   );
 }

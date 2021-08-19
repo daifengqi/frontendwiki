@@ -1,51 +1,43 @@
 .treeNodeMain{
-    background-color: var(--bgColor--);
-    color: var(--color--);
+    background:#00000010;
+    color: var(color);
     padding: .375rem .75rem;
     border-radius: .5625rem;
     box-sizing: border-box;
-    box-shadow: 0 0 .12rem .08rem var(--bgColor--);
     cursor: pointer;
-    margin: .375rem;
-    margin-left: .5625rem;
     position: relative;
-    /* CR: all？确定？ */
-    transition: .6s all ease;
     overflow: visible;
-}
-.treeNodeMainActive{
-    box-shadow:0 0 .24rem .16rem var(--bgColor--);
+    z-index: 500;
+    backdrop-filter: blur(.3125rem);
 }
 .showNodeArea{
     position: absolute;
     padding: .5625rem;
     display: block;
-    z-index: -1;
-    top: 108%;
-    left: .3rem;
-    /* CR: 这是？ */
-    transform: scale(0.00001);
-    transform-origin: left;
-    transition: .6s all ease;
+    z-index: 100000;
+    left: 108%;
+    top: .3rem;
     background-color: rgba(252, 252, 252, .8);
     backdrop-filter: blur(.1875rem);
     box-shadow: 0 .1275rem .375rem .1875rem #cccccccc;
     width: 60vw;
     height: 40vh;
     border-radius: .5625rem;
-    opacity: 0;
     overflow: hidden;
+    transform-origin: left;
+    transform: scaleX(0.00001);
+    opacity: 0;
+    animation: showNodeArea .36s ease forwards;
 }
-.showNodeAreaShow{
-    transform: scale(1);
-    opacity: 1;
-    z-index: 1;
+@keyframes showNodeArea {
+    to{transform:scale(1); opacity:1}
 }
 .nodeContain{
     position: relative;
+    display: flex;
 }
 .NodeContent{
-    width: 100%;
+    height: 100%;
 }
 .LabelContain{
     width: 100%;
@@ -61,6 +53,20 @@
     font-size: .75rem;
     height: 1.44rem;
     cursor: pointer;
-    box-shadow: 0 0 .675rem white;;
+    box-shadow: 0 0 .675rem white;
     margin-right: .5625rem;
+}
+.nodeLine{
+    /* left: 5%;
+    transform: translateX(-50%);
+    background-color: var(--bgColor--);
+    height: 1.5rem;
+    z-index: 100;
+    width: .25rem;
+    position: absolute;
+    bottom: 95%; */
+}
+.treeNodeMain{
+    margin-left: .6rem;
+    margin-top: .9rem;
 }
