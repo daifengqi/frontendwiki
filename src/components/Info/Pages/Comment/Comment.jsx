@@ -17,7 +17,6 @@ class Comment extends React.Component {
         return (
             <div className={classNames(styles.MyPost, common.subPageTitle)}>
                 <h3>我的评论</h3>
-                <Sortbar />
             </div>
         );
     }
