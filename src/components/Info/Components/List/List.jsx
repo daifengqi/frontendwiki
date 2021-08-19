@@ -26,6 +26,7 @@ class List extends React.Component {
                             author={item.author}
                             tag={item.tag}
                             intro={item.intro}
+                            url={item.url}
                         />
                     })
                 }
