@@ -4,6 +4,9 @@
  */
 import React from 'react';
 import styles from './Comment.module.css';
+import Sortbar from "../../Components/Sortbar/Sortbar.jsx";
+import classNames from "classnames";
+import common from "../../info.module.css";
 
 class Comment extends React.Component {
     constructor(props) {
@@ -12,7 +15,7 @@ class Comment extends React.Component {
 
     render() {
         return (
-            <div className={styles.MyPost}>
+            <div className={classNames(styles.MyPost, common.subPageTitle)}>
                 <h3>我的评论</h3>
             </div>
         );

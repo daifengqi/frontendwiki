@@ -5,15 +5,12 @@ import LoginInput from "../LoginInput/LoginInput.jsx";
 
 
 class BackGround extends React.Component {
+  
     constructor(props) {
         super(props);
-    }
-
-    singupClick() {
-      alert('注册 ')
-    }
-    loginClick() {
-      alert('登录')
+        this.state = {
+          login: "login"
+        }
     }
 
     render() {
@@ -28,8 +25,7 @@ class BackGround extends React.Component {
                       <p>点击按钮注册成为会员</p>
                       <button
                         className={styles.choiceButton}
-                        id="signup-button"
-                        onClick={this.singupClick}
+                        onClick={() => this.setState({login: 'signup'})}
                       >
                         注册
                       </button>
@@ -39,15 +35,14 @@ class BackGround extends React.Component {
                       <p>点击按钮会员登录</p>
                       <button
                         className={styles.choiceButton}
-                        id="login-button"
-                        onClick={this.loginClick}
+                        onClick={() => this.setState({login: 'login'})}
                       >
                         登录
                       </button>
                     </div>
                   </div>
 
-                  <LoginInput />
+                  <LoginInput login={this.state.login} />
                 </div>
               </div>
             </>
