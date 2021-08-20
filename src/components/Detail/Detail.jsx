@@ -9,11 +9,11 @@ function Detail(props) {
   const [linkList, setlinkList] = useState([
     {
       url: "http://www.2huo.tech/123123123213123",
-      desc: "2huo home",
+      desc: "2huo homeaskjdklasjdklqwjkdjklas",
     },
     {
       url: "http://www.baidu.com",
-      desc: "baidu com",
+      desc: "baidu comasjdlakjsdlkajskdjaskjdklajd",
     },
   ]);
 

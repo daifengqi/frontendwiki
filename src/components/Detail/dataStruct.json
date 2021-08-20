@@ -4,14 +4,17 @@
         "content":"评论内容",
         "like":"被点赞次数",
         "publisher":"评论人的昵称",
-        "updateTime":"评论时间"
+        "updateTime":"评论时间",
+        "liked":"该用户是否已经点赞该链接"
     },
     "link":{
         "id":"12312312",
         "url":"http://blog.2huo.tech",
         "desc":"对链接的描述",
         "like":"被点赞次数",
-        "star":"被收藏次数"
+        "star":"被收藏次数",
+        "stared":"该用户是否已经收藏该链接",
+        "liked":"该用户是否已经点赞该链接"
     },
     "tab":{
         "name":"react-redux",

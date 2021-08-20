@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import styles from "./Links.module.css";
+import commonStyles from "../common.module.css";
+
+import good from "@/public/image/good.png";
+import star from "@/public/image/star.png";
 
 function Links(props) {
   const [cntLink, setCntLink] = useState("");
@@ -14,15 +18,23 @@ function Links(props) {
       <ul className={styles.linksList}>
         {props.linkList.map((link) => {
           return (
-            // 斯以为此处必须全选
-            <a target="_blank" className={styles.linkText} href={link.url}>
-              <li key={link.url} onClick={() => changeLink(link.url)}>
-                <div className={styles.link}  key={link.url} onClick={() => changeLink(link.url)}>
-                  <div className={styles.linkDesc}>{link.desc}</div>
-                  <span className={styles.linkText}>{link.url}</span>
+            <li
+              key={link.url}
+              onClick={() => changeLink(link.url)}
+              className={styles.link}
+            >
+              <div className={styles.linkContent}>
+                <div>
+                  <img src={good} alt="good" className={commonStyles.icon} />
+                  <img src={star} alt="star" className={commonStyles.icon} />
                 </div>
-              </li>
-            </a>
+                <div>
+                  <div className={styles.linkDesc}>{link.desc}</div>
+                  <div className={styles.linkText}>{link.url}</div>
+                </div>
+              </div>
+              <div className={styles.bottomLine}></div>
+            </li>
           );
         })}
       </ul>
