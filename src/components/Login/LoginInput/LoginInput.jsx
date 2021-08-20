@@ -15,7 +15,7 @@ class LoginInput extends React.Component {
         this.handleChangePassword = this.handleChangePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    读取输入的内容
+    //读取输入的内容
     handleChangeName(event) {
       this.setState({username: event.target.value});
     }
@@ -26,7 +26,7 @@ class LoginInput extends React.Component {
       this.setState({password: event.target.value});
     }
     
-    点击submit触发的事件
+    //点击submit触发的事件
     handleSubmit(event) {
       // if(this.state.userName.length >= 20) {
       //   return alert("用户名不能超过20个字符，请重新输入")
@@ -36,14 +36,34 @@ class LoginInput extends React.Component {
       let username =this.state.username
       let password =this.state.password
       let email =this.state.email
-      let hash = {username, password, email}
-      $.post('user/register', hash) // 第一个参数与是路径，第二个参数要传给服务端的数据
-        .then(() => {
-          alert('success')
-        }, () => {
-          alert('error')
-        })
+      if(username !== '') alert('输入的用户名是：' + username + '输入的邮箱是：' + email + '输入的密码是：' + password)
+      else alert('输入的邮箱是：' + email + '输入的密码是：' + password)
+      // let hash = {'username': username, 'password': password, 'email': email}
+      // $.post('/user/register', hash) // 第一个参数与是路径，第二个参数要传给服务端的数据
+      //   .then((response) => {
+      //     alert('success')
+      //     console.log(response)
+      //   }, () => {
+      //     alert('error')
+      //     console.log(response)
+      //     let {errors} = JSON.parse(response.responseText)
+      //     if(errors.message && errors.message !== '注册成功'){
+      //       arert(errors.message)
+      //     }
+      //   })
     }
+
+    // //点击login触发的事件
+    // handleLogin(event) {
+    //   // if(this.state.userName.length >= 20) {
+    //   //   return alert("用户名不能超过20个字符，请重新输入")
+    //   // }
+    //   event.preventDefault();
+    //   event.preventDefault();
+    //   let password =this.state.password
+    //   let email =this.state.email
+    //   alert('输入的邮箱是：' + email + '输入的密码是：' + password)
+    // }
 
     render() {
 
@@ -56,17 +76,21 @@ class LoginInput extends React.Component {
 
                 <div className={styles.formLogin} id='login'>
                   <h1 className={styles.title}>邮箱登录</h1>
-                  <form>
+                  <form onSubmit={this.handleSubmit}> 
                     <div>
                       <div>
                         <input type="email"
                           placeholder="邮箱"
-                        className={styles.formInput}></input>
+                          className={styles.formInput}
+                          email={this.state.email} onChange={this.handleChangeEmail}
+                        ></input>
                       </div>
                       <div>
                         <input type="password"
                           placeholder="密码"
-                        className={styles.formInput}></input>
+                          className={styles.formInput}
+                          password={this.state.password} onChange={this.handleChangePassword}
+                        ></input>
                       </div>
                     </div>
                     <div className={styles.buttons}>
@@ -96,7 +120,7 @@ class LoginInput extends React.Component {
                             <input type="text"
                               placeholder="用户名"
                               className={styles.formInput}
-                             username={this.state.username} onChange={this.handleChangeName}
+                              username={this.state.username} onChange={this.handleChangeName}
                             ></input>
                         </div>
                         <div>
