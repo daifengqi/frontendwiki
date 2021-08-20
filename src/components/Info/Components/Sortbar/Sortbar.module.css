@@ -1,4 +1,8 @@
 .Sortbar {
+
+}
+
+.header {
     display: flex;
     justify-content: space-between;
     height: 2rem;
@@ -26,4 +30,16 @@
 
 .right {
 
+}
+
+.content {
+
+}
+
+.section {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
 }
