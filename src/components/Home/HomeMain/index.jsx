@@ -1,10 +1,21 @@
 import React from "react";
 import styles from "./index.module.css";
-import { TreeNode, Tree } from "../TreeNode/TreeNode.jsx";
+import { Tree } from "../TreeNode/TreeNode.jsx";
 
+
+function HomeMain() {
+  drawBack();
+  return (
+    <div id="mainContent" className={styles.homeMainContain + " flexColumn"}>
+      <div className={styles.homeMain}>
+        <Tree />
+      </div>
+    </div>
+  );
+}
 function drawBack() {
   // 可调参数
-  var BACKGROUND_COLOR = "rgba(40,40,40,1)"; // 背景颜色
+  var BACKGROUND_COLOR = "rgba(64,64,64,1)"; // 背景颜色
   var POINT_NUM = 100; // 星星数目
   var POINT_COLOR = "rgba(255,255,255,0.7)"; // 点的颜色
   var LINE_LENGTH = 10000; // 点之间连线长度(的平方)
@@ -16,10 +27,10 @@ function drawBack() {
   cvs.style.cssText =
     "\
     position:fixed;\
-    top:0px;\
-    left:0px;\
+    top:0;\
+    left:0;\
     z-index:-1;\
-    opacity:1.0;\
+    opacity:1;\
     ";
   document.body.appendChild(cvs);
 
@@ -85,7 +96,7 @@ function drawBack() {
     p0.y = ev.clientY;
   };
   document.onmousedown = function (ev) {
-    degree = 5.0;
+    degree = 15.0;
     p0.x = ev.clientX;
     p0.y = ev.clientY;
   };
@@ -144,14 +155,5 @@ function drawBack() {
   initPoints(POINT_NUM);
   drawFrame();
 }
-function HomeMain() {
-  drawBack();
-  return (
-    <div id="mainContent" className={styles.homeMainContain + " flexColumn"}>
-      <div className={styles.homeMain}>
-        <Tree />
-      </div>
-    </div>
-  );
-}
+
 export default HomeMain;

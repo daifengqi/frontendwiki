@@ -1,9 +1,7 @@
-import axios from "axios";
-
 const initState={
 
 }
-const linkReducer = (state = initState, action) => {
+const commentReducer = (state = initState, action) => {
   switch (action.type) {
     case "getLinkListStart":
     case "createLinkListStart":
@@ -16,4 +14,4 @@ const linkReducer = (state = initState, action) => {
       return state;
   }
 };
-export default linkReducer;
+export default commentReducer;
