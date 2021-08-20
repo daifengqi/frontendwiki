@@ -39,7 +39,7 @@ export const visitLink = (formData) =>
 /**
  *  links
  */
-export const getLink = (term, tag) => API.get(`/link?term=${term}&tag=${tag}`);
+export const getLinksbyTerm = (term) => API.get(`/link?term=${term}}`);
 export const createLink = (formData) => API.post("/link/create", formData);
 export const deleteLink = (formData) => API.delete("/link/delete", formData);
 export const updateLink = (formData) => API.patch("/link/update", formData);
