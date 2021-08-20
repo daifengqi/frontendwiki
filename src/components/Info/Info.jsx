@@ -20,12 +20,12 @@ class Info extends React.Component{
     }
 
     render() {
-        let Status = [
-            ['点赞次数',63],
-            ['被点赞次数',76],
-            ['收藏数',88],
-            ['被收藏数',1673]
-        ];
+        // let Status = [
+        //     ['点赞次数',63],
+        //     ['被点赞次数',76],
+        //     ['收藏数',88],
+        //     ['被收藏数',1673]
+        // ];
 
         let Userdata = {
             id: '0.o',
@@ -41,13 +41,13 @@ class Info extends React.Component{
                 <div className={styles.container}>
                     <InfoSidebar/>
                     <div className={styles.content}>
-                        <div className={styles.statusbar}>
-                            {
-                                Status.map((item) => {
-                                    return <StatusItem key={item[0]} title={item[0]} count={item[1]} />
-                                })
-                            }
-                        </div>
+                        {/*<div className={styles.statusbar}>*/}
+                        {/*    {*/}
+                        {/*        Status.map((item) => {*/}
+                        {/*            return <StatusItem key={item[0]} title={item[0]} count={item[1]} />*/}
+                        {/*        })*/}
+                        {/*    }*/}
+                        {/*</div>*/}
 
                         <div className={styles.main}>
                             <Router>
