@@ -13,7 +13,6 @@ import Like from "../Pages/Like/Like.jsx";
 import Post from "../Pages/Post/Post.jsx";
 import Comment from "../Pages/Comment/Comment.jsx";
 import History from "../Pages/History/History.jsx";
-import Index from "../Index.jsx";
 
 
 const routes = [
@@ -21,7 +20,7 @@ const routes = [
         path: "/",
         exact: true,
         render: () => (
-            <Redirect to={"/my"}/>
+            <Redirect to={"/my/post"}/>
         )
     },
     {
@@ -32,11 +31,6 @@ const routes = [
         path: "/my",
         component: Info,
         routes: [
-            {
-                path: "/my",
-                exact: true,
-                component: Index
-            },
             {
                 path: "/my/favorite",
                 component: Favor
