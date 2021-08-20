@@ -5,12 +5,28 @@ class LinkItem extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
+        this.state = {
+            display: 'block'
+        }
+    }
+
+    delete = ()=> {
+        if(!window.confirm("确定要删除吗？"))
+            return ;
+        //axios发送请求
+        //...
+        let {onDelete} = this.props;
+        onDelete();
+        window.alert('删除成功');
+        this.setState({
+            display: 'none'
+        });
     }
 
     render() {
         const {title, author, thumbs, tag, url, intro} = this.props;
         return (
-            <div className={styles.link_item}>
+            <div className={styles.link_item} style={{display: this.state.display}}>
                 <a href={url} target={"_blank"}>
                     <div className={styles.container}>
                         <div className={styles.header}>
@@ -33,6 +49,9 @@ class LinkItem extends React.Component {
                         </div>
                     </div>
                 </a>
+                <div className={styles.delete} onClick={this.delete}>
+                    <span>删除</span>
+                </div>
             </div>
         );
     }

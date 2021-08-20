@@ -15,7 +15,6 @@ a:link {
     position: relative;
 
     background: RGBA(255,255,255,0.8);
-    cursor: pointer;
 }
 
 .comment_content h4 {
@@ -47,4 +46,15 @@ a:link {
     color: RGB(106,117,126);
     font-size: 14px;
     margin-top: 20px;
+}
+
+.comment_delete {
+    margin-right: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color .2s;
+}
+
+.comment_delete:hover {
+    color: #e8716d;
 }
