@@ -13,7 +13,6 @@ import Like from "../Pages/Like/Like.jsx";
 import Post from "../Pages/Post/Post.jsx";
 import Comment from "../Pages/Comment/Comment.jsx";
 import History from "../Pages/History/History.jsx";
-import Index from "../Index.jsx";
 
 
 const routes = [
