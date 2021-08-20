@@ -16,6 +16,10 @@ class List extends React.Component {
         };
     }
 
+    DeleteItem = ()=>{
+        this.props.onDelete();
+    }
+
     display = ()=>{
         if(this.state.type !== 'comments')
             return this.state.originData.map((item, index) => {
@@ -27,6 +31,7 @@ class List extends React.Component {
                     tag={item.tag}
                     intro={item.intro}
                     url={item.url}
+                    onDelete={this.DeleteItem.bind(this)}
                 />
             })
         else
@@ -38,6 +43,7 @@ class List extends React.Component {
                     date={item.createDate}
                     id={item.id}
                     link_id={item.linkId}
+                    onDelete={this.DeleteItem.bind(this)}
                 />
             })
     }
