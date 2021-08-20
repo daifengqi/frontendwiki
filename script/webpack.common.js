@@ -71,4 +71,10 @@ module.exports = {
   optimization: {
     minimizer: [new CssMinimizerPlugin()],
   },
+  resolve:{
+    alias:{
+      // 添加此处目录，方便引用
+      '@':path.resolve(__dirname,"../")
+    }
+  }
 };
