@@ -1,3 +1,13 @@
+button {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+
+
 .container {
   display: flex;
   justify-content: center;
@@ -7,16 +17,26 @@
   background: #ccc;
   background-size: cover;
 }
-
 .optionsContainer {
   position: relative;
   width: 80%;
+}
+.back {
+  width: 100%;
+  background-color: #ccc;
+  color: white;
+  display: inline-flex;
+  position: relative;
+  text-decoration: none;
+  letter-spacing: 3px;
+  line-height: 4rem;
+  padding-left: 50px;
 }
 .optionsText {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background-color: #32404f;
+  background-color:#3c3c3c;
   border-radius: 3px;
 }
 
@@ -42,6 +62,6 @@
   letter-spacing: 0.2rem;
 }
 .choiceButton:hover {
-  background-color: #232d36;
+  background-color: #202020;
 }
 

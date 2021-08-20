@@ -1,29 +1,33 @@
-
+input[type=submit] {
+  cursor: pointer;
+}
 
 .optionsFormRight {
   position: absolute;
   top: 50%;
   overflow: hidden;
-  width: 400px;
+  width: calc(50% - 30px);
   min-height: 450px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
   left: 30px;
-  transform: translate3d(100%, -50%, 0); 
+  transform: translate3d(100%, -50%, 0);
+  transition: transform 0.5s ease-in-out;
 }
 
 .optionsFormLeft {
   position: absolute;
   top: 50%;
   overflow: hidden;
-  width: 400px;
+  width: calc(50% - 30px);
   min-height: 450px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
   left: 30px;
   transform: translate3d(0%, -50%, 0); 
+  transition: transform 0.5s ease-in-out;
 }
 
  .formsLogin {
@@ -100,14 +104,4 @@
 }
 .buttonsAction:hover {
   background-color: #e14641;
-}
-.formsSignup,
-.formsLogin {
-  position: absolute;
-  top: 70px;
-  left: 40px;
-  width: calc(100% - 80px);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.5s ease-in-out;
 }
