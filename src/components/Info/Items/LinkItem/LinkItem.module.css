@@ -3,15 +3,14 @@ a:link {
 }
 
 .link_item {
-    -webkit-box-shadow: rgb(150 150 150 / 10%) 0px 0px 20px 0px;
-    -moz-box-shadow: rgba(150,150,150,0.1) 0px 0px 20px 0px;
-    box-shadow: rgb(150 150 150 / 10%) 0px 0px 20px 0px;
+    -webkit-box-shadow: rgba(150,150,150,0.1) 0 0 20px 0;
+    -moz-box-shadow: rgba(150,150,150,0.1) 0 0 20px 0;
+    box-shadow: rgba(150,150,150,0.1) 0 0 20px 0;
 
     width: 48.5%;
     padding: 10px 0 20px;
     margin: 10px 0;
     border-radius: 10px;
-    overflow: hidden;
     position: relative;
 
     background: RGBA(255,255,255,0.8);
@@ -66,4 +65,26 @@ a:link {
 .tag {
     padding-bottom: 2px;
     border-bottom: 2px dashed RGBA(88,125,150,0.6);
+}
+
+.link_item:hover .delete, .delete:hover {
+    display: block;
+}
+
+.delete {
+    display: none;
+    position: absolute;
+    bottom: -30px;
+    right: 50%;
+    transform: translateX(50%);
+
+    width: 80px;
+    height: 40px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    z-index: 2;
+    background: RGBA(255,255,255,1);
+
+    line-height: 40px;
+    text-align: center;
 }
