@@ -16,12 +16,13 @@ class BackGround extends React.Component {
     render() {
         return (
             <>
-                <a href="./index.html" className={styles.back}>
-                  返回主页
-                </a>
-                
+              <div>
                 <div className={styles.container}>
-                  <div className={styles.optionsContainer}> 
+                    <div>
+                      <a href="./index.html" className={styles.back}>返回主页</a>
+                    </div>
+                  <div className={styles.optionsContainer}>
+                  
                     <div className={styles.optionsText}>
                       <div className={styles.optionsUnregistered}>
                         <h2>没有账号？</h2>
@@ -48,6 +49,7 @@ class BackGround extends React.Component {
                     <LoginInput login={this.state.login} />
                   </div>
                 </div>
+              </div>
             </>
         );
     }

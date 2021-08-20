@@ -1,5 +1,4 @@
 import React from "react";
-import $ from 'jquery'
 import styles from "./LoginInput.module.css";
 
 class LoginInput extends React.Component {
@@ -47,23 +46,10 @@ class LoginInput extends React.Component {
       }
 
       if(username !== '') alert('输入的用户名是：' + username + '输入的邮箱是：' + email + '输入的密码是：' + password)
-
-
-      
       else alert('输入的邮箱是：' + email + '输入的密码是：' + password)
-      // let hash = {'username': username, 'password': password, 'email': email}
-      // $.post('/user/register', hash) // 第一个参数与是路径，第二个参数要传给服务端的数据
-      //   .then((response) => {
-      //     alert('success')
-      //     console.log(response)
-      //   }, () => {
-      //     alert('error')
-      //     console.log(response)
-      //     let {errors} = JSON.parse(response.responseText)
-      //     if(errors.message && errors.message !== '注册成功'){
-      //       arert(errors.message)
-      //     }
-      //   })
+
+      //在这里发送请求
+      
     }
 
     render() {
