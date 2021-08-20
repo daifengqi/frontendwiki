@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Login.module.css";
+import BackGround from "./BackGround/BackGround.jsx";
+import LoginInput from "./LoginInput/LoginInput.jsx";
 
 class Login extends React.Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class Login extends React.Component {
     render() {
         return (
             <>
-                <h2>登录在这里！</h2>
+              <BackGround />
             </>
         );
     }
