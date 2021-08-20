@@ -3,22 +3,7 @@
     list-style: none;
     overflow: auto;
     height: 95%;
-    margin: 0 8px 0 20px ;
-}
-.tabsList::-webkit-scrollbar{
-    background-color: rgba(0, 0, 0, 0.12);
-    width: .36rem;
-    border-radius: .3rem;
-}
-.tabsList::-webkit-scrollbar-track{
-    display: none;
-}
-.tabsList::-webkit-scrollbar-button{
-    display: none;
-}
-.tabsList::-webkit-scrollbar-thumb{
-    background-color: rgba(0, 0, 0, .2);
-    border-radius: .3rem;
+    margin: 0 ;
 }
 
 .tabTitle{
