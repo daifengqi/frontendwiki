@@ -28,15 +28,28 @@ class LoginInput extends React.Component {
     
     //点击submit触发的事件
     handleSubmit(event) {
-      // if(this.state.userName.length >= 20) {
-      //   return alert("用户名不能超过20个字符，请重新输入")
-      // }
       event.preventDefault();
       event.preventDefault();
       let username =this.state.username
       let password =this.state.password
       let email =this.state.email
+
+      //验证输入的有效性和格式
+      if(username.length >= 10) {
+        alert("用户名不能超过10个字符")
+      }
+      let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+      if(!reg.test(email)) {
+        alert("请输入有效邮箱")
+      }
+      if(email.length >= 20) {
+        alert("邮箱长度不能超过20个字符")
+      }
+
       if(username !== '') alert('输入的用户名是：' + username + '输入的邮箱是：' + email + '输入的密码是：' + password)
+
+
+      
       else alert('输入的邮箱是：' + email + '输入的密码是：' + password)
       // let hash = {'username': username, 'password': password, 'email': email}
       // $.post('/user/register', hash) // 第一个参数与是路径，第二个参数要传给服务端的数据
@@ -52,18 +65,6 @@ class LoginInput extends React.Component {
       //     }
       //   })
     }
-
-    // //点击login触发的事件
-    // handleLogin(event) {
-    //   // if(this.state.userName.length >= 20) {
-    //   //   return alert("用户名不能超过20个字符，请重新输入")
-    //   // }
-    //   event.preventDefault();
-    //   event.preventDefault();
-    //   let password =this.state.password
-    //   let email =this.state.email
-    //   alert('输入的邮箱是：' + email + '输入的密码是：' + password)
-    // }
 
     render() {
 
