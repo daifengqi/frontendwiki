@@ -1,0 +1,20 @@
+{
+    "comment":{
+        "id":"123123",
+        "content":"评论内容",
+        "like":"被点赞次数",
+        "publisher":"评论人的昵称",
+        "updateTime":"评论时间"
+    },
+    "link":{
+        "id":"12312312",
+        "url":"http://blog.2huo.tech",
+        "desc":"对链接的描述",
+        "like":"被点赞次数",
+        "star":"被收藏次数"
+    },
+    "tab":{
+        "name":"react-redux",
+        "linkList":["这个是标签对应的链接列表","对应的数据结构如上"]
+    }
+}
