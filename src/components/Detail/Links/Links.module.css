@@ -1,23 +1,30 @@
-.linksList{
+.linksList {
     padding: 0;
+    margin: 0;
     list-style: none;
-    overflow: auto;
-    height: 100%;
+    overflow-y: scroll;
+    padding: 10px;
 }
 
-.link{
+.link {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     padding: 5px;
     background-color: #eff0f1;
-    margin: 10px 0 0 0;
+    margin: 0 0 10px 0;
+    overflow: hidden;
 }
-
-.linkText{
+.link p{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 0;
+}
+.linkText {
     color: #409EFF;
 }
 
-.linkDesc{
+.linkDesc {
     color: #909399;
     margin: 10px 0 0;
     border-top: 1px solid #909399;
