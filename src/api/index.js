@@ -32,9 +32,9 @@ export const getVisitedLinks = () => API.get("/user/:id/visited");
 export const thumbLink = (formData) =>
   API.post("/user/:id/thumbLink", formData);
 export const collectLink = (formData) =>
-  API.post("/user/:id/thumbLink", formData);
+  API.post("/user/:id/collectLink", formData);
 export const visitLink = (formData) =>
-  API.post("/user/:id/thumbLink", formData);
+  API.post("/user/:id/visitLink", formData);
 
 /**
  *  links
