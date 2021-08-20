@@ -1,17 +1,19 @@
 import axios from "axios";
 import store from "../store/index.js";
 
-/*
+/**
+ * @author source
+ * @updateTime 2021/8/20 16:00
  * 通过词条id或者tap参数，获得词条以及标签下的链接列表;
- *@param options {Object}
- *{
-   term:xxx,
-   tag:xxx
- }
- *非必填
+ * @param options {Object}
+ * {
+    term:xxx,
+    tag:xxx
+ } 
+ * 非必填
  */
-export const getLinkList= (options) => (dispatch) => {
-  if(!options) options="all";
+export const getLinkList = (options) => (dispatch) => {
+  if (!options) options = "all";
   dispatch({
     type: "getLinkListStart",
     payload: {
@@ -46,7 +48,9 @@ export const getLinkList= (options) => (dispatch) => {
       console.log("store", store.getState().linkReducer);
     });
 };
-/*
+/**
+ *@author source
+ *@updateTime 2021/8/20 16:00
 *传入如下参数添加一条链接
 {
     "creator":"test12",
@@ -70,8 +74,10 @@ export const createLink = (data) => (dispatch) => {
       dispatch({ type: "createLinkListFail", payload: { createLink: -1 } });
     });
 };
-/*
+/**
  *获得某一条标签信息???这个有用么
+ *@author source
+ *@updateTime 2021/8/20 16:00
  */
 export const getOneLink = (id) => (dispatch) => {
   dispatch({ type: "getOneLinkStart", payload: { oneLink: { code: 0 } } });

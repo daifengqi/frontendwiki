@@ -4,11 +4,9 @@
   display: flex;
   align-items: center;
 }
-
 .flexRow {
   flex-direction: row !important;
 }
-
 .flexColumn,
 .flexCenter {
   flex-direction: column;
@@ -24,4 +22,27 @@
 
 .main {
   width: 100%;
+}
+.mask{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+}
+*::-webkit-scrollbar{
+  background-color: rgba(0, 0, 0, 0.8);
+  width: .36rem;
+  border-radius: .3rem;
+}
+*::-webkit-scrollbar-track{
+  display: none;
+}
+*::-webkit-scrollbar-button{
+  display: none;
+}
+*::-webkit-scrollbar-thumb{
+  background-color: rgba(209, 209, 209, 0.24);
+  border-radius: .3rem;
 }

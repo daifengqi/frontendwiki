@@ -1,6 +1,6 @@
 import React from "react";
-import HomeHead from "../HomeHead/index.jsx";
-import HomeMain from "../HomeMain/index.jsx";
+import HomeHead from "./HomeHead/index.jsx";
+import HomeMain from "./HomeMain/index.jsx";
 import styles from "./home.module.css";
 import {getLinkList,createLink} from '../../actions/linkActions';
 import { useDispatch ,useSelector} from "react-redux";
