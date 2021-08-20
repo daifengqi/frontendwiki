@@ -74,8 +74,8 @@ a:link {
 .delete {
     display: none;
     position: absolute;
-    bottom: -30px;
-    right: 50%;
+    top: 10px;
+    right: 50px;
     transform: translateX(50%);
 
     width: 80px;

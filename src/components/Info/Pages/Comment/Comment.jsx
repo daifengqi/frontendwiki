@@ -11,51 +11,37 @@ import common from "../../info.module.css";
 class Comment extends React.Component {
     constructor(props) {
         super(props);
+        if(!localStorage.getItem("profile")) {
+            this.state = {
+                status: false,
+                token: '',
+                data: []
+            };
+        } else {
+            //axios获取数据
+            let data = [];
+
+            this.state = {
+                status: true,
+                token: JSON.parse(localStorage.getItem("profile")).token,
+                data: data
+            };
+        }
+    }
+
+    display = ()=>{
+        if(this.state.status){
+            return <Sortbar data={this.state.data} displayType={"comments"}/>;
+        }
+
+        return <p className={common.notice}>请先登录~</p>
     }
 
     render() {
-        let data = [
-            {
-                id: 1,
-                linkId: 1,
-                creator: 'Exia',
-                content: '好！',
-                createDate: '2021-8-19',
-            },
-            {
-                id: 2,
-                linkId: 1,
-                creator: 'Dyname',
-                content: '我也好！',
-                createDate: '2021-8-19',
-            },
-            {
-                id: 3,
-                linkId: 1,
-                creator: 'Kyrios',
-                content: '我我也好！',
-                createDate: '2021-8-19',
-            },
-            {
-                id: 4,
-                linkId: 1,
-                creator: 'Q',
-                content: '很有精神！',
-                createDate: '2021-8-19',
-            },
-            {
-                id: 5,
-                linkId: 1,
-                creator: 'Exia',
-                content: '奇怪的评论增加了',
-                createDate: '2021-8-19',
-            }
-        ];
-
         return (
             <div className={classNames(styles.MyPost, common.subPageTitle)}>
-                <h3>我的评论</h3>
-                <Sortbar data={data} displayType={'comments'}/>
+                <h3>我的评论💬</h3>
+                {this.display()}
             </div>
         );
     }

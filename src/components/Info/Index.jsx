@@ -9,7 +9,7 @@ class Index extends React.Component {
     render() {
         return (
             <div className="index">
-                <h3 className={styles.notice}>还什么都没有哦~</h3>
+                <h3 className={styles.notice}>点击最左边的菜单看看吧~</h3>
             </div>
         );
     }
