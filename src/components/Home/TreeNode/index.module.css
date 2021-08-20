@@ -6,7 +6,7 @@
     box-sizing: border-box;
     cursor: pointer;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     z-index: 501;
     backdrop-filter: blur(.3125rem);
     box-shadow: inset var(--shadowColor--) 0px 0px 6px 3px;
@@ -63,15 +63,17 @@
     box-shadow: 0 0 .675rem white;
     margin-right: .5625rem;
 }
-.nodeLine{
-    /* left: 5%;
-    transform: translateX(-50%);
-    background-color: var(--bgColor--);
-    height: 1.5rem;
-    z-index: 100;
-    width: .25rem;
+.pointCircle{
+    border: solid .6px rgba(20, 20, 20, 0.24);
+    width: .1px;
+    height: .1px;
     position: absolute;
-    bottom: 95%; */
+    border-radius: 100%;
+    animation: showPonitCircle .6s ease;
+    z-index: 10;
+}
+@keyframes showPonitCircle{
+    to{transform: scale(100);opacity: 0;}
 }
 .treeNodeMain{
     margin-left: .6rem;

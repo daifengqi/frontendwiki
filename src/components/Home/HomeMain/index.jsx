@@ -27,10 +27,10 @@ function drawBack() {
   cvs.style.cssText =
     "\
     position:fixed;\
-    top:0px;\
-    left:0px;\
+    top:0;\
+    left:0;\
     z-index:-1;\
-    opacity:1.0;\
+    opacity:1;\
     ";
   document.body.appendChild(cvs);
 
@@ -96,7 +96,7 @@ function drawBack() {
     p0.y = ev.clientY;
   };
   document.onmousedown = function (ev) {
-    degree = 5.0;
+    degree = 15.0;
     p0.x = ev.clientX;
     p0.y = ev.clientY;
   };

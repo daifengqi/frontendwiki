@@ -7,12 +7,32 @@ import Detail from "../../Detail/Detail.jsx";
 class TreeNode extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      point: false,
+      top:0,
+      left:0
+    };
+  }
+  pointShow(e) {
+    console.log('e',e)
+    let {layerX,layerY,offsetX,offsetY}=e.nativeEvent;
+    this.setState({
+      top:layerY||offsetY,
+      left:layerX||offsetX,
+      point: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        point: false,
+      });
+    }, 600);
   }
   render() {
     return (
       <div className={styles.nodeContain}>
         <div
-          onClick={() => {
+          onClick={(e) => {
+            this.pointShow(e);
             this.props.changeNodeID(this.props.data.id);
           }}
           className={
@@ -24,16 +44,24 @@ class TreeNode extends React.Component {
           }
           style={styleMap[this.props.data.level]}
         >
+          {this.state.point ? (
+            <div className={styles.pointCircle} style={{top:this.state.top,left:this.state.left}}></div>
+          ) : (
+            <></>
+          )}
           {this.props.data.content}
         </div>
         {this.props.data.id === this.props.showNodeID ? (
           <>
-          <div className={styles.showNodeArea}>
-            <Detail />
-          </div>
-          <div className="mask" onClick={() => {
-            this.props.changeNodeID(this.props.data.id);
-          }}></div>
+            <div className={styles.showNodeArea}>
+              <Detail />
+            </div>
+            <div
+              className="mask"
+              onClick={() => {
+                this.props.changeNodeID(this.props.data.id);
+              }}
+            ></div>
           </>
         ) : (
           <></>
@@ -156,23 +184,23 @@ class Tree extends React.Component {
 const styleMap = [
   {
     color: "#ccc",
-    "--shadowColor--":"#409EFF50"
+    "--shadowColor--": "#409EFF50",
   },
   {
     color: "#ccc",
-    "--shadowColor--":"#F56C6C50"
+    "--shadowColor--": "#F56C6C50",
   },
   {
     color: "#ccc",
-    "--shadowColor--":"#67c23a50"
+    "--shadowColor--": "#67c23a50",
   },
   {
     color: "#ccc",
-    "--shadowColor--":"#E6A23C50"
+    "--shadowColor--": "#E6A23C50",
   },
   {
     color: "#ccc",
-    "--shadowColor--":"#90939920"
+    "--shadowColor--": "#90939920",
   },
 ];
 export { Tree };
