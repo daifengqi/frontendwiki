@@ -21,7 +21,7 @@ const routes = [
         path: "/",
         exact: true,
         render: () => (
-            <Redirect to={"/my"}/>
+            <Redirect to={"/my/post"}/>
         )
     },
     {
@@ -32,11 +32,6 @@ const routes = [
         path: "/my",
         component: Info,
         routes: [
-            {
-                path: "/my",
-                exact: true,
-                component: Index
-            },
             {
                 path: "/my/favorite",
                 component: Favor
