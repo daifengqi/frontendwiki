@@ -39,7 +39,6 @@ class Info extends React.Component{
                 this.setState({
                     Userdata: r.data.data
                 });
-                console.log(r.data.data);
             }).catch(e=>{
                 console.log(e);
             });

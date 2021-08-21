@@ -16,6 +16,13 @@ class List extends React.Component {
         };
     }
 
+    static getDerivedStateFromProps(nextProps, prevState) {
+        //根据nextProps和prevState计算出预期的状态改变，返回结果会被送给setState
+        return {
+            originData: nextProps.data
+        };
+    }
+
     DeleteItem = ()=>{
         this.props.onDelete();
     }
