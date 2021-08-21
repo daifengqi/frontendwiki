@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Detail.module.css";
 
 import Tabs from "./Tabs/Tabs.jsx";
 import Links from "./Links/Links.jsx";
 import Comments from "./Comments/Comments.jsx";
+
+import linkActions from "@/src/actions/linkActions.js"
 
 function Detail(props) {
   const [linkList, setlinkList] = useState([
@@ -125,7 +127,23 @@ function Detail(props) {
       publisher: "评论人的昵称",
       updateTime: "评论时间",
     },
+    {
+      id: "1254",
+      content: "这个是评论4",
+      like: "1",
+      publisher: "评论人的昵称",
+      updateTime: "评论时间",
+    },
   ]);
+
+  useEffect(()=>{
+    let options = {
+      term:1
+    }
+    // linkActions.getLinkList(options);
+    // const linkList = useSelector((state) => state[`${JSON.stringify(options)}`]);
+    // setlinkList(linkList)
+  })
 
   return (
     <div className={styles.detailPage}>

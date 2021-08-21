@@ -19,5 +19,14 @@
     "tab":{
         "name":"react-redux",
         "linkList":["这个是标签对应的链接列表","对应的数据结构如上"]
+    },
+    "api":{
+        "添加链接":"function",
+        "添加评论":"function",
+        "点赞链接":"function",
+        "收藏链接":"function",
+        "点赞评论":"function",
+        "获取链接+标签列表":"function",
+        "获取评论列表":"function"
     }
 }

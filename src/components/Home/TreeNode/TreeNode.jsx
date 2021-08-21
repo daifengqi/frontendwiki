@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./index.module.css";
 import { useState } from "react";
 import axios from "axios";
-import Detail from "../../Detail/Detail.jsx";
+
 
 class TreeNode extends React.Component {
   constructor(props) {
@@ -14,7 +14,6 @@ class TreeNode extends React.Component {
     };
   }
   pointShow(e) {
-    console.log('e',e)
     let {layerX,layerY,offsetX,offsetY}=e.nativeEvent;
     this.setState({
       top:layerY||offsetY,
@@ -33,7 +32,7 @@ class TreeNode extends React.Component {
         <div
           onClick={(e) => {
             this.pointShow(e);
-            this.props.changeNodeID(this.props.data.id);
+            this.props.changeNodeID(this.props.data);
           }}
           className={
             styles.treeNodeMain +
@@ -44,28 +43,15 @@ class TreeNode extends React.Component {
           }
           style={styleMap[this.props.data.level]}
         >
+
           {this.state.point ? (
             <div className={styles.pointCircle} style={{top:this.state.top,left:this.state.left}}></div>
           ) : (
             <></>
           )}
           {this.props.data.content}
+          
         </div>
-        {this.props.data.id === this.props.showNodeID ? (
-          <>
-            <div className={styles.showNodeArea}>
-              <Detail />
-            </div>
-            <div
-              className="mask"
-              onClick={() => {
-                this.props.changeNodeID(this.props.data.id);
-              }}
-            ></div>
-          </>
-        ) : (
-          <></>
-        )}
       </div>
     );
   }
@@ -154,9 +140,11 @@ class Tree extends React.Component {
         });
       });
   }
-  changeNodeID(id) {
+  changeNodeID(data) {
+    data.id=data.id===this.state.showNodeID?null:data.id;
+    this.props.popupControl(data);
     this.setState({
-      showNodeID: this.state.showNodeID === id ? null : id,
+      showNodeID: data.id,
       lastID: this.state.showNodeID,
     });
   }
@@ -177,7 +165,9 @@ class Tree extends React.Component {
   }
   render() {
     return (
-      <>{this.state.data.length == 0 ? <></> : this.getNode(this.state.data)}</>
+      <>
+      {this.state.data.length == 0 ? <></> : this.getNode(this.state.data)}
+      </>
     );
   }
 }

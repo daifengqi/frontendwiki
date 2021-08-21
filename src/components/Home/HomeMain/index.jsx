@@ -1,21 +1,40 @@
-import React from "react";
+import React,{useState} from "react";
 import styles from "./index.module.css";
 import { Tree } from "../TreeNode/TreeNode.jsx";
+import {PopupPaper,PopupLeft} from '../PopupPaper/index.jsx';
 
-
-function HomeMain() {
-  drawBack();
+  
+drawBack();
+function HomeMain(props) {
+  const [popupData,setPopup]=useState({
+    id:null,
+    content:null
+  });
+  const popupControl=function(data){
+    props.setHeadShow(data.id?false:true);
+    setPopup(data)
+  }
   return (
-    <div id="mainContent" className={styles.homeMainContain + " flexColumn"}>
+    <>
+    <div id="mainContent" className={`flexColumn ${styles.homeMainContain} ${ popupData.id!=null?styles.animTrans:''}`}>
+      <div style={popupData.id!=null?{zIndex:998,backgroundColor:"#d6d6d6"}:{}} className={styles.popup}>
+        <PopupLeft popupData={popupData}/>
+      </div>
       <div className={styles.homeMain}>
-        <Tree />
+        {
+          popupData.id?<></>:<Tree popupControl={popupControl}/>
+        }
       </div>
     </div>
+    {
+      popupData.id!=null?<PopupPaper popupData={popupData}/>:<></>
+    }
+    </>
   );
 }
 function drawBack() {
   // 可调参数
-  var BACKGROUND_COLOR = "rgba(64,64,64,1)"; // 背景颜色
+  var BACKGROUND_COLOR; // 背景颜色
   var POINT_NUM = 100; // 星星数目
   var POINT_COLOR = "rgba(255,255,255,0.7)"; // 点的颜色
   var LINE_LENGTH = 10000; // 点之间连线长度(的平方)
@@ -35,7 +54,9 @@ function drawBack() {
   document.body.appendChild(cvs);
 
   var ctx = cvs.getContext("2d");
-
+  BACKGROUND_COLOR=ctx.createLinearGradient(400,720,0,0)
+  BACKGROUND_COLOR.addColorStop(0,"#060606")
+  BACKGROUND_COLOR.addColorStop(1,"#202020")
   function randomFloat(min, max) {
     return (max - min) * Math.random() + min;
   }
@@ -96,7 +117,7 @@ function drawBack() {
     p0.y = ev.clientY;
   };
   document.onmousedown = function (ev) {
-    degree = 15.0;
+    degree = 6.0;
     p0.x = ev.clientX;
     p0.y = ev.clientY;
   };
