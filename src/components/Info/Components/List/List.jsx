@@ -32,6 +32,7 @@ class List extends React.Component {
             return this.state.originData.map((item, index) => {
                 return <LinkItem
                     key={index}
+                    id={item.id}
                     title={item.title}
                     thumbs={item.thumbs}
                     author={item.author}

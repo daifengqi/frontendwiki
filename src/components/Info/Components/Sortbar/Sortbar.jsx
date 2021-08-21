@@ -37,7 +37,7 @@ class Sortbar extends React.Component {
 
     delete = () => {
         this.setState({
-            count: this.state.count-1
+            count: this.state.count - 1
         })
     }
 
