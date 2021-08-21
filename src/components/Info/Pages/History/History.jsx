@@ -3,6 +3,7 @@
  * @date 2021-08-18
  */
 import React from 'react';
+import {getVisitedLinks} from "../../../../api";
 import styles from './History.module.css';
 import Sortbar from "../../Components/Sortbar/Sortbar.jsx";
 import classNames from "classnames";
@@ -20,7 +21,14 @@ class History extends React.Component {
         } else {
             //axios获取数据
             let data = [];
-
+            getVisitedLinks(JSON.parse(localStorage.getItem('profile')).user.id)
+                .then(r=>{
+                    console.log(r.data.data);
+                    data = r.data.data;
+                })
+                .catch(e=>{
+                    console.log(e);
+                })
             this.state = {
                 status: true,
                 token: JSON.parse(localStorage.getItem("profile")).token,
