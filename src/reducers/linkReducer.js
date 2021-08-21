@@ -1,17 +1,23 @@
 import axios from "axios";
 
-const initState={
-
-}
+const initState = {
+  linkList:[]
+};
 const linkReducer = (state = initState, action) => {
+  console.log('state',state)
   switch (action.type) {
     case "getLinkListStart":
-    case "createLinkListStart":
     case "getLinkListSuccess":
     case "getLinkListFail":
+      state.linkList={...state.linkList, ...action.payload};
+      return {...state};
+    case "createLinkListStart":
     case "createLinkListSuccess":
     case "createLinkListFail":
-        return {...state, ...action.payload};
+    case "likeLinkSuccess":
+    case "likeLinkStart":
+    case "likeLinkFail":
+      return { ...state, ...action.payload };
     default:
       return state;
   }

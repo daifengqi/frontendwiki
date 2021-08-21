@@ -1,4 +1,4 @@
-import axios from "axios";
+import {getLinksbyTerm,createLink,thumbLink,collectLink} from '../api/index.js';
 import store from "../store/index.js";
 
 /**
@@ -12,23 +12,19 @@ import store from "../store/index.js";
  } 
  * 非必填
  */
-export const getLinkList = (options) => (dispatch) => {
-  if (!options) options = "all";
+const getLinkListAction = (term) => (dispatch) => {
   dispatch({
     type: "getLinkListStart",
     payload: {
-      [`${JSON.stringify(options)}`]: { code: 0 },
+      [`${term}`]: { code: 0 },
     },
   });
-  axios
-    .get("/linkQuery", {
-      params: options,
-    })
+  getLinksbyTerm(term)
     .then((res) => {
       dispatch({
         type: "getLinkListSuccess",
         payload: {
-          [`${JSON.stringify(options)}`]: {
+          [`${term}`]: {
             data: { ...res },
             code: 1,
           },
@@ -39,7 +35,7 @@ export const getLinkList = (options) => (dispatch) => {
       dispatch({
         type: "getLinkListFail",
         payload: {
-          [`${JSON.stringify(options)}`]: {
+          [`${term}`]: {
             data: { ...e },
             code: -1,
           },
@@ -62,10 +58,9 @@ export const getLinkList = (options) => (dispatch) => {
     "intro":"简介"
 }
 */
-export const createLink = (data) => (dispatch) => {
+const createLinkAction = (data) => (dispatch) => {
   dispatch({ type: "createLinkListStart", payload: { createLink: 0 } });
-  axios
-    .post("/link/create", data)
+  createLink(data)
     .then((res) => {
       dispatch({ type: "createLinkListSuccess", payload: { createLink: 1 } });
     })
@@ -79,7 +74,7 @@ export const createLink = (data) => (dispatch) => {
  *@author source
  *@updateTime 2021/8/20 16:00
  */
-export const getOneLink = (id) => (dispatch) => {
+const getOneLinkAction = (id) => (dispatch) => {
   dispatch({ type: "getOneLinkStart", payload: { oneLink: { code: 0 } } });
   axios
     .get("/link/" + id)
@@ -106,3 +101,63 @@ export const getOneLink = (id) => (dispatch) => {
       });
     });
 };
+/**
+ * @author source
+ * @updateTime 2021/8/21 21:00
+ * @param {String} id 
+ * @returns 
+ */
+
+const likeLinkActionk=(id)=>(dispatch)=>{
+  dispatch({
+    type:"likeLinkStart",
+    payload:{
+      likeLink:0
+    }
+  })
+  thumbLink(id)
+  .then(res=>{
+    dispatch({
+      type:"likeLinkSuccess",
+      payload:{
+        likeLink:1
+      }
+    })
+  })
+  .catch(e=>{
+    console.log('thumbLink',e )
+    dispatch({
+      type:"likeLinkFail",
+      payload:{
+        likeLink:-1
+      }
+    })
+  })
+}
+const collectLinkAction=(id)=>(dispatch)=>{
+  dispatch({
+    type:"collectLinkStart",
+    payload:{
+      collectLink:0
+    }
+  })
+  collectLink(id)
+  .then(res=>{
+    dispatch({
+      type:"collectLinkSuccess",
+      payload:{
+        collectLink:1
+      }
+    })
+  })
+  .catch(e=>{
+    console.log('collectLinkFail',e )
+    dispatch({
+      type:"collectLinkFail",
+      payload:{
+        collectLink:-1
+      }
+    })
+  })
+}
+export {getLinkListAction,createLinkAction,getOneLinkAction,likeLinkActionk,collectLinkAction}
