@@ -6,7 +6,6 @@ import {getUserInfo} from "../../api";
 import Nav from "../Nav/Nav.jsx";
 import InfoBanner from "./Components/Banner/InfoBanner.jsx";
 import InfoSidebar from "./Components/SideBar/InfoSidebar.jsx";
-import StatusItem from "./Items/StatusItem/StatusItem.jsx";
 
 import styles from "./info.module.css";
 
@@ -51,14 +50,6 @@ class Info extends React.Component{
                 <div className={styles.container}>
                     <InfoSidebar/>
                     <div className={styles.content}>
-                        {/*<div className={styles.statusbar}>*/}
-                        {/*    {*/}
-                        {/*        Status.map((item) => {*/}
-                        {/*            return <StatusItem key={item[0]} title={item[0]} count={item[1]} />*/}
-                        {/*        })*/}
-                        {/*    }*/}
-                        {/*</div>*/}
-
                         <div className={styles.main}>
                             <Router>
                                 { renderRoutes(route.routes) }
