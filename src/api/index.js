@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /* dev: "http://localhost:8001"  */
-const API = axios.create({ baseURL: "http://localhost:8001" });
+const API = axios.create({ baseURL: "http://localhost:8001/api/v1" });
 API.interceptors.request.use((req) => {
   // add token
   if (localStorage.getItem("profile")) {
