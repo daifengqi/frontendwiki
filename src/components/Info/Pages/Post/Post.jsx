@@ -20,24 +20,7 @@ class Post extends React.Component {
         } else {
             //axios获取数据
             let data = [
-                {
-                    id: 1001,
-                    title: '测试标题1',
-                    thumbs: 100,
-                    author: 'youranreus',
-                    url: 'https://baidu.com',
-                    tag: 'test',
-                    intro: '是测试！'
-                },
-                {
-                    id: 1002,
-                    title: '测试标题2',
-                    thumbs: 101,
-                    author: 'youranreus',
-                    url: 'https://baidu.com',
-                    tag: 'test',
-                    intro: '是测试噢！'
-                },
+
             ];
 
             this.state = {
