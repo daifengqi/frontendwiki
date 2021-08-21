@@ -15,7 +15,8 @@ class Sortbar extends React.Component {
         this.SortData = this.SortData.sort(this.cmp);
         this.state = {
             count: this.OriginData.length,
-            data: this.OriginData
+            data: this.OriginData,
+            type: 'default'
         };
     }
 
@@ -25,19 +26,39 @@ class Sortbar extends React.Component {
 
     switch2Thumb = ()=> {
         this.setState({
-            data: this.SortData
+            data: this.SortData,
+            type: 'sort'
         });
     }
 
     switch2Default = ()=> {
         this.setState({
-            data: this.OriginData
+            data: this.OriginData,
+            type: 'default'
         });
     }
 
-    delete = () => {
+    deleteItem = (id, arr) => {
+        for (let i = 0; i < arr.length; i++) {
+            if(arr[i].id === id) {
+                if(i===0)
+                    arr.shift();
+                else if(i===arr.length-1)
+                    arr.pop();
+                else
+                    arr.slice(i,1);
+            }
+        }
+    }
+
+    delete = (id) => {
+        console.log('删除:'+id);
+        this.deleteItem(id, this.SortData);
+        this.deleteItem(id, this.OriginData);
+
         this.setState({
-            count: this.state.count - 1
+            count: this.state.count - 1,
+            data: (this.state.type === 'default'?this.OriginData:this.SortData)
         })
     }
 

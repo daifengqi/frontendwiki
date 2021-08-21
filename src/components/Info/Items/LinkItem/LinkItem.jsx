@@ -5,9 +5,6 @@ class LinkItem extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
-        this.state = {
-            display: 'block'
-        }
     }
 
     delete = ()=> {
@@ -16,17 +13,14 @@ class LinkItem extends React.Component {
         //axios发送请求
         //...
         let {onDelete} = this.props;
-        onDelete();
+        onDelete(this.props.id);
         window.alert('删除成功');
-        this.setState({
-            display: 'none'
-        });
     }
 
     render() {
         const {title, author, thumbs, tag, url, intro} = this.props;
         return (
-            <div className={styles.link_item} style={{display: this.state.display}}>
+            <div className={styles.link_item}>
                 <a href={url} target={"_blank"}>
                     <div className={styles.container}>
                         <div className={styles.header}>

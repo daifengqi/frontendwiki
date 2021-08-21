@@ -23,8 +23,8 @@ class List extends React.Component {
         };
     }
 
-    DeleteItem = ()=>{
-        this.props.onDelete();
+    DeleteItem = (id) =>{
+        this.props.onDelete(id);
     }
 
     display = ()=>{
