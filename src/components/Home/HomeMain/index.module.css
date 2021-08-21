@@ -2,6 +2,7 @@
   width: 100%;
   padding-top: 8vh;
   min-height: 92vh;
+  background-color: transparent;
 }
 .homeMain {
   width: 80vw;
@@ -9,4 +10,41 @@
   margin-top: 8vh;
   flex-direction: column;
   z-index: 10000;
+}
+.animTrans {
+  animation: anim 1.6s ease-in-out forwards;
+}
+
+@keyframes anim {
+  0% {
+  }
+  /* 20% {
+    z-index: 11;
+    transform: skewX(5deg) translateX(-100%);
+  }
+  40% {
+    transform: skewX(0deg) translateX(0);
+    width: 100%;
+    z-index: 11;
+    box-shadow: 10px 10px 5px #eaeaea;
+  }
+  60% {
+    transform: skewX(3deg) translateX(0);
+    width: 100%;
+    z-index: 11;
+    box-shadow: 10px 10px 5px #eaeaea;
+  } */
+  50% {
+    transform: skewX(1deg) translateX(-100%);
+    width: 60%;
+    z-index: 11;
+    box-shadow: 10px 10px 5px #eaeaea;
+  }
+  100% {
+    transform: skewX(-5deg) translateX(-50px);
+    width: 30%;
+    z-index: 1;
+    box-shadow: none;
+    background-color: rgb(133, 133, 133);
+  }
 }

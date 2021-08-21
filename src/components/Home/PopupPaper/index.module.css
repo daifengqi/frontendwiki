@@ -1,0 +1,8 @@
+.PopupPaper{
+    z-index: -1;
+    background-color: white;
+    position: fixed;
+    top: 100vh;
+    left: 0;
+    
+}
