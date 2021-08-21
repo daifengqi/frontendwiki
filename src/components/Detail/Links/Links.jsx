@@ -7,15 +7,52 @@ import star from "@/public/image/star.png";
 import edit from "@/public/image/edit.png";
 import goodActive from "@/public/image/good_active.png";
 import starActive from "@/public/image/star_active.png";
+import copy from "@/public/image/copy.png";
+
+import { Tooltip, message, Modal } from "antd";
+
+import AddLinkModal from "../addLinkModal/AddLinkModal.jsx";
 
 function Links(props) {
   const [cntLink, setCntLink] = useState("1123");
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   function changeLink(url) {
     setCntLink(url);
-    console.log(url);
+    // console.log(url);
+  }
+  /**
+   * 复制链接
+   * @param {path} url 要复制到剪切板的链接
+   */
+  function copyUrl(url) {
+    if (window.clipboardData) {
+      window.clipboardData.setData("text", url);
+    } else {
+      (function (url) {
+        document.oncopy = function (e) {
+          e.clipboardData.setData("text", url);
+          e.preventDefault();
+          document.oncopy = null;
+        };
+      })(url);
+      document.execCommand("Copy");
+    }
+    message.success("复制成功");
   }
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const addLink = () => {
+    console.log("添加");
+    setIsModalVisible(false);
+  };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   return (
     <>
       <ul className={styles.linksList}>
@@ -28,6 +65,14 @@ function Links(props) {
             >
               <div className={styles.linkContent}>
                 <div className={styles.iconBox}>
+                  <Tooltip placement="bottom" title="点击复制链接">
+                    <img
+                      src={copy}
+                      alt="copy-icon"
+                      className={commonStyles.icon}
+                      onClick={() => copyUrl(link.url)}
+                    />
+                  </Tooltip>
                   <img
                     src={cntLink === "1123" ? goodActive : good}
                     alt="good"
@@ -46,7 +91,20 @@ function Links(props) {
             </li>
           );
         })}
-        <img src={edit} alt="edit-icon" className={styles.iconBtn} />
+        <img
+          src={edit}
+          alt="edit-icon"
+          className={styles.iconBtn}
+          onClick={() => showModal()}
+        />
+        <Modal
+          title="Basic Modal"
+          visible={isModalVisible}
+          onOk={addLink}
+          onCancel={handleCancel}
+        >
+          <AddLinkModal />
+        </Modal>
       </ul>
     </>
   );
