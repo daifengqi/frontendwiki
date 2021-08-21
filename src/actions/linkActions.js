@@ -21,7 +21,7 @@ const getLinkList = (options) => (dispatch) => {
     },
   });
   axios
-    .get("/linkQuery", {
+    .get("/link", {
       params: options,
     })
     .then((res) => {
@@ -106,4 +106,37 @@ const getOneLink = (id) => (dispatch) => {
       });
     });
 };
-export {createLink,getOneLink,getLinkList}
+/**
+ * @author source
+ * @updateTime 2021/8/21 21:00
+ * @param {String} id 
+ * @returns 
+ */
+
+const likeLink=(id)=>(dispatch)=>{
+  dispatch({
+    type:"likeLinkStart",
+    payload:{
+      likeLink:0
+    }
+  })
+  axios.post(`/user/${id}/thumbLink`)
+  .then(res=>{
+    dispatch({
+      type:"likeLinkSuccess",
+      payload:{
+        likeLink:1
+      }
+    })
+  })
+  .catch(e=>{
+    console.log('thumbLink',e )
+    dispatch({
+      type:"likeLinkFail",
+      payload:{
+        likeLink:-1
+      }
+    })
+  })
+}
+export {createLink,getOneLink,getLinkList,likeLink}
