@@ -1,29 +1,34 @@
 import React,{useState} from "react";
 import styles from "./index.module.css";
 import { Tree } from "../TreeNode/TreeNode.jsx";
-import {PopupPaper} from '../PopupPaper/index.jsx';
+import {PopupPaper,PopupLeft} from '../PopupPaper/index.jsx';
 
   
 drawBack();
-function HomeMain() {
+function HomeMain(props) {
   const [popupData,setPopup]=useState({
-    id:null
+    id:null,
+    content:null
   });
-  const popupControl=function(id){
-    console.log(id)
-    setPopup({
-      id:1
-    })
+  const popupControl=function(data){
+    props.setHeadShow(data.id?false:true);
+    setPopup(data)
   }
   return (
     <>
     <div id="mainContent" className={`flexColumn ${styles.homeMainContain} ${ popupData.id!=null?styles.animTrans:''}`}>
-      <div style={popupData.id!=null?{zIndex:100,background:"rgb(133, 133, 133)"}:{}} className={styles.popup}></div>
+      <div style={popupData.id!=null?{zIndex:998,backgroundColor:"#d6d6d6"}:{}} className={styles.popup}>
+        <PopupLeft popupData={popupData}/>
+      </div>
       <div className={styles.homeMain}>
-        <Tree popupControl={popupControl}/>
+        {
+          popupData.id?<></>:<Tree popupControl={popupControl}/>
+        }
       </div>
     </div>
-    <PopupPaper popupData={popupData}/>
+    {
+      popupData.id!=null?<PopupPaper popupData={popupData}/>:<></>
+    }
     </>
   );
 }

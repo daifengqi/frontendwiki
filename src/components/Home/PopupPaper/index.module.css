@@ -1,8 +1,21 @@
 .PopupPaper{
-    z-index: -1;
     background-color: white;
     position: fixed;
-    top: 100vh;
     left: 0;
-    
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transform: translateX(100vw);
+    animation: popupShow .6s ease forwards;
+}
+.popupContain{
+    margin-left: 30vw;
+    width: calc(70vw - 10vh);
+    height: 90vh;
+    padding: 5vh 5vh;
+}
+@keyframes popupShow {
+    to{
+        transform: none;
+    }
 }

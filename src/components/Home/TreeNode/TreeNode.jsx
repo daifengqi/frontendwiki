@@ -32,7 +32,7 @@ class TreeNode extends React.Component {
         <div
           onClick={(e) => {
             this.pointShow(e);
-            this.props.changeNodeID(this.props.data.id);
+            this.props.changeNodeID(this.props.data);
           }}
           className={
             styles.treeNodeMain +
@@ -52,29 +52,6 @@ class TreeNode extends React.Component {
           {this.props.data.content}
           
         </div>
-        {this.props.data.id === this.props.showNodeID ? (
-          <>
-
-
-          </>
-
-          // <>
-          //   {/* <div className={styles.NodePopup}>
-          //     <Detail />
-          //   </div> */}
-          //   <div className={styles.showNodeArea}>
-          //     <Detail />
-          //   </div>
-          //   <div
-          //     className="mask"
-          //     onClick={() => {
-          //       this.props.changeNodeID(this.props.data.id);
-          //     }}
-          //   ></div>
-          // </>
-        ) : (
-          <></>
-        )}
       </div>
     );
   }
@@ -163,10 +140,11 @@ class Tree extends React.Component {
         });
       });
   }
-  changeNodeID(id) {
-    this.props.popupControl(this.state.showNodeID === id ? null : id);
+  changeNodeID(data) {
+    data.id=data.id===this.state.showNodeID?null:data.id;
+    this.props.popupControl(data);
     this.setState({
-      showNodeID: this.state.showNodeID === id ? null : id,
+      showNodeID: data.id,
       lastID: this.state.showNodeID,
     });
   }
