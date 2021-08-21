@@ -18,6 +18,7 @@ function HomeMain() {
   return (
     <>
     <div id="mainContent" className={`flexColumn ${styles.homeMainContain} ${ popupData.id!=null?styles.animTrans:''}`}>
+      <div style={popupData.id!=null?{zIndex:100,background:"rgb(133, 133, 133)"}:{}} className={styles.popup}></div>
       <div className={styles.homeMain}>
         <Tree popupControl={popupControl}/>
       </div>

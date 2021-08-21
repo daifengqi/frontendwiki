@@ -1,5 +1,6 @@
 .homeMainContain {
   width: 100%;
+  position: relative;
   padding-top: 8vh;
   min-height: 92vh;
   background-color: transparent;
@@ -18,22 +19,6 @@
 @keyframes anim {
   0% {
   }
-  /* 20% {
-    z-index: 11;
-    transform: skewX(5deg) translateX(-100%);
-  }
-  40% {
-    transform: skewX(0deg) translateX(0);
-    width: 100%;
-    z-index: 11;
-    box-shadow: 10px 10px 5px #eaeaea;
-  }
-  60% {
-    transform: skewX(3deg) translateX(0);
-    width: 100%;
-    z-index: 11;
-    box-shadow: 10px 10px 5px #eaeaea;
-  } */
   50% {
     transform: skewX(1deg) translateX(-100%);
     width: 60%;
@@ -45,6 +30,13 @@
     width: 30%;
     z-index: 1;
     box-shadow: none;
-    background-color: rgb(133, 133, 133);
   }
+}
+.popup{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: background-color .36s ease;
 }
