@@ -1,30 +1,31 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import Nav from "../../Nav/Nav.jsx";
+import {shareFunc} from '../Home.jsx';
 
 function HomeHead() {
-  const [showNav,setNav]=useState(true);
-  useEffect(()=>{
-    window.addEventListener('scroll',(e)=>{
-      let top=document.documentElement.scrollTop;
-      if(top>=(document.documentElement.clientHeight+50)){
-          return;
-      }else if(top<=(document.documentElement.clientHeight-80)){
-          return;
+  const [showNav, setNav] = useState(true);
+  useEffect(() => {
+    window.addEventListener("scroll", (e) => {
+      let top = document.documentElement.scrollTop;
+      if (top >= document.documentElement.clientHeight + 50) {
+        return;
+      } else if (top <= document.documentElement.clientHeight - 80) {
+        return;
       }
-      if (top>=document.documentElement.clientHeight-50) {
-          setNav(false)
-      }else{
-          setNav(true)
+      if (top >= document.documentElement.clientHeight - 50) {
+        setNav(false);
+      } else {
+        setNav(true);
       }
-    })
-    return (()=>{
-      window.removeEventListener('scroll',null);
-    })
-  })
+    });
+    return () => {
+      window.removeEventListener("scroll", null);
+    };
+  });
   return (
     <>
-      {showNav?<Nav />:<></>}
+      {showNav ? <Nav /> : <></>}
       <div className={styles.backBlock + " flexCenter"}>
         <div className={styles.titleBlock}>
           <h1 className={styles.title}>前端维基 Frontend Wiki</h1>
@@ -39,23 +40,21 @@ function HomeHead() {
   );
 }
 function HomeBottom() {
-  const [showParcel,setParcel]=useState(false);
   return (
     <div
       className={styles.homeBottom + " flexCenter"}
-      onClick={() =>{
-        setParcel(true);
-        setTimeout(()=>{
-          document.getElementById("mainContent").scrollIntoView({ behavior: "smooth" })
-        },50)
-        setTimeout(()=>{
-          setParcel(false)
-        },1500)
-      }
-      }
-    >{
-      showParcel?<div className={styles.parcel}></div>:<></>
-    }
+      onClick={() => {
+        shareFunc.setParcel(true);
+        setTimeout(() => {
+          document
+            .getElementById("mainContent")
+            .scrollIntoView({ behavior: "smooth" });
+        }, 50);
+        setTimeout(() => {
+          shareFunc.setParcel(false);
+        }, 1500);
+      }}
+    >
       <div className={styles.svgBlock + " flexCenter"}>
         <svg
           t="1629011076670"

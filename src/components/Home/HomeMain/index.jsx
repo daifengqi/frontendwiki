@@ -18,7 +18,7 @@ function HomeMain(props) {
     <>
     <div id="mainContent" className={`flexColumn ${styles.homeMainContain} ${ popupData.id!=null?styles.animTrans:''}`}>
       <div style={popupData.id!=null?{zIndex:998,backgroundColor:"#d6d6d6"}:{}} className={styles.popup}>
-        <PopupLeft popupData={popupData}/>
+        <PopupLeft popupData={popupData} popupControl={popupControl}/>
       </div>
       <div className={styles.homeMain}>
         {

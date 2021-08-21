@@ -11,11 +11,42 @@
 .popupContain{
     margin-left: 30vw;
     width: calc(70vw - 10vh);
-    height: 90vh;
-    padding: 5vh 5vh;
+    height: 100vh;
+    padding: 5vh;
+    padding-bottom: 0;
 }
 @keyframes popupShow {
     to{
         transform: none;
     }
+}
+.popupLeft{
+    transform:skewX(5deg);
+    position: absolute;
+    right: 0;
+    width: 20vw;
+    height: 100vh;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0;
+    animation: showLeft .6s ease forwards 3.6s;
+}
+.popupLeft>span{
+    font-weight: 800;
+    font-size: 3rem;
+}
+.backButton{
+    padding: .375rem .75rem;
+    border-radius: .5625rem;
+    color: white;
+    background-color: rgba(0, 0, 0, .7);
+    transition: ease box-shadow .36s;
+    cursor: pointer;
+}
+.backButton:hover{
+    box-shadow: 0 0 1px 2px rgb(93 93 93 / 90%);
+}
+@keyframes showLeft {
+    to{opacity: 1;}
 }
