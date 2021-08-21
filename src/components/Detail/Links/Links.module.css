@@ -5,20 +5,20 @@
   overflow-y: auto;
   --bottom-line-color: #409EFF;
 }
-.linksList::-webkit-scrollbar{
-    background-color: rgba(0, 0, 0, 0.12);
-    width: .36rem;
-    border-radius: .3rem;
+.linksList::-webkit-scrollbar {
+  background-color: rgba(0, 0, 0, 0.12);
+  width: 0.36rem;
+  border-radius: 0.3rem;
 }
-.linksList::-webkit-scrollbar-track{
-    display: none;
+.linksList::-webkit-scrollbar-track {
+  display: none;
 }
-.linksList::-webkit-scrollbar-button{
-    display: none;
+.linksList::-webkit-scrollbar-button {
+  display: none;
 }
-.linksList::-webkit-scrollbar-thumb{
-    background-color: rgba(0, 0, 0, .2);
-    border-radius: .3rem;
+.linksList::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
 }
 
 .link {
@@ -27,8 +27,8 @@
   overflow: hidden;
   margin: 10px 0 0 0;
   transition: all 0.45s ease;
-  padding: 0.5rem 0 0 0;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05), 0 10px 20px -10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15),
+    0 10px 20px -10px rgba(0, 0, 0, 0.15);
 }
 
 .linkContent {
@@ -36,11 +36,14 @@
   transition: all 0.45s ease;
 }
 .link:hover {
-  padding: 0.5rem;
+  transform: scale(1.04);
 }
-.linkContent:hover {
-  padding: 0.5rem 0;
+
+.link:hover .bottomLine{
+  transform: scale(0.92);
+  margin-bottom: 5px;
 }
+
 .linkText {
   color: #ccc;
   font-size: 6px;
@@ -51,22 +54,24 @@
 .linkDesc {
   color: #333;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .bottomLine {
   background-color: var(--bottom-line-color);
   height: 6px;
   border-radius: 0.5rem;
+  transition: all 0.45s ease;
+
 }
 
-.iconBox{
+.iconBox {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-
-.iconBtn{
+.iconBtn {
   padding: 5px;
   height: 30px;
   width: 30px;
