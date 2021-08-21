@@ -3,7 +3,7 @@
  * @date 2021-08-18
  */
 import React from "react";
-import {getCollectedLinks} from "../../../../api";
+import {getCollectedLinks, getThumbedLinks} from "../../../../api";
 import classNames from "classnames";
 import Sortbar from "../../Components/Sortbar/Sortbar.jsx";
 
@@ -14,28 +14,27 @@ import common from "../../info.module.css";
 class Favor extends React.Component {
     constructor(props) {
         super(props);
-        if(!localStorage.getItem("profile")) {
-            this.state = {
-                status: false,
-                token: '',
-                data: []
-            };
-        } else {
+        this.state = {
+            status: false,
+            token: '',
+            data: []
+        };
+    }
+
+    componentDidMount(){
+        if(localStorage.getItem("profile")) {
             //axios获取数据
-            let data = [];
             getCollectedLinks(JSON.parse(localStorage.getItem('profile')).user.id)
                 .then(r=>{
-                    console.log(r.data.data);
-                    data = r.data.data;
+                    this.setState({
+                        status: true,
+                        token: JSON.parse(localStorage.getItem("profile")).token,
+                        data: r.data.data
+                    });
                 })
                 .catch(e=>{
                     console.log(e);
                 })
-            this.state = {
-                status: true,
-                token: JSON.parse(localStorage.getItem("profile")).token,
-                data: data
-            };
         }
     }
 

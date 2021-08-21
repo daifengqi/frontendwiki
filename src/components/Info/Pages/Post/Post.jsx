@@ -7,6 +7,7 @@ import styles from './Post.module.css';
 import Sortbar from "../../Components/Sortbar/Sortbar.jsx";
 import classNames from "classnames";
 import common from "../../info.module.css";
+import {getThumbedLinks} from "../../../../api";
 
 class Post extends React.Component {
     constructor(props) {
@@ -19,9 +20,7 @@ class Post extends React.Component {
             };
         } else {
             //axios获取数据
-            let data = [
-
-            ];
+            let data = [];
 
             this.state = {
                 status: true,

@@ -18,11 +18,10 @@ class Sortbar extends React.Component {
             data: this.OriginData,
             type: 'default'
         };
-        console.log(this.OriginData);
     }
 
     cmp = (a, b) => {
-        return (a.thumbs <= b.thumbs) ? 1 : -1;
+        return (a.w_link.thumbs <= b.w_link.thumbs) ? 1 : -1;
     }
 
     switch2Thumb = ()=> {

@@ -1,10 +1,14 @@
 import React from 'react';
 import styles from './LinkItem.module.css';
+import {getUserInfo} from "../../../../api";
 
 class LinkItem extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
+        this.state = {
+            author: '加载中'
+        }
     }
 
     delete = ()=> {
@@ -15,6 +19,16 @@ class LinkItem extends React.Component {
         let {onDelete} = this.props;
         onDelete(this.props.id);
         window.alert('删除成功');
+    }
+
+    componentDidMount() {
+        getUserInfo(this.props.author).then(r=>{
+            this.setState({
+                author: r.data.data.username
+            })
+        }).catch(e=>{
+            console.log(e)
+        })
     }
 
     render() {
@@ -39,7 +53,7 @@ class LinkItem extends React.Component {
                             <p>{intro}</p>
                         </div>
                         <div className={styles.footer}>
-                            <span>{author}</span>
+                            <span>{this.state.author}</span>
                             <span className={styles.tag}>#{tag}</span>
                         </div>
                     </div>

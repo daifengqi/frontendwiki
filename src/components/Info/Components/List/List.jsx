@@ -30,13 +30,12 @@ class List extends React.Component {
     display = ()=>{
         if(this.state.type !== 'comments')
             return this.state.originData.map((item, index) => {
-                console.log(item);
                 return <LinkItem
                     key={index}
                     id={item.w_link.id}
                     title={item.w_link.term}
                     thumbs={item.w_link.thumbs}
-                    author={item.w_link.author}
+                    author={item.w_link.creatorId}
                     tag={item.w_link.tag}
                     intro={item.w_link.intro}
                     url={item.w_link.url}
