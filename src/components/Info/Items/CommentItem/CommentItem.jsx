@@ -5,9 +5,6 @@ class CommentItem extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
-        this.state = {
-            display: 'block'
-        }
     }
 
     delete = ()=> {
@@ -16,17 +13,14 @@ class CommentItem extends React.Component {
         //axios发送请求
         //...
         let {onDelete} = this.props;
-        onDelete();
+        onDelete(this.props.id);
         window.alert('删除成功');
-        this.setState({
-            display: 'none'
-        });
     }
 
     render() {
         const {content, author, date, id, link_id } = this.props;
         return (
-            <div className={styles.comment_item} style={{display: this.state.display}}>
+            <div className={styles.comment_item}>
                 <div className={styles.comment_content}>
                     <h4>在 <span className={styles.comment_title}>样例标题</span> 中<span className={styles.comment_date}>{date}</span></h4>
                     <p>
