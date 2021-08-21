@@ -9,7 +9,7 @@ import goodActive from "@/public/image/good_active.png";
 import starActive from "@/public/image/star_active.png";
 import copy from "@/public/image/copy.png";
 
-import { Tooltip, message, Modal } from "antd";
+import { message, Modal } from "antd";
 
 import AddLinkModal from "../addLinkModal/AddLinkModal.jsx";
 
@@ -65,14 +65,12 @@ function Links(props) {
             >
               <div className={styles.linkContent}>
                 <div className={styles.iconBox}>
-                  <Tooltip placement="bottom" title="点击复制链接">
-                    <img
-                      src={copy}
-                      alt="copy-icon"
-                      className={commonStyles.icon}
-                      onClick={() => copyUrl(link.url)}
-                    />
-                  </Tooltip>
+                  <img
+                    src={copy}
+                    alt="copy-icon"
+                    className={commonStyles.icon}
+                    onClick={() => copyUrl(link.url)}
+                  />
                   <img
                     src={cntLink === "1123" ? goodActive : good}
                     alt="good"
