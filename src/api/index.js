@@ -55,6 +55,7 @@ export const deleteLink = (formData) => API.delete("/link/delete", formData);
  * @param {*} formData {linkId}
  */
 export const getComment = (id) => API.get(`/comment/${id}`);
+export const getCommentByUid = (id) => API.get(`/comment/${id}/user`);
 /**
  * @param {*} formData {commentID}
  */
