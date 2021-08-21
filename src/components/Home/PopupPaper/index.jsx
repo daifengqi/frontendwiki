@@ -3,11 +3,11 @@ import styles from "./index.module.css";
 import Detail from "../../Detail/Detail.jsx";
 import {shareFunc} from '../Home.jsx';
 
-function PopupPaper() {
+function PopupPaper(props) {
   return (
     <div className={styles.PopupPaper}>
       <div className={styles.popupContain}>
-        <Detail />
+        <Detail data={props.popupData}/>
       </div>
     </div>
   );

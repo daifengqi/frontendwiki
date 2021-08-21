@@ -1,4 +1,5 @@
 {
+    "function->comment":["getCommentList"],
     "comment":{
         "id":"123123",
         "content":"评论内容",
@@ -21,7 +22,7 @@
         "linkList":["这个是标签对应的链接列表","对应的数据结构如上"]
     },
     "api":{
-        "添加链接":"function",
+        "添加链接":"createLink",
         "添加评论":"function",
         "点赞链接":"function",
         "收藏链接":"function",
