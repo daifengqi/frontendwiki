@@ -4,6 +4,7 @@ import commonStyles from "../common.module.css";
 
 import good from "@/public/image/good.png";
 import star from "@/public/image/star.png";
+import edit from "@/public/image/edit.png";
 
 function Links(props) {
   const [cntLink, setCntLink] = useState("");
@@ -37,6 +38,7 @@ function Links(props) {
             </li>
           );
         })}
+        <img src={edit} alt="edit-icon" className={styles.iconBtn} />
       </ul>
     </>
   );

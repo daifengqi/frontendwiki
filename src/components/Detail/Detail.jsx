@@ -125,6 +125,13 @@ function Detail(props) {
       publisher: "评论人的昵称",
       updateTime: "评论时间",
     },
+    {
+      id: "1254",
+      content: "这个是评论4",
+      like: "1",
+      publisher: "评论人的昵称",
+      updateTime: "评论时间",
+    },
   ]);
 
   return (
