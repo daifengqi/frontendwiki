@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./LoginInput.module.css";
+import axios from "axios";
 
 class LoginInput extends React.Component {
     constructor(props) {
@@ -38,18 +39,71 @@ class LoginInput extends React.Component {
         alert("用户名不能超过10个字符")
       }
       let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-      if(!reg.test(email)) {
-        alert("请输入有效邮箱")
-      }
-      if(email.length >= 20) {
-        alert("邮箱长度不能超过20个字符")
-      }
-
-      if(username !== '') alert('输入的用户名是：' + username + '输入的邮箱是：' + email + '输入的密码是：' + password)
-      else alert('输入的邮箱是：' + email + '输入的密码是：' + password)
-
-      //在这里发送请求
       
+
+      if(email !== '') {
+        if(!reg.test(email)) {
+          alert("请输入有效邮箱")
+        }
+        if(email.length >= 20) {
+          alert("邮箱长度不能超过20个字符")
+        }
+        this.registerRequest();
+      } else {
+        this.loginRequest();
+      }
+    }
+
+    //注册请求
+    registerRequest() {
+      axios({
+        method: 'post',
+        url: 'http://localhost:8001/api/v1/user/register',
+        data: {
+          username: this.state.username,
+          email: this.state.email,
+          password: this.state.password
+        }
+      })
+      .then(function(response) {
+        let ret = response.data
+        if (ret.message === "注册成功") {
+          alert(ret.message + '，即将跳转到个人主页')
+          localStorage.setItem('profile', JSON.stringify(ret))
+          //跳转到个人页面
+          window.location.href = "/user.html"
+        } else {
+          alert(response.data.message)
+        }
+      })
+      .catch(function (error) {
+        alert("用户名已存在，换个名字吧")
+      });
+    }
+
+    //登录请求
+    loginRequest () {
+      axios({
+        method: 'post',
+        url: 'http://localhost:8001/api/v1/user/login',
+        data: {
+          username: this.state.username,
+          password: this.state.password
+        }
+      })
+      .then(function(response) {
+        let ret = response.data
+        console.log(ret)
+        if (ret.message === "登录成功") {
+          localStorage.setItem('profile', JSON.stringify(ret))
+          alert(ret.message + '，即将跳转到个人主页')
+          //跳转到个人页面
+          window.location.href = "/user.html"
+        }
+      })
+      .catch(function (error) {
+        alert("用户名不存在或密码错误")
+      });
     }
 
     render() {
@@ -62,14 +116,14 @@ class LoginInput extends React.Component {
               <div className={styles.optionsFormRight} id='bounceLeft'>
 
                 <div className={styles.formLogin} id='login'>
-                  <h1 className={styles.title}>邮箱登录</h1>
+                  <h1 className={styles.title}>账号登录</h1>
                   <form onSubmit={this.handleSubmit}> 
                     <div>
                       <div>
-                        <input type="email"
-                          placeholder="邮箱"
+                        <input type="text"
+                          placeholder="用户名"
                           className={styles.formInput}
-                          email={this.state.email} onChange={this.handleChangeEmail}
+                          username={this.state.username} onChange={this.handleChangeName}
                         ></input>
                       </div>
                       <div>

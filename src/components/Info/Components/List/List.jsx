@@ -16,8 +16,15 @@ class List extends React.Component {
         };
     }
 
-    DeleteItem = ()=>{
-        this.props.onDelete();
+    static getDerivedStateFromProps(nextProps, prevState) {
+        //根据nextProps和prevState计算出预期的状态改变，返回结果会被送给setState
+        return {
+            originData: nextProps.data
+        };
+    }
+
+    DeleteItem = (id) =>{
+        this.props.onDelete(id);
     }
 
     display = ()=>{
@@ -25,6 +32,7 @@ class List extends React.Component {
             return this.state.originData.map((item, index) => {
                 return <LinkItem
                     key={index}
+                    id={item.id}
                     title={item.title}
                     thumbs={item.thumbs}
                     author={item.author}

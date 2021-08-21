@@ -13,9 +13,9 @@ function Nav() {
         let Location = useLocation();
         if(!localStorage.getItem("profile"))
         {
-            navStyle.push(styles.dark)
             loginDisplay = 'inline-block';
         }
+        navStyle.push(styles.dark)
     }
     catch (error){
         console.log('非个人页面')

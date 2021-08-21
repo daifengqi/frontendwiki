@@ -1,0 +1,10 @@
+.icon {
+  width: 18px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.smallText{
+  font-size:0.625rem;
+  color: #909399;
+}

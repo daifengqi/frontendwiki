@@ -31,6 +31,8 @@ class Comment extends React.Component {
 
     display = ()=>{
         if(this.state.status){
+            if(this.state.data.length === 0)
+                return <p className={common.notice}>还什么都没有噢</p>
             return <Sortbar data={this.state.data} displayType={"comments"}/>;
         }
 

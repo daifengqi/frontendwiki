@@ -1,8 +1,9 @@
-.linksList{
-    padding: 0 .75rem;
-    list-style: none;
-    overflow-y: scroll;
-    padding: 10px;
+.linksList {
+  padding: 0 0.5rem;
+  margin: 0;
+  list-style: none;
+  overflow-y: scroll;
+  --bottom-line-color: #409EFF;
 }
 .linksList::-webkit-scrollbar{
     background-color: rgba(0, 0, 0, 0.12);
@@ -21,33 +22,57 @@
 }
 
 .link {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-radius: .625rem;
-    padding: .5rem;
-    background-color: #eff0f1af;
-    color: #ccc;
-    overflow: hidden;
-    margin: 10px 0 0 0;
-    display: flex;
-    flex-direction: column;
-    transition: .36s box-shadow ease;
-}
-.link:hover{
-    box-shadow: 0 0 .5625rem .375rem rgba(204, 204, 204, .8);
-}
-.linkText{
-    color: #ccc;
-    font-size: 6px;
-    text-decoration: none;
-    border-top: 1px solid #90939956;
-    padding-top:3px;
+  border-radius: 0.625rem;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  margin: 10px 0 0 0;
+  transition: all 0.45s ease;
+  padding: 0.5rem 0 0 0;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05), 0 10px 20px -10px rgba(0, 0, 0, 0.05);
 }
 
-.linkDesc{
-    margin: .5rem 0;
-    color: #333;
+.linkContent {
+  padding: 0.5rem 1rem;
+  transition: all 0.45s ease;
 }
-li{
-    overflow:visible;
+.link:hover {
+  padding: 0.5rem;
+}
+.linkContent:hover {
+  padding: 0.5rem 0;
+}
+.linkText {
+  color: #ccc;
+  font-size: 6px;
+  text-decoration: none;
+  padding-top: 3px;
+}
+
+.linkDesc {
+  color: #333;
+  font-weight: 600;
+}
+
+.bottomLine {
+  background-color: var(--bottom-line-color);
+  height: 6px;
+  border-radius: 0.5rem;
+}
+
+.iconBox{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+.iconBtn{
+  padding: 5px;
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  background-color: var(--bottom-line-color);
+  margin: 1rem 0.5rem 0 0;
+  cursor: pointer;
+  float: right;
 }

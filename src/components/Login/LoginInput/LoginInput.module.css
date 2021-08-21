@@ -90,7 +90,7 @@ input[type=submit] {
   margin: auto;
   margin-top: 50px;
   background-color: #e8716d;
-  width: 300px;
+  width: calc(60%);
   border: none;
   border-radius: 3px;
   padding: 10px 35px;

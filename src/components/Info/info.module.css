@@ -24,14 +24,6 @@
   margin: 200px 0;
 }
 
-.statusbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  margin-bottom: 20px;
-}
-
 .main {
   padding: 10px;
 
