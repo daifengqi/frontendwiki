@@ -1,6 +1,10 @@
 .icon {
   width: 18px;
-  float: right;
   margin-left: 10px;
   cursor: pointer;
+}
+
+.smallText{
+  font-size:0.625rem;
+  color: #909399;
 }

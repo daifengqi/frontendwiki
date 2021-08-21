@@ -21,7 +21,9 @@
   padding: 8px;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--top-part-color);
-  justify-content: baseline;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
