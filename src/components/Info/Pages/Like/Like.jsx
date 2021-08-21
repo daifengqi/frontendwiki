@@ -4,6 +4,7 @@
  */
 import React from 'react';
 import styles from './Like.module.css';
+import {getThumbedLinks} from "../../../../api";
 import common from '../../info.module.css';
 import Sortbar from "../../Components/Sortbar/Sortbar.jsx";
 import classNames from "classnames";
@@ -11,21 +12,27 @@ import classNames from "classnames";
 class Like extends React.Component {
     constructor(props) {
         super(props);
-        if(!localStorage.getItem("profile")) {
-            this.state = {
-                status: false,
-                token: '',
-                data: []
-            };
-        } else {
-            //axios获取数据
-            let data = [];
+        this.state = {
+            status: false,
+            token: '',
+            data: []
+        };
+    }
 
-            this.state = {
-                status: true,
-                token: JSON.parse(localStorage.getItem("profile")).token,
-                data: data
-            };
+    componentDidMount(){
+        if(localStorage.getItem("profile")) {
+            //axios获取数据
+            getThumbedLinks(JSON.parse(localStorage.getItem('profile')).user.id)
+                .then(r=>{
+                    this.setState({
+                        status: true,
+                        token: JSON.parse(localStorage.getItem("profile")).token,
+                        data: r.data.data
+                    });
+                })
+                .catch(e=>{
+                    console.log(e);
+                })
         }
     }
 

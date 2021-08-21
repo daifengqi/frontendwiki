@@ -13,6 +13,7 @@ import Like from "../Pages/Like/Like.jsx";
 import Post from "../Pages/Post/Post.jsx";
 import Comment from "../Pages/Comment/Comment.jsx";
 import History from "../Pages/History/History.jsx";
+import Update from "../Pages/Update/Update.jsx";
 
 
 const routes = [
@@ -50,6 +51,10 @@ const routes = [
             {
                 path: "/my/history",
                 component: History
+            },
+            {
+                path: "/my/update",
+                component: Update
             }
         ]
     }
