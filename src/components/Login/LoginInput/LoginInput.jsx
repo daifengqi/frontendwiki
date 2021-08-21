@@ -48,50 +48,38 @@ class LoginInput extends React.Component {
         if(email.length >= 20) {
           alert("邮箱长度不能超过20个字符")
         }
-        alert('输入的用户名是：' + username + '输入的邮箱是：' + email + '输入的密码是：' + password)
-        // this.registerRequest();
+        this.registerRequest();
       } else {
-        alert('输入的用户名是：' + username + '输入的密码是：' + password)
         this.loginRequest();
       }
-
-      //注册请求
-      // let res = axios({
-      //   method: 'post',
-      //   url: 'http://localhost:8001/api/v1/user/register',
-      //   data: {
-      //     username: username,
-      //     email: email,
-      //     password: password
-      //   }
-      // });
-      // console.log(res)
     }
+
     //注册请求
-    // registerRequest() {
-    //   axios({
-    //     method: 'post',
-    //     url: 'http://localhost:8001/api/v1/user/login',
-    //     data: {
-    //       username: this.state.username,
-    //       email: this.state.email,
-    //       password: this.state.password
-    //     }
-    //   })
-    //   .then(function(response) {
-    //     console.log(response)
-    //     console.log(response.data.message)
-    //     if (response.data.message === "注册成功") {
-    //       alert(response.data.message + '，即将跳转到个人主页')
-    //       //跳转到个人页面
-    //     } else {
-    //       alert(response.data.message)
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error)
-    //   });
-    // }
+    registerRequest() {
+      axios({
+        method: 'post',
+        url: 'http://localhost:8001/api/v1/user/register',
+        data: {
+          username: this.state.username,
+          email: this.state.email,
+          password: this.state.password
+        }
+      })
+      .then(function(response) {
+        let ret = response.data
+        if (ret.message === "注册成功") {
+          alert(ret.message + '，即将跳转到个人主页')
+          localStorage.setItem('profile', JSON.stringify(ret))
+          //跳转到个人页面
+          window.location.href = "/user.html"
+        } else {
+          alert(response.data.message)
+        }
+      })
+      .catch(function (error) {
+        alert("用户名已存在，换个名字吧")
+      });
+    }
 
     //登录请求
     loginRequest () {
