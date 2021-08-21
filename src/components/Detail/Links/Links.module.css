@@ -43,3 +43,21 @@
   height: 6px;
   border-radius: 0.5rem;
 }
+
+.iconBox{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+.iconBtn{
+  padding: 5px;
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  background-color: var(--bottom-line-color);
+  margin: 1rem 0.5rem 0 0;
+  cursor: pointer;
+  float: right;
+}

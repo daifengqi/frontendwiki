@@ -11,24 +11,25 @@
 
 .commentBox {
   border: 1px solid var(--border-color);
-  display: block;
+  position: relative;
   margin: 10px 0 0 0;
   border-radius: 6px;
 }
 
 .topPart {
   height: 20px;
-  padding: 8px 0;
+  padding: 8px;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--top-part-color);
-  position: relative;
-  justify-content: baseline;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
 
-.topPart::after,
-.topPart::before {
+.commentBox::after,
+.commentBox::before {
   -webkit-clip-path: polygon(0 50%, 100% 0, 100% 100%);
   clip-path: polygon(0 50%, 100% 0, 100% 100%);
   content: " ";
@@ -43,31 +44,56 @@
   display: block;
 }
 
-.topPart::before {
+.commentBox::before {
   background-color: rgb(208, 215, 222);
 }
 
-.topPart::after {
+.commentBox::after {
   background-color: rgb(255, 255, 255);
   background-image: linear-gradient(rgb(246, 248, 250), rgb(246, 248, 250));
   margin-left: 1px;
 }
 
 .content {
-  padding: 15px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.publisher,
-.time {
-  margin-left: 8px;
+.smallTitle {
+  margin-left: 0.5rem;
+  color: #909399;
+  font-size: 0.75rem;
 }
 
-.publisher {
-  font-size: 18px;
+.title {
+  font-size: 1rem;
   font-weight: 600;
 }
 
-.time {
-  color: #909399;
-  font-size: 12px;
+.textArea {
+  resize: none;
+  height: 3rem;
+  width: 100%;
+  font-size: 0.5rem;
+  outline: 1px solid #1890ff;
+  border: none;
+}
+
+.btn{
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  line-height: 1rem;
+  border-radius: 0.625rem;
+  border: 0;
+  background-color: #1890ff;
+  color: #ffffff;
+  width: 5rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.commentBtn{
+  align-self: flex-end;
 }

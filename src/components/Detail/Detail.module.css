@@ -3,7 +3,9 @@
     grid-template-columns: 2fr 3fr 4fr;
     height: 100%;
     /* 这个是背景色，如果主页的背景色已经确定，可以去掉 */
-    background-color: #eeeeee;
+    /* background-color: #eeeeee; */
+    background-color: #fff;
+    overflow: hidden;
 }
 
 /* .detailPage ::-webkit-scrollbar {
