@@ -19,7 +19,7 @@ class Info extends React.Component{
         this.state = {
             Userdata:{
                 id: '0.o',
-                username: '未登录',
+                username: '加载中',
                 avatar: 'https://gravatar.loli.top/avatar/avatar/bc3ac8bffa2f5b90b23b3b3f3f4396a1?s=200&d=mm&r=g',
                 thunmbsNum: 0,
                 collectNum: 0,
@@ -32,6 +32,9 @@ class Info extends React.Component{
         if(!localStorage.getItem("profile"))
         {
             console.log('未登录');
+            this.setState({
+                username: '未登录'
+            })
         }
         else
         {

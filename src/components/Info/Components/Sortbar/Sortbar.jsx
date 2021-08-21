@@ -18,10 +18,11 @@ class Sortbar extends React.Component {
             data: this.OriginData,
             type: 'default'
         };
+        console.log(this.OriginData);
     }
 
     cmp = (a, b) => {
-        return (a.thumbs <= b.thumbs) ? 1 : -1;
+        return (a.w_link.thumbs <= b.w_link.thumbs) ? 1 : -1;
     }
 
     switch2Thumb = ()=> {
@@ -40,7 +41,7 @@ class Sortbar extends React.Component {
 
     deleteItem = (id, arr) => {
         for (let i = 0; i < arr.length; i++) {
-            if(arr[i].id === id) {
+            if(arr[i].w_link.id === id) {
                 if(i===0)
                     arr.shift();
                 else if(i===arr.length-1)
