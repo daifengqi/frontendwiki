@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /* dev: "http://localhost:8001"  */
-const API = axios.create({ baseURL: "http://localhost:8001" });
+const API = axios.create({ baseURL: "http://localhost:8001/api/v1" });
 API.interceptors.request.use((req) => {
   // add token
   if (localStorage.getItem("profile")) {
@@ -25,7 +25,7 @@ export const getThumbedLinks = (id) => API.get(`/user/${id}/thumbed`);
 export const getCollectedLinks = (id) => API.get(`/user/${id}/collected`);
 export const getVisitedLinks = (id) => API.get(`/user/${id}/visited`);
 
-/* 用户行为：点赞、收藏、浏览 */
+/* 用户对链接的行为：点赞、收藏、浏览 */
 /**
  * @param {*} formData {linkId}
  */
@@ -35,6 +35,10 @@ export const collectLink = (formData, id) =>
   API.post(`/user/${id}/collectLink`, formData);
 export const visitLink = (formData, id) =>
   API.post(`/user/${id}/visitLink`, formData);
+
+/* 用户对评论的行为：点赞 */
+export const thumbComment = (formData, id) =>
+  API.post(`/user/${id}/thumbComment`, formData);
 
 /**
  *  links
