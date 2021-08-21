@@ -32,7 +32,7 @@
   z-index: 500;
 }
 *::-webkit-scrollbar{
-  background-color: rgba(0, 0, 0, 0.8);
+  /* background-color: rgba(0, 0, 0, 0.8); */
   width: .36rem;
   border-radius: .3rem;
 }
@@ -45,4 +45,7 @@
 *::-webkit-scrollbar-thumb{
   background-color: rgba(209, 209, 209, 0.24);
   border-radius: .3rem;
+}
+#root{
+  overflow-x: hidden;
 }

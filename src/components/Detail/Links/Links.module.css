@@ -2,8 +2,8 @@
   padding: 0 0.5rem;
   margin: 0;
   list-style: none;
-  overflow-y: scroll;
-  --bottom-line-color: #409eff;
+  overflow-y: auto;
+  --bottom-line-color: #409EFF;
 }
 .linksList::-webkit-scrollbar {
   background-color: rgba(0, 0, 0, 0.12);

@@ -93,20 +93,3 @@
 .homeTopBarDark {
   background-color: rgba(22, 22, 22, 0.815);
 }
-.parcel{
-  position: fixed;
-  height: 100%;
-  border-radius: 100%;
-  border: solid .6px rgba(0, 0, 0, 1);
-  width: 100%;
-  width: .1px;
-  height: .1px;
-  bottom: 0;
-  left: 0;
-  z-index: 100000;
-  animation: parcelShow ease 1s forwards;
-}
-@keyframes parcelShow {
-  50%{transform: scale(3000);opacity: 1;}
-  100%{transform: none;opacity: 0;}
-}
