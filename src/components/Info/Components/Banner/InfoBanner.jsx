@@ -8,12 +8,12 @@ function InfoBanner(props) {
                 <div className={styles.Container}>
                     <div className={styles.Content}>
                         <img
-                            src={props.Userdata.Avatar}
-                            alt={props.Userdata.Username}
+                            src={props.Userdata.avatar}
+                            alt={props.Userdata.username}
                             className={styles.Avatar}
                         />
                         <div className={styles.UserInfo}>
-                            <h3>{props.Userdata.Username}<span>#{props.Userdata.id}</span></h3>
+                            <h3>{props.Userdata.username}<span>#{props.Userdata.id}</span></h3>
                             <p>Talk is cheap, show me your code.</p>
                         </div>
                     </div>
