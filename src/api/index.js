@@ -42,7 +42,7 @@ export const visitLink = (formData, id) =>
 export const getLinksbyTerm = (term) => API.get(`/link?term=${term}}`);
 export const createLink = (formData) => API.post("/link/create", formData);
 export const deleteLink = (formData) => API.delete("/link/delete", formData);
-export const updateLink = (formData) => API.patch("/link/update", formData);
+// export const updateLink = (formData) => API.patch("/link/update", formData);
 
 /**
  *  comments
@@ -58,5 +58,7 @@ export const createComment = (formData) =>
   API.post("/comment/create", formData);
 export const deleteComment = (formData) =>
   API.delete("/comment/delete", formData);
-export const updateComment = (formData) =>
-  API.patch("/comment/update", formData);
+/*
+  export const updateComment = (formData) =>
+    API.patch("/comment/update", formData);
+*/
