@@ -139,4 +139,30 @@ const likeLink=(id)=>(dispatch)=>{
     })
   })
 }
-export {createLink,getOneLink,getLinkList,likeLink}
+const collectLink=(id)=>(dispatch)=>{
+  dispatch({
+    type:"collectLinkStart",
+    payload:{
+      collectLink:0
+    }
+  })
+  axios.post(`/user/${id}/collectLink`)
+  .then(res=>{
+    dispatch({
+      type:"collectLinkSuccess",
+      payload:{
+        collectLink:1
+      }
+    })
+  })
+  .catch(e=>{
+    console.log('collectLinkFail',e )
+    dispatch({
+      type:"collectLinkFail",
+      payload:{
+        collectLink:-1
+      }
+    })
+  })
+}
+export {createLink,getOneLink,getLinkList,collectLink,likeLink}

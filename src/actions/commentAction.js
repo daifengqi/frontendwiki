@@ -59,5 +59,31 @@ const createComment = (data) => (dispatch) => {
       });
   })
 };
+const likeComment=(id)=>(dispatch)=>{
+  dispatch({
+    type:"likeCommentStart",
+    payload:{
+      likeComment:0
+    }
+  })
+  axios.post(`/user/${id}/thumbComment`)
+  .then(res=>{
+    dispatch({
+      type:"likeCommentSuccess",
+      payload:{
+        likeComment:1
+      }
+    })
+  })
+  .catch(e=>{
+    console.log('thumbLink',e )
+    dispatch({
+      type:"likeCommentFail",
+      payload:{
+        likeComment:-1
+      }
+    })
+  })
+}
 
 export { getCommentList,createComment };
