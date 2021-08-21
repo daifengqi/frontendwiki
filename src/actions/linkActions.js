@@ -12,7 +12,7 @@ import store from "../store/index.js";
  } 
  * 非必填
  */
-export const getLinkList = (options) => (dispatch) => {
+const getLinkList = (options) => (dispatch) => {
   if (!options) options = "all";
   dispatch({
     type: "getLinkListStart",
@@ -62,7 +62,7 @@ export const getLinkList = (options) => (dispatch) => {
     "intro":"简介"
 }
 */
-export const createLink = (data) => (dispatch) => {
+const createLink = (data) => (dispatch) => {
   dispatch({ type: "createLinkListStart", payload: { createLink: 0 } });
   axios
     .post("/link/create", data)
@@ -79,7 +79,7 @@ export const createLink = (data) => (dispatch) => {
  *@author source
  *@updateTime 2021/8/20 16:00
  */
-export const getOneLink = (id) => (dispatch) => {
+const getOneLink = (id) => (dispatch) => {
   dispatch({ type: "getOneLinkStart", payload: { oneLink: { code: 0 } } });
   axios
     .get("/link/" + id)
@@ -106,3 +106,4 @@ export const getOneLink = (id) => (dispatch) => {
       });
     });
 };
+export {createLink,getOneLink,getLinkList}
