@@ -8,6 +8,7 @@ import InfoBanner from "./Components/Banner/InfoBanner.jsx";
 import InfoSidebar from "./Components/SideBar/InfoSidebar.jsx";
 
 import styles from "./info.module.css";
+import Statusbar from "./Components/Statusbar/Statusbar.jsx";
 
 class Info extends React.Component{
     constructor(props) {
@@ -19,7 +20,10 @@ class Info extends React.Component{
             Userdata:{
                 id: '0.o',
                 username: '未登录',
-                avatar: 'https://gravatar.loli.top/avatar/avatar/bc3ac8bffa2f5b90b23b3b3f3f4396a1?s=200&d=mm&r=g'
+                avatar: 'https://gravatar.loli.top/avatar/avatar/bc3ac8bffa2f5b90b23b3b3f3f4396a1?s=200&d=mm&r=g',
+                thunmbsNum: 0,
+                collectNum: 0,
+                createDate: '0000-00-00'
             }
         };
     }
@@ -35,6 +39,7 @@ class Info extends React.Component{
                 this.setState({
                     Userdata: r.data.data
                 });
+                console.log(r.data.data);
             }).catch(e=>{
                 console.log(e);
             });
@@ -50,6 +55,7 @@ class Info extends React.Component{
                 <div className={styles.container}>
                     <InfoSidebar/>
                     <div className={styles.content}>
+                        <Statusbar data={this.state.Userdata}/>
                         <div className={styles.main}>
                             <Router>
                                 { renderRoutes(route.routes) }

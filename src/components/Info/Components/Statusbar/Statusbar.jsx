@@ -2,27 +2,17 @@ import React from 'react';
 import StatusItem from "../../Items/StatusItem/StatusItem.jsx";
 import styles from './Statusbar.module.css'
 
-class Statusbar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state={
-            Status: {}
-        }
-    }
-
-    render() {
-        return (
+function Statusbar(props) {
+    return (
+        <div className={styles.statusbar}>
             <div className={styles.statusbar}>
-                <div className={styles.statusbar}>
-                    {
-                        this.state.Status.map((item) => {
-                            return <StatusItem key={item[0]} title={item[0]} count={item[1]} />
-                        })
-                    }
-                </div>
+                <StatusItem title={'收藏数'} count={props.data.thunmbsNum} />
+                <StatusItem title={'点赞数'} count={props.data.collectNum} />
+                <StatusItem title={'注册时间'} count={props.data.createDate.slice(0,10)} />
             </div>
-        );
-    }
+        </div>
+    );
 }
+
 
 export default Statusbar;
