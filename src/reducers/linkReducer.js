@@ -1,8 +1,5 @@
 import axios from "axios";
 
-Array.prototype.add=function(data){
-
-}
 const initState = {
   linkList:[]
 };

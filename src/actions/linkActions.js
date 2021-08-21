@@ -1,4 +1,4 @@
-import axios from "axios";
+import {getLinksbyTerm,createLink,thumbLink,collectLink} from '../api/index.js';
 import store from "../store/index.js";
 
 /**
@@ -12,23 +12,19 @@ import store from "../store/index.js";
  } 
  * 非必填
  */
-const getLinkList = (options) => (dispatch) => {
-  if (!options) options = "all";
+const getLinkListAction = (term) => (dispatch) => {
   dispatch({
     type: "getLinkListStart",
     payload: {
-      [`${JSON.stringify(options)}`]: { code: 0 },
+      [`${term}`]: { code: 0 },
     },
   });
-  axios
-    .get("/link", {
-      params: options,
-    })
+  getLinksbyTerm(term)
     .then((res) => {
       dispatch({
         type: "getLinkListSuccess",
         payload: {
-          [`${JSON.stringify(options)}`]: {
+          [`${term}`]: {
             data: { ...res },
             code: 1,
           },
@@ -39,7 +35,7 @@ const getLinkList = (options) => (dispatch) => {
       dispatch({
         type: "getLinkListFail",
         payload: {
-          [`${JSON.stringify(options)}`]: {
+          [`${term}`]: {
             data: { ...e },
             code: -1,
           },
@@ -62,10 +58,9 @@ const getLinkList = (options) => (dispatch) => {
     "intro":"简介"
 }
 */
-const createLink = (data) => (dispatch) => {
+const createLinkAction = (data) => (dispatch) => {
   dispatch({ type: "createLinkListStart", payload: { createLink: 0 } });
-  axios
-    .post("/link/create", data)
+  createLink(data)
     .then((res) => {
       dispatch({ type: "createLinkListSuccess", payload: { createLink: 1 } });
     })
@@ -79,7 +74,7 @@ const createLink = (data) => (dispatch) => {
  *@author source
  *@updateTime 2021/8/20 16:00
  */
-const getOneLink = (id) => (dispatch) => {
+const getOneLinkAction = (id) => (dispatch) => {
   dispatch({ type: "getOneLinkStart", payload: { oneLink: { code: 0 } } });
   axios
     .get("/link/" + id)
@@ -113,14 +108,14 @@ const getOneLink = (id) => (dispatch) => {
  * @returns 
  */
 
-const likeLink=(id)=>(dispatch)=>{
+const likeLinkActionk=(id)=>(dispatch)=>{
   dispatch({
     type:"likeLinkStart",
     payload:{
       likeLink:0
     }
   })
-  axios.post(`/user/${id}/thumbLink`)
+  thumbLink(id)
   .then(res=>{
     dispatch({
       type:"likeLinkSuccess",
@@ -139,14 +134,14 @@ const likeLink=(id)=>(dispatch)=>{
     })
   })
 }
-const collectLink=(id)=>(dispatch)=>{
+const collectLinkAction=(id)=>(dispatch)=>{
   dispatch({
     type:"collectLinkStart",
     payload:{
       collectLink:0
     }
   })
-  axios.post(`/user/${id}/collectLink`)
+  collectLink(id)
   .then(res=>{
     dispatch({
       type:"collectLinkSuccess",
@@ -165,4 +160,4 @@ const collectLink=(id)=>(dispatch)=>{
     })
   })
 }
-export {createLink,getOneLink,getLinkList,collectLink,likeLink}
+export {getLinkListAction,createLinkAction,getOneLinkAction,likeLinkActionk,collectLinkAction}
