@@ -17,7 +17,7 @@
 }
 
 .topPart {
-  height: 20px;
+  height: 36px;
   padding: 8px;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--top-part-color);
