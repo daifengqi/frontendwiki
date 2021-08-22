@@ -11,9 +11,13 @@ const commentReducer = (state = initState, action) => {
     case "getCommentListStart":
     case "getCommentListFail":
     case "createCommentStart":
-    case "createCommentSuccess":
-    case "createCommentSuccess":
       return { ...state, ...action.payload };
+    case "createCommentSuccess":
+      let newData=[...state.data,action.payload.data]
+      state.data=newData
+      state.code=1
+      state.id=action.payload.id
+      return {...state};
     default:
       return state;
   }

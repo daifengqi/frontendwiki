@@ -72,7 +72,7 @@ const createLinkAction = (data) => (dispatch) => {
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
       type:"authError",
-      code:-2
+      payload:{code:-2}
     })
     return;
   }
@@ -129,7 +129,7 @@ const likeLinkActionk=(id)=>(dispatch)=>{
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
       type:"authError",
-      code:-2
+      payload:{code:-2}
     })
     return;
   }
@@ -162,7 +162,7 @@ const collectLinkAction=(id)=>(dispatch)=>{
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
       type:"authError",
-      code:-2
+      payload:{code:-2}
     })
     return;
   }
