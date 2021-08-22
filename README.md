@@ -1,52 +1,41 @@
-- 项目名称：前端维基
+# 前端维基 FrontendWiki
 
-- 英文名称：FrontendWiki
+前端知识日新月异，需要学习的知识点很多很杂，程序员们都希望掌握优质的学习资源，然而大部分官方文档都不够简单清晰，对新手不友好，这时候就需要各方共同努力，筛选出好的资源。
 
-- 现状及痛点：前端知识日新月异，需要学习的知识点很多很杂，程序员们都希望掌握优质的学习资源，然而大部分官方文档都不够简单清晰，对新手不友好，这时候就需要各方共同努力，筛选出好的资源。
+此站点通过建立一个**树状知识结构**组织起来的前端知识学习资料**链接索引**，对知识领域进行**分档、标签化**归类，用户可通过**点赞、评论**等方式推荐，以达到筛选出优质学习资源的目的。<u>汇总优质资源，避免二次创作</u>。
 
-- 项目简介：建立一个通过**树状知识结构**组织起来的前端知识学习资料**链接索引**，对知识领域进行**分档、标签化**归类，用户可通过**点赞、评论**等方式推荐出该领域下的优质资源。
+## 概述
 
-- 项目特色：汇总优质资源，避免二次创作
+此项目分为两个页面，一个是主页（树状图），另一个是个人（用户）信息页。
 
-- 项目页简介：
+### 主页
 
-  - 主页（单页应用）：一颗可交互的知识树（图谱），大致结构如下（仅做参考）
+- 待补充
+- ...
 
-    ![image.png](https://i.loli.net/2021/08/14/jhTPGMYvD8Rk2lb.png)
+### 个人页面
 
-  - 交互：用户点击某一块（知识领域），将在右侧展开新的栏目，大致形式如下表，（以 React 为例）
+- 待补充
+- ...
 
-    | 标签                                                | 链接   | 评论                                                         |
-    | --------------------------------------------------- | ------ | ------------------------------------------------------------ |
-    | 全部（25）                                          | 🔗链接1 | 选中某个链接，此栏目展示该链接下的评论。（每个链接代表一个学习资源：网站/推文/博客/豆瓣书单等） |
-    | React 基础 （10）                                   | 🔗链接2 |                                                              |
-    | React Hooks （6）                                   | 🔗链接3 |                                                              |
-    | diff 算法 （4） => 选中 diff 算法 ，右侧出现4个链接 | 🔗链接4 |                                                              |
-    | 性能调优（3）                                       |        |                                                              |
-    | 合成事件（2）                                       |        |                                                              |
-    | ...                                                 |        |                                                              |
+### 版权声明
 
-  - 其他页面
+本项目由第一届[字节青训营](https://youthcamp.bytedance.com/)成员完成，名单如下
 
-    - 个人主页：展示个人点赞、收藏的资源，展示个人推荐的资源收到点赞、收藏的总数
+- [季悠然](https://github.com/youranreus)
+- [SourceHeartLock](https://github.com/GrinZero)
+- [2huo](https://github.com/2huo)
+- [SumLee](https://github.com/Sum-Lee)
+- [daifeng](https://github.com/daifengqi)
+- [dcs](https://github.com/csDeng)
+- [tecvan](https://github.com/Tecvan-fe)（导师）
 
-    - 首屏（主页加载前）：快速渲染首屏，在首屏下拉初懒加载**树形图主页**
+#### The MIT License (MIT)
 
-      以 Next.js 的主页为例，
+Copyright (c) 2013-2014
 
-      ![image.png](https://i.loli.net/2021/08/14/U7tC8gFMk5Nn9uL.png)
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-      首屏只显示简单的文本，可以提升首屏渲染速度。
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-- **技术要点**
-
-  1. 树状图的设计方案，canvas或者CSS，总体要优雅美观
-  2. 树状图的数据懒加载：**在点击某个知识块后才会向后台发送请求**，返回数据，在请求返回之前做条件渲染，显示加载过程，参考[🔗React 条件渲染](https://zh-hans.reactjs.org/docs/conditional-rendering.html)以及[🔗Suspense for Data Fetching](https://reactjs.org/docs/concurrent-mode-suspense.html)，加载样例可以参考[🔗Ant Design Spin](https://ant.design/components/spin-cn/)
-  3. 主页资源的切换是不刷新页面的，即通过前端路由（[🔗react-router](https://reactrouter.com/web)）或状态的切换，这点使用 React 等框架可以直接达到目的
-  4. 用户注册和登陆，用作点赞、收藏等的凭证，技术要点是 JWT（JSON Web Token）
-  5. Webpack 配置多页应用，知识页 + 用户页
-  6. NodeJS 搭建后台，推荐的技术栈是 `koa + mysql`，REST 风格，结合字节跳动轻服务，用作点赞等的响应和数据持久化
-  7. 服务端渲染（SSR、SSG），优化加载速度和SEO，参考[🔗Next.js 是怎么做预渲染的](https://juejin.cn/post/6991397899317805064)
-
-- **以上所有要点仅做参考，可根据具体情况<u>增删</u>：删除难做的或使用简单的替代方案，在开发过程中灵活增加可用性高的功能。**
-
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
