@@ -1,6 +1,7 @@
 const initState = {
   code: -3,
   data: [],
+  createComment:-1
 };
 const commentReducer = (state = initState, action) => {
   console.log("commentReducer", state);

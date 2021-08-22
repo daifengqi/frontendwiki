@@ -37,7 +37,7 @@ const createCommentAction = (data) => (dispatch) => {
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
       type:"authError",
-      code:-2
+      payload:{code:-2}
     })
     return;
   }
@@ -69,7 +69,7 @@ const likeCommentAction=(id)=>(dispatch)=>{
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
       type:"authError",
-      code:-2
+      payload:{code:-2}
     })
     return;
   }
