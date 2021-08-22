@@ -84,6 +84,7 @@ const likeCommentAction=(id)=>(dispatch)=>{
   })
   thumbComment(id)
   .then(res=>{
+    console.log('likeCommentSuccess',res )
     dispatch({
       type:"likeCommentSuccess",
       payload:{

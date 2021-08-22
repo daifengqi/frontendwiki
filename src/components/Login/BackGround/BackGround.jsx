@@ -25,7 +25,7 @@ class BackGround extends React.Component {
                   
                     <div className={styles.optionsText}>
                       <div className={styles.optionsUnregistered}>
-                        <h2>没有账号？</h2>
+                        <h2 className={styles.h2}>没有账号？</h2>
                         <p>点击按钮注册成为会员</p>
                         <button
                           className={styles.choiceButton}
@@ -35,7 +35,7 @@ class BackGround extends React.Component {
                         </button>
                       </div>
                       <div className={styles.optionsRegistered}>
-                        <h2>已有账号?</h2>
+                        <h2 className={styles.h2}>已有账号?</h2>
                         <p>点击按钮会员登录</p>
                         <button
                           className={styles.choiceButton}
