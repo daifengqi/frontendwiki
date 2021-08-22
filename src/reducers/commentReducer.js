@@ -4,7 +4,6 @@ const initState = {
   createComment:-1
 };
 const commentReducer = (state = initState, action) => {
-  console.log("commentReducer", state);
   switch (action.type) {
     case "authError":
     case "getCommentListSuccess":
