@@ -14,11 +14,19 @@ import common from "../../info.module.css";
 class Favor extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            status: false,
-            token: '',
-            data: []
-        };
+        if(localStorage.getItem("profile")) {
+            this.state = {
+                status: true,
+                token: '',
+                data: []
+            };
+        } else {
+            this.state = {
+                status: false,
+                token: '',
+                data: []
+            };
+        }
     }
 
     componentDidMount(){
@@ -27,7 +35,6 @@ class Favor extends React.Component {
             getCollectedLinks(JSON.parse(localStorage.getItem('profile')).user.id)
                 .then(r=>{
                     this.setState({
-                        status: true,
                         token: JSON.parse(localStorage.getItem("profile")).token,
                         data: r.data.data
                     });
