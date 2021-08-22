@@ -25,6 +25,10 @@ export const getThumbedLinks = (id) => API.get(`/user/${id}/thumbed`);
 export const getCollectedLinks = (id) => API.get(`/user/${id}/collected`);
 export const getVisitedLinks = (id) => API.get(`/user/${id}/visited`);
 
+/** 用户发布：发布链接、发布评论 */
+export const getLinkByUid = (id) => API.get(`/link/${id}/publish`);
+export const getCommentByUid = (id) => API.get(`/comment/${id}/publish`);
+
 /* 用户对链接的行为：点赞、收藏、浏览 */
 /**
  * @param {*} formData {linkId}
@@ -54,7 +58,7 @@ export const deleteLink = (formData) => API.delete("/link/delete", formData);
 /**
  * @param {*} formData {linkId}
  */
-export const getComment = (formData) => API.post(`/comment`, formData);
+export const getComment = (id) => API.get(`/comment/${id}`);
 /**
  * @param {*} formData {commentID}
  */

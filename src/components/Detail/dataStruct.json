@@ -24,10 +24,10 @@
     "api":{
         "添加链接":"createLink",
         "添加评论":"createComment",
-        "点赞链接":"function",
-        "收藏链接":"function",
+        "点赞链接":"likeLink",
+        "收藏链接":"collectLink",
+        "获取评论列表":"getCommentList",
         "点赞评论":"function",
-        "获取链接+标签列表":"function",
-        "获取评论列表":"function"
+        "获取链接+标签列表":"function"
     }
 }

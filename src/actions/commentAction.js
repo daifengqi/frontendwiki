@@ -1,15 +1,14 @@
-import axios from "axios";
+import {getComment,createComment,thumbComment} from '../api/index.js';
 import store from "../store/index.js";
 
-const getCommentList = (id) => (dispatch) => {
+const getCommentListAction = (id) => (dispatch) => {
   dispatch({
     type: "getCommentListStart",
     payload: {
       [`${id}`]: { code: 0 },
     },
   });
-  axios
-    .get(`comment/${id}`)
+  getComment(id)
     .then((res) => {
       dispatch({
         type: "getCommentListSuccess",
@@ -34,14 +33,14 @@ const getCommentList = (id) => (dispatch) => {
     });
 };
 
-const createComment = (data) => (dispatch) => {
+const createCommentAction = (data) => (dispatch) => {
   dispatch({
     type: "createCommentStart",
     payload: {
       createComment:0
     },
   });
-  axios.post('/comment/create',data)
+  createComment(data)
   .then(res=>{
     dispatch({
         type: "createCommentSuccess",
@@ -59,5 +58,31 @@ const createComment = (data) => (dispatch) => {
       });
   })
 };
+const likeCommentAction=(id)=>(dispatch)=>{
+  dispatch({
+    type:"likeCommentStart",
+    payload:{
+      likeComment:0
+    }
+  })
+  thumbComment(id)
+  .then(res=>{
+    dispatch({
+      type:"likeCommentSuccess",
+      payload:{
+        likeComment:1
+      }
+    })
+  })
+  .catch(e=>{
+    console.log('thumbLink',e )
+    dispatch({
+      type:"likeCommentFail",
+      payload:{
+        likeComment:-1
+      }
+    })
+  })
+}
 
-export { getCommentList,createComment };
+export { getCommentListAction,createCommentAction,likeCommentAction };
