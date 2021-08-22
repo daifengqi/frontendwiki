@@ -16,7 +16,7 @@ function Comments(props) {
   const createComment = () => {
     console.log("start new comment");
     if(props.cntUrl===""){
-      message.success("请选择链接后再登录")
+      message.success("请选择链接后再评论")
       return;
     }
     dispatch(
@@ -25,7 +25,9 @@ function Comments(props) {
         content: newComment,
       })
     );
+    setNewComment("")
     props.updateCommentList();
+
   };
 
   return (
