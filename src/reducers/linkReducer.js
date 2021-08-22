@@ -10,12 +10,21 @@ const linkReducer = (state = initState, action) => {
     case "getLinkListFail":
     case "getLinkListFromLocal":
       return { ...state };
-    case "createLinkListStart":
     case "createLinkListSuccess":
-      let newData=[...state.data,action.payload.data]
-      state.data=newData
-      state.code=1
-      state.id=action.payload.id
+      try {
+        let tag=action.payload.data.newData.tag
+        let term=action.payload.data.thisData.term
+        if (state.linkList[term].data[tag]) {
+          state.linkList[term].data[tag]=[...state.linkList[term].data[tag],action.payload.data.newData]
+        }else{
+          state.linkList[term].data[tag]=[]
+          state.linkList[term].data[tag].push(action.payload.data.newData)
+        }
+      } catch (error) {
+        console.error('listTestError',action.payload,error )
+      }
+      return { ...state };
+    case "createLinkListStart":
     case "createLinkListFail":
     case "likeLinkSuccess":
     case "likeLinkStart":
