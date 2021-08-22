@@ -22,12 +22,13 @@ const getCommentListAction = (id) => (dispatch) => {
       });
     })
     .catch((e) => {
+      console.error('getCommentListFail',e )
       dispatch({
         type: "getCommentListFail",
         payload: {
           code:-1,
           id:id,
-          
+          data:[]
         },
       });
     });
