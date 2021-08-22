@@ -14,6 +14,7 @@ class List extends React.Component {
             originData: data,
             type: type
         };
+        console.log(data);
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -34,7 +35,7 @@ class List extends React.Component {
                     key={index}
                     id={item.w_link.id}
                     title={item.w_link.term}
-                    thumbs={item.w_link.thumbs}
+                    thumbs={item.thumbNums}
                     author={item.w_link.creatorId}
                     tag={item.w_link.tag}
                     intro={item.w_link.intro}

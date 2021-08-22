@@ -22,7 +22,7 @@ class Sortbar extends React.Component {
     }
 
     cmp = (a, b) => {
-        return (a.w_link.thumbs <= b.w_link.thumbs) ? 1 : -1;
+        return (a.thumbNums <= b.thumbNums) ? 1 : -1;
     }
 
     switch2Thumb = ()=> {
