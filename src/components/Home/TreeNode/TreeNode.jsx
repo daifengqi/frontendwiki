@@ -3,21 +3,20 @@ import styles from "./index.module.css";
 import { useState } from "react";
 import axios from "axios";
 
-
 class TreeNode extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       point: false,
-      top:0,
-      left:0
+      top: 0,
+      left: 0,
     };
   }
   pointShow(e) {
-    let {layerX,layerY,offsetX,offsetY}=e.nativeEvent;
+    let { layerX, layerY, offsetX, offsetY } = e.nativeEvent;
     this.setState({
-      top:layerY||offsetY,
-      left:layerX||offsetX,
+      top: layerY || offsetY,
+      left: layerX || offsetX,
       point: true,
     });
     setTimeout(() => {
@@ -43,14 +42,15 @@ class TreeNode extends React.Component {
           }
           style={styleMap[this.props.data.level]}
         >
-
           {this.state.point ? (
-            <div className={styles.pointCircle} style={{top:this.state.top,left:this.state.left}}></div>
+            <div
+              className={styles.pointCircle}
+              style={{ top: this.state.top, left: this.state.left }}
+            ></div>
           ) : (
             <></>
           )}
           {this.props.data.content}
-          
         </div>
       </div>
     );
@@ -141,7 +141,7 @@ class Tree extends React.Component {
       });
   }
   changeNodeID(data) {
-    data.id=data.id===this.state.showNodeID?null:data.id;
+    data.id = data.id === this.state.showNodeID ? null : data.id;
     this.props.popupControl(data);
     this.setState({
       showNodeID: data.id,
@@ -158,16 +158,14 @@ class Tree extends React.Component {
             lastID={this.state.lastID}
             changeNodeID={this.changeNodeID.bind(this)}
           />
-          <div className="flexColumnNone">{this.getNode(item.childrens)}</div>
+          <div>{this.getNode(item.childrens)}</div>
         </div>
       );
     });
   }
   render() {
     return (
-      <>
-      {this.state.data.length == 0 ? <></> : this.getNode(this.state.data)}
-      </>
+      <>{this.state.data.length == 0 ? <></> : this.getNode(this.state.data)}</>
     );
   }
 }
@@ -175,22 +173,27 @@ const styleMap = [
   {
     color: "#ccc",
     "--shadowColor--": "#409EFF50",
+    fontSize: "27px",
   },
   {
     color: "#ccc",
     "--shadowColor--": "#F56C6C50",
+    fontSize: "22px",
   },
   {
     color: "#ccc",
     "--shadowColor--": "#67c23a50",
+    fontSize: "17px",
   },
   {
     color: "#ccc",
     "--shadowColor--": "#E6A23C50",
+    fontSize: "12px",
   },
   {
     color: "#ccc",
     "--shadowColor--": "#90939920",
+    fontSize: "7px",
   },
 ];
 export { Tree };
