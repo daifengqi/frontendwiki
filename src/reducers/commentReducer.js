@@ -18,7 +18,7 @@ const commentReducer = (state = initState, action) => {
       state.id=action.payload.id
       return {...state};
     default:
-      return state;
+      return {...state};
   }
 };
 export default commentReducer;
