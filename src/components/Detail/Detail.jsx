@@ -62,7 +62,7 @@ function Detail(props) {
   return (
     <div className={styles.detailPage}>
       <Tabs title={title} tabs={storeLinksList} changeTab={changeTab} />
-      <Links linkList={linksList} changeLink={changeLink} cntTerm={title}/>
+      <Links linkList={linksList} changeLink={changeLink} cntTerm={title} cntTab={cntTab}/>
       <Comments commentList={commentList} cntUrl={cntUrl} updateCommentList={updateCommentList}/>
     </div>
   );
