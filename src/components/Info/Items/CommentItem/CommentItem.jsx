@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './CommentItem.module.css';
 import axios from "axios";
+import classNames from "classnames";
 
 class CommentItem extends React.Component {
     constructor(props) {
@@ -34,7 +35,7 @@ class CommentItem extends React.Component {
     render() {
         const {content, author, date, id, link_id } = this.props;
         return (
-            <div className={styles.comment_item}>
+            <div className={classNames("animate__animated", "animate__fadeIn", styles.comment_item)}>
                 <div className={styles.comment_content}>
                     <h4>在 <span className={styles.comment_title}>{link_id}</span> 中<span className={styles.comment_date}>{date.slice(0,10)}</span></h4>
                     <p>
