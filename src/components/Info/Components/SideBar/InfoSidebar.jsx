@@ -19,7 +19,6 @@ function InfoSidebar() {
                     <ul>
                         <li><Link to="/my/comment">我的评论</Link></li>
                         <li><Link to="/my/history">浏览历史</Link></li>
-                        <li><Link to="/my/update">更新信息</Link></li>
                     </ul>
                 </div>
             </div>

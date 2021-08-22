@@ -14,6 +14,7 @@ import Post from "../Pages/Post/Post.jsx";
 import Comment from "../Pages/Comment/Comment.jsx";
 import History from "../Pages/History/History.jsx";
 import Update from "../Pages/Update/Update.jsx";
+import Logout from "../Pages/Logout/Logout.jsx";
 
 
 const routes = [
@@ -55,6 +56,10 @@ const routes = [
             {
                 path: "/my/update",
                 component: Update
+            },
+            {
+                path: "/my/logout",
+                component: Logout
             }
         ]
     }

@@ -26,6 +26,10 @@
   line-height: 4rem;
 }
 
+.navElement a{
+  color: rgb(255, 255, 255);
+}
+
 .left {
   margin: 0;
 }
@@ -36,4 +40,29 @@
 
 .dark {
   background-color: #909399!important;
+}
+
+.user:hover .Menu ,.Menu:hover {
+  display: block;
+}
+
+.Menu {
+  display: none;
+  background: #fff;
+  width: 100px;
+  border-radius: 10px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 4rem;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.Menu a {
+  display: block;
+  padding: 10px;
+  color: #000;
+  line-height: 1rem;
+  font-size: 14px;
 }

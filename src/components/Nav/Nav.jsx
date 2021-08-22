@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import styles from "./nav.module.css";
 
 import {HashRouter as Router, Link, useLocation} from 'react-router-dom';
-
+import Menu from "./menu.jsx";
 
 function Nav() {
     let navStyle = [styles.nav];
@@ -21,6 +21,36 @@ function Nav() {
         console.log('非个人页面')
     }
 
+    function showMenu() {
+        try {
+            let Location = useLocation();
+            let list = [
+                {
+                    title: '登录/注册',
+                    path: '/login'
+                }
+            ];
+            if(localStorage.getItem("profile"))
+            {
+                list = [
+                    {
+                        title: '更新信息',
+                        path: '/my/update'
+                    },
+                    {
+                        title: '登出',
+                        path: '/my/logout'
+                    }
+                ];
+            }
+
+            return (<Menu data={list}/>);
+        }
+        catch (error){
+            return '';
+        }
+    }
+
 
     return (
         <>
@@ -33,9 +63,10 @@ function Nav() {
                         <a className={classNames(styles.navElement, styles.right)} href="./index.html">
                             主页
                         </a>
-                        <a className={classNames(styles.navElement, styles.right)} href="./user.html">
-                            个人
-                        </a>
+                        <span className={classNames(styles.navElement, styles.right, styles.user)} >
+                            <a href="./user.html">个人</a>
+                            {showMenu()}
+                        </span>
 
                         <Router>
                             <Link
