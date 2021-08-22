@@ -2,6 +2,7 @@ import React from "react";
 import {HashRouter as Router} from 'react-router-dom';
 import { renderRoutes } from "react-router-config";
 import {getUserInfo} from "../../api";
+import 'antd/dist/antd.css';
 
 import Nav from "../Nav/Nav.jsx";
 import InfoBanner from "./Components/Banner/InfoBanner.jsx";

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Update.module.css'
 import axios from "axios";
-import { Alert } from 'antd';
+import { message } from 'antd';
 
 class Update extends React.Component {
     constructor(props) {
@@ -32,22 +32,26 @@ class Update extends React.Component {
       event.preventDefault();
       //验证输入的有效性和格式
       if(this.state.username.length >= 10) {
-        alert("新用户名不能超过10个字符")
+        message.warning('用户名不能超过10个字符');
       }
-
       let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
       if(this.state.email !== '') {
         if(!reg.test(this.state.email)) {
-          alert("请输入有效邮箱")
+          message.warning('请输入有效邮箱');
         }
         if(this.state.email.length >= 20) {
-          alert("邮箱长度不能超过20个字符")
+          message.warning('邮箱长度不能超过20个字符');
         }
       }
       this.updateRequest()
     }
 
     updateRequest() {
+
+      if(this.state.username === '' && this.state.password === '' && this.state.email === '') {
+        message.warning('输入不能为空');
+        return
+      }
       let updateData = {}
       if (this.state.username !== '') {
         updateData['username'] = this.state.username
@@ -70,12 +74,12 @@ class Update extends React.Component {
       })
       .then(function(response) {
         // let ret = response.data
-        alert('更新成功')
+        message.success('更新成功');
         
         window.location.href = "/user.html"
       })
       .catch(function (error) {
-        alert('更新失败')
+        message.error('更新失败');
       });
     }
 

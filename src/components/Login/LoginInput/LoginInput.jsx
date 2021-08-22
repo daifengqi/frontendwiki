@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./LoginInput.module.css";
 import axios from "axios";
-import { Alert } from 'antd';
+import { message } from 'antd';
 
 class LoginInput extends React.Component {
     constructor(props) {
@@ -36,11 +36,11 @@ class LoginInput extends React.Component {
 
       //验证输入的有效性和格式
       if(username === '' || password === '') {
-        alert('输入不能为空')
-        return <Alert message="Warning Text" type="warning" />
+        message.warning('输入不能为空');
+        return
       }
       if(username.length >= 10) {
-        alert("用户名不能超过10个字符")
+        message.warning('用户名不能超过10个字符');
         return
       }
       this.loginRequest();
@@ -54,16 +54,16 @@ class LoginInput extends React.Component {
 
       //验证输入的有效性和格式
       if(username === '' || password === '' || email === '') {
-        alert('输入不能为空')
+        message.warning('输入不能为空');
         return
       }
       let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
       if(!reg.test(email)) {
-        alert("请输入有效邮箱")
+        message.warning('请输入有效邮箱');
         return
       }
       if(email.length >= 20) {
-        alert("邮箱长度不能超过20个字符")
+        message.warning('邮箱长度不能超过20个字符');
         return
       }
       this.registerRequest();
@@ -83,7 +83,7 @@ class LoginInput extends React.Component {
       .then(function(response) {
         let ret = response.data
         if (ret.message === "注册成功") {
-          alert(ret.message + '，即将跳转到个人主页')
+          message.success(ret.message + '，即将跳转到个人主页');
           localStorage.setItem('profile', JSON.stringify(ret))
           //跳转到个人页面
           window.location.href = "/user.html"
@@ -111,14 +111,13 @@ class LoginInput extends React.Component {
         console.log(ret)
         if (ret.message === "登录成功") {
           localStorage.setItem('profile', JSON.stringify(ret))
-          alert(ret.message + '，即将跳转到个人主页')
-          
+          message.success(ret.message + '，即将跳转到个人主页');
           //跳转到个人页面
           window.location.href = "/user.html"
         }
       })
       .catch(function (error) {
-        alert("用户名不存在或密码错误")
+        message.error('用户名不存在或密码错误');
       });
     }
 
