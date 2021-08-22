@@ -29,7 +29,6 @@ class LoginInput extends React.Component {
     //点击submit触发的事件
     handleSubmit(event) {
       event.preventDefault();
-      event.preventDefault();
       let username =this.state.username
       let password =this.state.password
       let email =this.state.email

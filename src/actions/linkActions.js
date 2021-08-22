@@ -25,7 +25,7 @@ const getLinkListAction = (term) => (dispatch) => {
         type: "getLinkListSuccess",
         payload: {
           [`${term}`]: {
-            data: { ...res },
+            data: { ...(res.data) },
             code: 1,
           },
         },
