@@ -72,14 +72,15 @@ const createLinkAction = (data) => (dispatch) => {
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
       type:"authError",
-      code:-2
+      payload:{code:-2}
     })
     return;
   }
   dispatch({ type: "createLinkListStart", payload: { createLink: 0 } });
   createLink(data)
     .then((res) => {
-      dispatch({ type: "createLinkListSuccess", payload: { createLink: 1 } });
+      dispatch({ type: "createLinkListSuccess", payload: { createLink: 1,
+        data:res.data.link } });
     })
     .catch((e) => {
       console.error("createLinkListFail", e);
@@ -129,7 +130,7 @@ const likeLinkActionk=(id)=>(dispatch)=>{
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
       type:"authError",
-      code:-2
+      payload:{code:-2}
     })
     return;
   }
@@ -162,7 +163,7 @@ const collectLinkAction=(id)=>(dispatch)=>{
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
       type:"authError",
-      code:-2
+      payload:{code:-2}
     })
     return;
   }

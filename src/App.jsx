@@ -8,7 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   const dispatch=useDispatch();
-  dispatch(likeLinkActionk(1))
+  dispatch(createCommentAction({
+    linkId:10005,
+    content:"123456"
+  }))
   return (
     <>
       <Home />

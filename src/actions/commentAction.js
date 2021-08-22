@@ -12,6 +12,7 @@ const getCommentListAction = (id) => (dispatch) => {
   });
   getComment(id)
     .then((res) => {
+      console.log('commenList',res.data.data )
       dispatch({
         type: "getCommentListSuccess",
         payload: {
@@ -49,10 +50,12 @@ const createCommentAction = (data) => (dispatch) => {
   });
   createComment(data)
   .then(res=>{
+    console.log('res',res )
     dispatch({
         type: "createCommentSuccess",
         payload: {
-          createComment:1
+          createComment:1,
+          data:res.data.comment
         },
       });
   })
