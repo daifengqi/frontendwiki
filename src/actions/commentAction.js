@@ -33,7 +33,6 @@ const getCommentListAction = (id) => (dispatch) => {
       });
     });
 };
-
 const createCommentAction = (data) => (dispatch) => {
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
