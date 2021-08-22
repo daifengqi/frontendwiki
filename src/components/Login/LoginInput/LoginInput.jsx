@@ -57,7 +57,7 @@ class LoginInput extends React.Component {
     registerRequest() {
       axios({
         method: 'post',
-        url: 'http://localhost:8001/api/v1/user/register',
+        url: 'https://frontendwiki.herokuapp.com/api/v1/user/register',
         data: {
           username: this.state.username,
           email: this.state.email,
@@ -84,7 +84,7 @@ class LoginInput extends React.Component {
     loginRequest () {
       axios({
         method: 'post',
-        url: 'http://localhost:8001/api/v1/user/login',
+        url: 'https://frontendwiki.herokuapp.com/api/v1/user/login',
         data: {
           username: this.state.username,
           password: this.state.password
