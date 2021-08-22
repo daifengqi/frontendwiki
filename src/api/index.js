@@ -1,7 +1,9 @@
 import axios from "axios";
 
 /* dev: "http://localhost:8001"  */
-const API = axios.create({ baseURL: "http://localhost:8001/api/v1" });
+const API = axios.create({
+  baseURL: "https://frontendwiki.herokuapp.com/api/v1",
+});
 API.interceptors.request.use((req) => {
   // add token
   if (localStorage.getItem("profile")) {
@@ -47,7 +49,23 @@ export const thumbComment = (formData, id) =>
 /**
  *  links
  */
-export const getLinksbyTerm = (term) => API.get(`/link?term=${term}}`);
+export const getLinksbyTerm = (term) => {
+  console.log(
+    "getLinke",
+    `/link?term=${term}${
+      localStorage.getItem("profile")
+        ? "&userid=" + JSON.parse(localStorage.getItem("profile")).user.id
+        : ""
+    }`
+  );
+  return API.get(
+    `/link?term=${term}${
+      localStorage.getItem("profile")
+        ? "&userid=" + JSON.parse(localStorage.getItem("profile")).user.id
+        : ""
+    }`
+  );
+};
 export const createLink = (formData) => API.post("/link/create", formData);
 export const deleteLink = (formData) => API.delete("/link/delete", formData);
 // export const updateLink = (formData) => API.patch("/link/update", formData);
@@ -56,7 +74,7 @@ export const deleteLink = (formData) => API.delete("/link/delete", formData);
  *  comments
  */
 /**
- * @param {*} formData {linkId}
+ * @param {*} id {linkId}
  */
 export const getComment = (id) => API.get(`/comment/${id}`);
 /**

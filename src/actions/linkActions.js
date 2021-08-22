@@ -1,6 +1,7 @@
 import {getLinksbyTerm,createLink,thumbLink,collectLink} from '../api/index.js';
 import store from "../store/index.js";
 
+
 /**
  * @author source
  * @updateTime 2021/8/20 16:00
@@ -13,37 +14,46 @@ import store from "../store/index.js";
  * 非必填
  */
 const getLinkListAction = (term) => (dispatch) => {
-  dispatch({
-    type: "getLinkListStart",
-    payload: {
-      [`${term}`]: { code: 0 },
-    },
-  });
+  if (store.getState().linkReducer[term]) {
+    dispatch({
+      type: "getLinkListFromLocal"
+    });
+    return;
+  }
   getLinksbyTerm(term)
     .then((res) => {
+      let {data}=res.data;
+      let tagMap={}
+      data.forEach(element => {
+        if (!tagMap[element.tag]) {
+          tagMap[element.tag]=[]
+        }
+        tagMap[element.tag].push({
+          intro:element.intro,
+          thumbNums:element.thumbNums,
+          id: element.id,
+          hasThumbed: element.hasThumbed,
+          url:element.url
+        })
+      });
       dispatch({
         type: "getLinkListSuccess",
         payload: {
           [`${term}`]: {
-            data: { ...(res.data) },
+            data: tagMap,
             code: 1,
           },
         },
       });
     })
     .catch((e) => {
+      console.error('e',e )
       dispatch({
-        type: "getLinkListFail",
-        payload: {
-          [`${term}`]: {
-            data: { ...e },
-            code: -1,
-          },
-        },
+        type: "getLinkListFail"
       });
-      console.log("store", store.getState().linkReducer);
     });
 };
+
 /**
  *@author source
  *@updateTime 2021/8/20 16:00

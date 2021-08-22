@@ -24,6 +24,7 @@ function HomeMain(props) {
         {
           popupData.id?<></>:<Tree popupControl={popupControl}/>
         }
+        {/* <Tree popupControl={popupControl} hidden={popupData.id}/> */}
       </div>
     </div>
     {

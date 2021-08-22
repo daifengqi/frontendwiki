@@ -5,7 +5,9 @@ const getCommentListAction = (id) => (dispatch) => {
   dispatch({
     type: "getCommentListStart",
     payload: {
-      [`${id}`]: { code: 0 },
+      id:id,
+      code:0,
+      data:[]
     },
   });
   getComment(id)
@@ -13,21 +15,20 @@ const getCommentListAction = (id) => (dispatch) => {
       dispatch({
         type: "getCommentListSuccess",
         payload: {
-          [`${id}`]: {
-            code: 1,
-            data: { ...(res.data) },
-          },
+          code:1,
+          id:id,
+          data:res.data.data
         },
       });
     })
     .catch((e) => {
+      console.error('getCommentListFail',e )
       dispatch({
         type: "getCommentListFail",
         payload: {
-          [`${id}`]: {
-            code: -1,
-            data:  { ...e },
-          },
+          code:-1,
+          id:id,
+          data:[]
         },
       });
     });

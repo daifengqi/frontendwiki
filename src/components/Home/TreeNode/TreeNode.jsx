@@ -12,25 +12,25 @@ class TreeNode extends React.Component {
       left: 0,
     };
   }
-  pointShow(e) {
-    let { layerX, layerY, offsetX, offsetY } = e.nativeEvent;
-    this.setState({
-      top: layerY || offsetY,
-      left: layerX || offsetX,
-      point: true,
-    });
-    setTimeout(() => {
-      this.setState({
-        point: false,
-      });
-    }, 600);
-  }
+  // pointShow(e) {
+  //   let { layerX, layerY, offsetX, offsetY } = e.nativeEvent;
+  //   this.setState({
+  //     top: layerY || offsetY,
+  //     left: layerX || offsetX,
+  //     point: true,
+  //   });
+  //   setTimeout(() => {
+  //     this.setState({
+  //       point: false,
+  //     });
+  //   }, 600);
+  // }
   render() {
     return (
       <div className={styles.nodeContain}>
         <div
           onClick={(e) => {
-            this.pointShow(e);
+            // this.pointShow(e);
             this.props.changeNodeID(this.props.data);
           }}
           className={
@@ -76,8 +76,9 @@ class Tree extends React.Component {
   }
   getTreeData() {
     axios
-      .get("/treeNodeData")
+      .get("https://frontendwiki.herokuapp.com/api/v1/treeNodeData")
       .then((res) => {
+        console.log('treeData',res)
         this.setState({
           data: res,
         });
@@ -86,7 +87,7 @@ class Tree extends React.Component {
         this.setState({
           data: [
             {
-              content: "CSS",
+              content: "css",
               id: "1",
               level: 0,
               childrens: [
