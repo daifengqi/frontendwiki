@@ -134,7 +134,6 @@ class LoginInput extends React.Component {
                   <h1 className={styles.title}>账号登录</h1>
                   <form onSubmit={this.handleLogin}> 
                     <div>
-                      <Alert message="Warning Text" type="warning" />
                       <div>
                         <input type="text"
                           placeholder="用户名"

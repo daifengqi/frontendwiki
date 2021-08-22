@@ -70,15 +70,12 @@ class Update extends React.Component {
       })
       .then(function(response) {
         // let ret = response.data
-        <Alert message="Success Text"
-          description="Success Description Success Description Success Description"
-          type="success" />
         alert('更新成功')
         
         window.location.href = "/user.html"
       })
       .catch(function (error) {
-        <Alert message="更新失败" type="error" />
+        alert('更新失败')
       });
     }
 
