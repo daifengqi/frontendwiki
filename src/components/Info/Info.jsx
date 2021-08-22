@@ -9,6 +9,7 @@ import InfoSidebar from "./Components/SideBar/InfoSidebar.jsx";
 
 import styles from "./info.module.css";
 import Statusbar from "./Components/Statusbar/Statusbar.jsx";
+import 'antd/dist/antd.css'
 
 class Info extends React.Component{
     constructor(props) {

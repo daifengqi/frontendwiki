@@ -40,6 +40,7 @@
 .UserInfo h3 {
     font-size: 28px;
     font-weight: bold;
+    color: #fff;
 
     margin: 0 0 10px;
 }
@@ -53,6 +54,7 @@
 }
 
 .UserInfo p {
+    font-size: 18px;
     margin: 0;
     color: hsla(0,0%,100%,.6);
 }
