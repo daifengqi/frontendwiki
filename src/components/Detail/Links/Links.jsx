@@ -14,13 +14,17 @@ import { message, Modal } from "antd";
 import AddLinkModal from "../addLinkModal/AddLinkModal.jsx";
 
 function Links(props) {
-  const [cntLink, setCntLink] = useState("1123");
-
+  // 当前选择的链接
+  const [cntLink, setCntLink] = useState("");
+  // 显示对话框
   const [isModalVisible, setIsModalVisible] = useState(false);
+  // 新添加链接的信息
+  const [cntAddLinkData, setAddLinkData] = useState({});
 
-  function changeLink(url) {
-    setCntLink(url);
-    // console.log(url);
+  // 改变当前激活标签
+  function changeLink(id) {
+    setCntLink(id);
+    props.changeLink(id);
   }
   /**
    * 复制链接
@@ -41,54 +45,79 @@ function Links(props) {
     }
     message.success("复制成功");
   }
-
+  /**
+   * 显示对话框
+   */
   const showModal = () => {
     setIsModalVisible(true);
   };
-
-  const addLink = () => {
-    console.log("添加");
-    setIsModalVisible(false);
-  };
+  /**
+   * 退出对话框
+   */
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+  // 改变添加新链接的信息
+  const changeAddLinkData = (newData) => {
+    setAddLinkData({ ...cntAddLinkData, ...newData });
+  };
+
+  /**
+   * 添加链接
+   * TODO:还没实现
+   */
+  const addLink = () => {
+    console.log("cntAddLinkData", cntAddLinkData);
+    setIsModalVisible(false);
+  };
+
+  // 渲染链接列表
+  const RenderList = () => {
+    return props.linkList.map((link) => {
+      return (
+        <li
+          key={link.url}
+          onClick={() => changeLink(link.id)}
+          className={styles.link}
+        >
+          <div className={styles.linkContent}>
+            <div className={styles.iconBox}>
+              <img
+                src={copy}
+                alt="copy-icon"
+                className={commonStyles.icon}
+                onClick={() => copyUrl(link.url)}
+              />
+              <img
+                src={cntLink === "1123" ? goodActive : good}
+                alt="good"
+                className={commonStyles.icon}
+              />
+              <span className={commonStyles.smallText}>{link.thumbNums}</span>
+              <img src={star} alt="star" className={commonStyles.icon} />
+              <span className={commonStyles.smallText}>0</span>
+            </div>
+            <div>
+              <div className={styles.linkDesc}>{link.intro}</div>
+              <div className={styles.linkText}>{link.url}</div>
+            </div>
+          </div>
+          <div
+            className={
+              cntLink === link.id
+                ? [styles.bottomLine, styles.active].join(" ")
+                : styles.bottomLine
+            }
+          ></div>
+        </li>
+      );
+    });
+  };
+
   return (
     <>
       <ul className={styles.linksList}>
-        {props.linkList.map((link) => {
-          return (
-            <li
-              key={link.url}
-              onClick={() => changeLink(link.url)}
-              className={styles.link}
-            >
-              <div className={styles.linkContent}>
-                <div className={styles.iconBox}>
-                  <img
-                    src={copy}
-                    alt="copy-icon"
-                    className={commonStyles.icon}
-                    onClick={() => copyUrl(link.url)}
-                  />
-                  <img
-                    src={cntLink === "1123" ? goodActive : good}
-                    alt="good"
-                    className={commonStyles.icon}
-                  />
-                  <span className={commonStyles.smallText}>12312</span>
-                  <img src={star} alt="star" className={commonStyles.icon} />
-                  <span className={commonStyles.smallText}>123</span>
-                </div>
-                <div>
-                  <div className={styles.linkDesc}>{link.desc}</div>
-                  <div className={styles.linkText}>{link.url}</div>
-                </div>
-              </div>
-              <div className={styles.bottomLine}></div>
-            </li>
-          );
-        })}
+        {props.linkList.length !== 0 ? RenderList() : <li>当前还没有链接呢</li>}
         <img
           src={edit}
           alt="edit-icon"
@@ -96,12 +125,12 @@ function Links(props) {
           onClick={() => showModal()}
         />
         <Modal
-          title="Basic Modal"
+          title="添加链接"
           visible={isModalVisible}
           onOk={addLink}
           onCancel={handleCancel}
         >
-          <AddLinkModal />
+          <AddLinkModal changeAddLinkData={changeAddLinkData} />
         </Modal>
       </ul>
     </>

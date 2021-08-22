@@ -8,7 +8,7 @@ function Comments(props) {
   return (
     <>
       <ul className={styles.commentList}>
-        {props.commentList.map((comment) => {
+        {props.commentList.data.map((comment) => {
           return (
             <li key={comment.id} className={styles.commentBox}>
               <div className={styles.topPart}>
