@@ -1,16 +1,18 @@
-const initState={
-
-}
+const initState = {
+  code: -3,
+  data: [],
+};
 const commentReducer = (state = initState, action) => {
-  console.log('commentReducer',state )
+  console.log("commentReducer", state);
   switch (action.type) {
+    case "authError":
     case "getCommentListSuccess":
     case "getCommentListStart":
     case "getCommentListFail":
     case "createCommentStart":
     case "createCommentSuccess":
     case "createCommentSuccess":
-        return {...state, ...action.payload};
+      return { ...state, ...action.payload };
     default:
       return state;
   }

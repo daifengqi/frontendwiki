@@ -69,6 +69,13 @@ const getLinkListAction = (term) => (dispatch) => {
 }
 */
 const createLinkAction = (data) => (dispatch) => {
+  if (!JSON.parse(localStorage.getItem("profile"))) {
+    dispatch({
+      type:"authError",
+      code:-2
+    })
+    return;
+  }
   dispatch({ type: "createLinkListStart", payload: { createLink: 0 } });
   createLink(data)
     .then((res) => {

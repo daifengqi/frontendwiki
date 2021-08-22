@@ -1,21 +1,22 @@
 const initState = {
-  linkList:{}
+  linkList: {},
 };
 const linkReducer = (state = initState, action) => {
-  console.log('linkReducer',state)
+  console.log("linkReducer", state);
   switch (action.type) {
     case "getLinkListSuccess":
-      state.linkList={...state.linkList, ...action.payload};
-      return {...state};
+      state.linkList = { ...state.linkList, ...action.payload };
+      return { ...state };
     case "getLinkListFail":
-    case 'getLinkListFromLocal':
-      return {...state};
+    case "getLinkListFromLocal":
+      return { ...state };
     case "createLinkListStart":
     case "createLinkListSuccess":
     case "createLinkListFail":
     case "likeLinkSuccess":
     case "likeLinkStart":
     case "likeLinkFail":
+    case "authError":
       return { ...state, ...action.payload };
     default:
       return state;
