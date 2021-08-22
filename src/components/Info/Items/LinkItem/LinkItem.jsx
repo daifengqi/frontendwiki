@@ -32,9 +32,9 @@ class LinkItem extends React.Component {
     }
 
     render() {
-        const {title, thumbs, tag, url, intro} = this.props;
+        const {title, thumbs, tag, url, intro, id} = this.props;
         return (
-            <div className={styles.link_item}>
+            <div className={styles.link_item} id={'link-'+id}>
                 <a href={url} target={"_blank"}>
                     <div className={styles.container}>
                         <div className={styles.header}>

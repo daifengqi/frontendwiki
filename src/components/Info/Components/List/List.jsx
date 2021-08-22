@@ -14,7 +14,6 @@ class List extends React.Component {
             originData: data,
             type: type
         };
-        console.log(data);
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
