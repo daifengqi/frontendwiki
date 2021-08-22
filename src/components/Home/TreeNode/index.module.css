@@ -42,6 +42,8 @@
 .nodeContain{
     position: relative;
     display: flex;
+    margin-left: .6rem;
+    margin-top: .9rem;
 }
 .NodeContent{
     height: 100%;
@@ -74,8 +76,4 @@
 }
 @keyframes showPonitCircle{
     to{transform: scale(100);opacity: 0;}
-}
-.treeNodeMain{
-    margin-left: .6rem;
-    margin-top: .9rem;
 }

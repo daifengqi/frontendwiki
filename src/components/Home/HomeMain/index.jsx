@@ -61,6 +61,23 @@ function drawBack() {
     return (max - min) * Math.random() + min;
   }
 
+  var points=[]
+  const canvasWidth=document.documentElement.clientWidth
+  const canvasHeight=document.documentElement.clientHeight
+  const startX = 0;
+  const waveWidth = 0.05; // 波浪宽度,数越小越宽
+  const waveHeight = 20; // 波浪高度,数越大越高
+  const xOffset = 0; // 水平位移
+  ctx.beginPath();
+  for (let x = startX; x < startX + canvasWidth; x += 20 / canvasWidth) {
+    const y = waveHeight * Math.sin((startX + x) * waveWidth + xOffset);
+    points.push([x, (canvasHeight / 2) + y]);
+    ctx.lineTo(x, (canvasHeight / 2) + y);
+  }
+  ctx.lineTo(canvasWidth, canvasHeight);
+  ctx.lineTo(startX, canvasHeight);
+  ctx.lineTo(points[0][0], points[0][1]);
+  ctx.stroke();
   //构造点类
   class Point {
     constructor() {

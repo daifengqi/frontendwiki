@@ -1,0 +1,39 @@
+input[type=submit] {
+  cursor: pointer;
+}
+
+.formInput {
+  width: 60%;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  line-height: 25px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 6px 20px 6px 6px;
+  font-family: "Montserrat", sans-serif;
+  font-size: .9rem;
+  font-weight: 300;
+  color: black;
+  letter-spacing: 0.1rem;
+  outline: none;
+}
+.buttonsAction {
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  background-color: #909398;
+  width: calc(50%);
+  border: none;
+  border-radius: 3px;
+  padding: 10px 35px;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+.buttonsAction:hover {
+  background-color: #1097da;
+}

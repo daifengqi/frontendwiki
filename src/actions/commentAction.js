@@ -15,7 +15,7 @@ const getCommentListAction = (id) => (dispatch) => {
         payload: {
           [`${id}`]: {
             code: 1,
-            data: res,
+            data: { ...(res.data) },
           },
         },
       });
@@ -26,7 +26,7 @@ const getCommentListAction = (id) => (dispatch) => {
         payload: {
           [`${id}`]: {
             code: -1,
-            data: e,
+            data:  { ...e },
           },
         },
       });
