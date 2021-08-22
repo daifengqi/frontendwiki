@@ -5,7 +5,9 @@ const getCommentListAction = (id) => (dispatch) => {
   dispatch({
     type: "getCommentListStart",
     payload: {
-      [`${id}`]: { code: 0 },
+      id:id,
+      code:0,
+      data:[]
     },
   });
   getComment(id)
@@ -13,10 +15,9 @@ const getCommentListAction = (id) => (dispatch) => {
       dispatch({
         type: "getCommentListSuccess",
         payload: {
-          [`${id}`]: {
-            code: 1,
-            data: { ...(res.data) },
-          },
+          code:1,
+          id:id,
+          data:res.data.data
         },
       });
     })
@@ -24,10 +25,9 @@ const getCommentListAction = (id) => (dispatch) => {
       dispatch({
         type: "getCommentListFail",
         payload: {
-          [`${id}`]: {
-            code: -1,
-            data:  { ...e },
-          },
+          code:-1,
+          id:id,
+          
         },
       });
     });
@@ -85,4 +85,4 @@ const likeCommentAction=(id)=>(dispatch)=>{
   })
 }
 
-export { createCommentAction,likeCommentAction };
+export { getCommentListAction,createCommentAction,likeCommentAction };

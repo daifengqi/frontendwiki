@@ -12,25 +12,25 @@ class TreeNode extends React.Component {
       left: 0,
     };
   }
-  pointShow(e) {
-    let { layerX, layerY, offsetX, offsetY } = e.nativeEvent;
-    this.setState({
-      top: layerY || offsetY,
-      left: layerX || offsetX,
-      point: true,
-    });
-    setTimeout(() => {
-      this.setState({
-        point: false,
-      });
-    }, 600);
-  }
+  // pointShow(e) {
+  //   let { layerX, layerY, offsetX, offsetY } = e.nativeEvent;
+  //   this.setState({
+  //     top: layerY || offsetY,
+  //     left: layerX || offsetX,
+  //     point: true,
+  //   });
+  //   setTimeout(() => {
+  //     this.setState({
+  //       point: false,
+  //     });
+  //   }, 600);
+  // }
   render() {
     return (
       <div className={styles.nodeContain}>
         <div
           onClick={(e) => {
-            this.pointShow(e);
+            // this.pointShow(e);
             this.props.changeNodeID(this.props.data);
           }}
           className={

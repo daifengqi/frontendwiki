@@ -2,7 +2,7 @@ const initState = {
   linkList:{}
 };
 const linkReducer = (state = initState, action) => {
-  console.log('state',state)
+  console.log('linkReducer',state)
   switch (action.type) {
     case "getLinkListSuccess":
       state.linkList={...state.linkList, ...action.payload};

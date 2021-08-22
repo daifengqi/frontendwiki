@@ -2,6 +2,7 @@ const initState={
 
 }
 const commentReducer = (state = initState, action) => {
+  console.log('commentReducer',state )
   switch (action.type) {
     case "getCommentListSuccess":
     case "getCommentListStart":
