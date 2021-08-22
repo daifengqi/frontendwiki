@@ -1,13 +1,37 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import styles from "./Comments.module.css";
 import commonStyles from "../common.module.css";
 
 import good from "@/public/image/good.png";
 
+import { createCommentAction } from "@/src/actions/commentAction.js";
+import { message } from "antd";
+
 function Comments(props) {
+  const dispatch = useDispatch();
+  const [newComment, setNewComment] = useState("");
+
+  const createComment = () => {
+    console.log("start new comment");
+    if(props.cntUrl===""){
+      message.success("请选择链接后再登录")
+      return;
+    }
+    dispatch(
+      createCommentAction({
+        linkId: props.cntUrl,
+        content: newComment,
+      })
+    );
+    props.updateCommentList();
+  };
+
   return (
     <>
       <ul className={styles.commentList}>
+        {/* <li>{props.cntUrl === "" ? "empty" : "unEmpty"}</li> */}
         {props.commentList.data.map((comment) => {
           return (
             <li key={comment.id} className={styles.commentBox}>
@@ -30,8 +54,13 @@ function Comments(props) {
               className={styles.textArea}
               type="text"
               name="commentText"
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
             />
-            <div className={[styles.btn, styles.commentBtn].join(" ")}>
+            <div
+              className={[styles.btn, styles.commentBtn].join(" ")}
+              onClick={createComment}
+            >
               评论
             </div>
           </div>

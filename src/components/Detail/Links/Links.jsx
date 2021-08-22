@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./Links.module.css";
 import commonStyles from "../common.module.css";
 
+// 图标
 import good from "@/public/image/good.png";
 import star from "@/public/image/star.png";
 import edit from "@/public/image/edit.png";
@@ -11,15 +13,22 @@ import copy from "@/public/image/copy.png";
 
 import { message, Modal } from "antd";
 
+// 添加链接对话框
 import AddLinkModal from "../addLinkModal/AddLinkModal.jsx";
 
+import { likeLinkActionk ,createLinkAction} from "@/src/actions/linkActions.js";
+
 function Links(props) {
+  const dispatch = useDispatch();
+
   // 当前选择的链接
   const [cntLink, setCntLink] = useState("");
   // 显示对话框
   const [isModalVisible, setIsModalVisible] = useState(false);
   // 新添加链接的信息
   const [cntAddLinkData, setAddLinkData] = useState({});
+
+  const likeLink = useSelector((state) => state.linkReducer.likeLink);
 
   // 改变当前激活标签
   function changeLink(id) {
@@ -68,7 +77,28 @@ function Links(props) {
    */
   const addLink = () => {
     console.log("cntAddLinkData", cntAddLinkData);
+    // {
+    //       "creator":"test12newa1",
+    //       "creatorId":100003,
+    //       "term":"tes23t",
+    //       "url":"http:32//www.baidu.com",
+    //       "tag": "test32",
+    //       "intro":"简介32"
+    // }
+    dispatch(createLinkAction({
+      "creator":JSON.parse(localStorage.getItem("profile")).user.username,
+      "creatorId":JSON.parse(localStorage.getItem("profile")).user.id,
+      "tag":cntAddLinkData.tab,
+      "url":cntAddLinkData.url,
+      "intro":cntAddLinkData.desc,
+      "term":props.cntTab
+    }))
     setIsModalVisible(false);
+  };
+
+  // 点赞链接
+  const thumbLink = (id) => {
+    dispatch(likeLinkActionk(id));
   };
 
   // 渲染链接列表
@@ -92,6 +122,7 @@ function Links(props) {
                 src={cntLink === "1123" ? goodActive : good}
                 alt="good"
                 className={commonStyles.icon}
+                onClick={()=>thumbLink(link.id)}
               />
               <span className={commonStyles.smallText}>{link.thumbNums}</span>
               <img src={star} alt="star" className={commonStyles.icon} />

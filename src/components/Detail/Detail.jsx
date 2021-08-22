@@ -22,6 +22,7 @@ function Detail(props) {
   const [cntTab, setCntTab] = useState("");
   // 当前选择的链接ID
   const [cntUrl, setCntUrl] = useState("");
+
   const [linksList, setLinkList] = useState([]);
 
   // 初始化
@@ -32,9 +33,7 @@ function Detail(props) {
 
   // 更新评论列表
   useEffect(() => {
-    if (cntUrl !== "") {
-      dispatch(getCommentListAction(cntUrl));
-    }
+    updateCommentList()
   }, [cntUrl]);
 
   // 更新链接列表
@@ -54,11 +53,17 @@ function Detail(props) {
     setCntUrl(ID);
   };
 
+  const updateCommentList = ()=>{
+    if (cntUrl !== "") {
+      dispatch(getCommentListAction(cntUrl));
+    }
+  }
+
   return (
     <div className={styles.detailPage}>
       <Tabs title={title} tabs={storeLinksList} changeTab={changeTab} />
-      <Links linkList={linksList} changeLink={changeLink} />
-      <Comments commentList={commentList} />
+      <Links linkList={linksList} changeLink={changeLink} cntTab={cntTab}/>
+      <Comments commentList={commentList} cntUrl={cntUrl} updateCommentList={updateCommentList}/>
     </div>
   );
 }
