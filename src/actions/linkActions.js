@@ -129,7 +129,7 @@ const getOneLinkAction = (id) => (dispatch) => {
  * @returns 
  */
 
-const likeLinkActionk=(id)=>(dispatch)=>{
+const likeLinkActionk=(temp,tag,id)=>(dispatch)=>{
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
       type:"authError",
@@ -149,7 +149,10 @@ const likeLinkActionk=(id)=>(dispatch)=>{
     dispatch({
       type:"likeLinkSuccess",
       payload:{
-        likeLink:1
+        likeLink:1,
+        success:{
+          temp,tag,id
+        }
       }
     })
   })

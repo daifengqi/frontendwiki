@@ -28,6 +28,11 @@ const linkReducer = (state = initState, action) => {
       state.linkList={...state.linkList}
       return { ...state };
     case "likeLinkSuccess":
+      let tag=action.payload.success.tag
+      let term=action.payload.success.term
+      let id=action.payload.success.id
+      state.linkList[term][tag][id].hasThumbed=true;
+      return JSON.parse(JSON.stringify(state));
     case "createLinkListStart":
     case "createLinkListFail":
     case "likeLinkStart":
