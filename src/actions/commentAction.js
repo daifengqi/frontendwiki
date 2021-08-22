@@ -85,4 +85,4 @@ const likeCommentAction=(id)=>(dispatch)=>{
   })
 }
 
-export { getCommentListAction,createCommentAction,likeCommentAction };
+export { createCommentAction,likeCommentAction };

@@ -76,8 +76,9 @@ class Tree extends React.Component {
   }
   getTreeData() {
     axios
-      .get("/treeNodeData")
+      .get("https://frontendwiki.herokuapp.com/api/v1/treeNodeData")
       .then((res) => {
+        console.log('treeData',res)
         this.setState({
           data: res,
         });
