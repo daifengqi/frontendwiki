@@ -78,7 +78,7 @@ class Tree extends React.Component {
   getNode(data) {
     return data.map((item) => {
       return (
-        <div key={item.id} className="flexRowNone">
+        <div key={item.id} className="flexColumnNone">
           <TreeNode
             data={item}
             showNodeID={this.state.showNodeID}

@@ -40,12 +40,12 @@ const linkReducer = (state = initState, action) => {
         state.linkList[term].data[tag][index][action.type=="likeLinkSuccess"?'thumbNums':'collectNums']++;
       }
       return JSON.parse(JSON.stringify(state));
-    case "createLinkListStart":
     case "createLinkListFail":
-    case "likeLinkStart":
     case "likeLinkFail":
     case "authError":
       return { ...state, ...action.payload };
+    case "createLinkListStart":
+    case "likeLinkStart":
     default:
       return state;
   }
