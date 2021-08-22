@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AddLinkModal.module.css";
 import { Input, Select } from "antd";
 
@@ -9,6 +9,17 @@ function AddLinkModal(props) {
   let [desc, setDesc] = useState("");
   let [tab, setTab] = useState("");
   let [cntUrlPrev, setUrlPrev] = useState("https://");
+  const clearForm = ()=>{
+    setDesc("");
+    setUrl("");
+    setTab("");
+  }
+
+  useEffect(() => {
+    return () => {
+      clearForm()
+    }
+  }, [])
 
   const changeUrl = (url) => {
     setUrl(url);
