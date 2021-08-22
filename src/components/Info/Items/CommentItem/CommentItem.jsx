@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './CommentItem.module.css';
-import {deleteComment} from "../../../../api";
+import axios from "axios";
 
 class CommentItem extends React.Component {
     constructor(props) {
@@ -12,18 +12,23 @@ class CommentItem extends React.Component {
         if(!window.confirm("确定要删除吗？"))
             return ;
         //axios发送请求
-        deleteComment(JSON.stringify({commentId: this.props.id}))
-            .then(r=>{
-                if(r.data.message === this.props.id+'评论删除成功')
-                {
-                    let {onDelete} = this.props;
-                    onDelete(this.props.id);
-                    window.alert('删除成功');
-                }
-            })
-            .catch(e=>{
-                window.alert('删除失败啦QAQ\n'+e);
-            })
+        axios({
+            method: 'delete',
+            url: 'http://localhost:8001/api/v1/comment/delete',
+            headers: {
+                'authorization': `Bearer ${JSON.parse(localStorage.getItem("profile")).token}`
+            },
+            data: {
+                commentId: this.props.id,
+            }
+        }).then(r=>{
+            if(r.data.data.message === this.props.id+'评论删除成功')
+            {
+                window.alert('删除成功');
+                let {onDelete} = this.props;
+                onDelete(this.props.id, 'comments');
+            }
+        }).catch(e=>{console.log(e)})
     }
 
     render() {
