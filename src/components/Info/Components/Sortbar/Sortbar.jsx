@@ -41,7 +41,7 @@ class Sortbar extends React.Component {
 
     deleteItem = (id, arr) => {
         for (let i = 0; i < arr.length; i++) {
-            if(arr[i].w_link.id === id) {
+            if(arr[i].id === id || arr[i].w_link.id === id) {
                 if(i===0)
                     arr.shift();
                 else if(i===arr.length-1)
