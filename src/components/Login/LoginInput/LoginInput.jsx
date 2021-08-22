@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./LoginInput.module.css";
 import axios from "axios";
+import { Alert } from 'antd';
 
 class LoginInput extends React.Component {
     constructor(props) {
@@ -13,7 +14,8 @@ class LoginInput extends React.Component {
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+        this.handleRegister = this.handleRegister.bind(this);
     }
     //读取输入的内容
     handleChangeName(event) {
@@ -26,31 +28,45 @@ class LoginInput extends React.Component {
       this.setState({password: event.target.value});
     }
     
-    //点击submit触发的事件
-    handleSubmit(event) {
+    //登录
+    handleLogin(event) {
       event.preventDefault();
       let username =this.state.username
       let password =this.state.password
-      let email =this.state.email
 
       //验证输入的有效性和格式
+      if(username === '' || password === '') {
+        alert('输入不能为空')
+        return <Alert message="Warning Text" type="warning" />
+      }
       if(username.length >= 10) {
         alert("用户名不能超过10个字符")
+        return
+      }
+      this.loginRequest();
+    }
+    //注册
+    handleRegister(event) {
+      event.preventDefault();
+      let username =this.state.username
+      let email = this.state.email
+      let password =this.state.password
+
+      //验证输入的有效性和格式
+      if(username === '' || password === '' || email === '') {
+        alert('输入不能为空')
+        return
       }
       let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-      
-
-      if(email !== '') {
-        if(!reg.test(email)) {
-          alert("请输入有效邮箱")
-        }
-        if(email.length >= 20) {
-          alert("邮箱长度不能超过20个字符")
-        }
-        this.registerRequest();
-      } else {
-        this.loginRequest();
+      if(!reg.test(email)) {
+        alert("请输入有效邮箱")
+        return
       }
+      if(email.length >= 20) {
+        alert("邮箱长度不能超过20个字符")
+        return
+      }
+      this.registerRequest();
     }
 
     //注册请求
@@ -96,6 +112,7 @@ class LoginInput extends React.Component {
         if (ret.message === "登录成功") {
           localStorage.setItem('profile', JSON.stringify(ret))
           alert(ret.message + '，即将跳转到个人主页')
+          
           //跳转到个人页面
           window.location.href = "/user.html"
         }
@@ -107,7 +124,6 @@ class LoginInput extends React.Component {
 
     render() {
 
-
       let isLogin = this.props.login;
       if(isLogin === 'login'){
         return (
@@ -116,7 +132,7 @@ class LoginInput extends React.Component {
 
                 <div className={styles.formLogin} id='login'>
                   <h1 className={styles.title}>账号登录</h1>
-                  <form onSubmit={this.handleSubmit}> 
+                  <form onSubmit={this.handleLogin}> 
                     <div>
                       <div>
                         <input type="text"
@@ -138,7 +154,6 @@ class LoginInput extends React.Component {
                       <input
                         className={styles.buttonsAction}
                         type="submit" value="登录"
-                        onClick={this.handleSignup}
                       >
                       </input>
                     </div>
@@ -154,7 +169,7 @@ class LoginInput extends React.Component {
                 <div className={styles.optionsFormLeft} id='bounceRight'>
                   <div className={styles.formLogin} id='signup'>
                     <h1 className={styles.title}>账号注册</h1>
-                    <form onSubmit={this.handleSubmit} id='register-form'>
+                    <form onSubmit={this.handleRegister} id='register-form'>
                       <div>
                         <div>
                             <input type="text"

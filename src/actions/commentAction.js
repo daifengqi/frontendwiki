@@ -12,6 +12,7 @@ const getCommentListAction = (id) => (dispatch) => {
   });
   getComment(id)
     .then((res) => {
+      console.log('commenList',res.data.data )
       dispatch({
         type: "getCommentListSuccess",
         payload: {
@@ -33,8 +34,14 @@ const getCommentListAction = (id) => (dispatch) => {
       });
     });
 };
-
 const createCommentAction = (data) => (dispatch) => {
+  if (!JSON.parse(localStorage.getItem("profile"))) {
+    dispatch({
+      type:"authError",
+      payload:{code:-2}
+    })
+    return;
+  }
   dispatch({
     type: "createCommentStart",
     payload: {
@@ -43,16 +50,18 @@ const createCommentAction = (data) => (dispatch) => {
   });
   createComment(data)
   .then(res=>{
+    console.log('res',res )
     dispatch({
         type: "createCommentSuccess",
         payload: {
-          createComment:1
+          createComment:1,
+          data:res.data.comment
         },
       });
   })
-  .then(e=>{
+  .catch(e=>{
     dispatch({
-        type: "createCommentSuccess",
+        type: "createCommentFail",
         payload: {
           createComment:-1
         },
@@ -60,6 +69,13 @@ const createCommentAction = (data) => (dispatch) => {
   })
 };
 const likeCommentAction=(id)=>(dispatch)=>{
+  if (!JSON.parse(localStorage.getItem("profile"))) {
+    dispatch({
+      type:"authError",
+      payload:{code:-2}
+    })
+    return;
+  }
   dispatch({
     type:"likeCommentStart",
     payload:{
