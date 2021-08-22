@@ -4,9 +4,9 @@ import styles from "./Tabs.module.css";
 function Tabs(props) {
   const [cntTab, setCntTab] = useState("");
 
-  function changeTab(e) {
-    setCntTab(e.target.value);
-    props.changeTab(e.target.value);
+  function changeTab(value) {
+    setCntTab(value);
+    props.changeTab(value);
   }
   const [TabsList, setTabsList] = useState([]);
 
@@ -24,7 +24,9 @@ function Tabs(props) {
     }
     // 设置默认选择第一个
     try {
-      setCntTab(termList[0]);
+      // setCntTab(termList[0]);
+      console.log("ok")
+      changeTab(termList[0].name);
     } catch {
       console.log("没有标签");
     }
@@ -40,7 +42,7 @@ function Tabs(props) {
             id={tab.name}
             style={{ display: "none" }}
             value={tab.name}
-            onChange={changeTab}
+            onChange={(e)=>changeTab(e.target.value)}
           />
           <label htmlFor={tab.name}>{tab.name}</label>
         </li>
