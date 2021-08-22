@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Sortbar.module.css';
 import List from "../List/List.jsx";
 import common from "../../info.module.css";
+import {Empty} from "antd";
 
 class Sortbar extends React.Component {
 
@@ -91,7 +92,7 @@ class Sortbar extends React.Component {
                 </div>
                 <div className={styles.content}>
                     <div className={styles.section}>
-                        {(this.state.data.length === 0)? <p className={common.notice}>还什么都没有噢</p>:''}
+                        {(this.state.data.length === 0)? <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} className={common.notice}/>:''}
                         <List data={this.state.data} type={this.displayType} onDelete={this.delete.bind(this)}/>
                     </div>
                 </div>

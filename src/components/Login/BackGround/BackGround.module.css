@@ -21,7 +21,6 @@ button {
 }
 .back {
   display: inline;
-  width: 100%;
   color: white;
   display: inline-flex;
   position: relative;

@@ -10,6 +10,7 @@ import InfoSidebar from "./Components/SideBar/InfoSidebar.jsx";
 
 import styles from "./info.module.css";
 import Statusbar from "./Components/Statusbar/Statusbar.jsx";
+import 'antd/dist/antd.css'
 
 class Info extends React.Component{
     constructor(props) {
@@ -17,22 +18,38 @@ class Info extends React.Component{
         this.props = props;
 
         //Default Userdata
-        this.state = {
-            Userdata:{
-                id: '0.o',
-                username: '加载中',
-                avatar: 'https://gravatar.loli.top/avatar/avatar/bc3ac8bffa2f5b90b23b3b3f3f4396a1?s=200&d=mm&r=g',
-                thunmbsNum: 0,
-                collectNum: 0,
-                createDate: '0000-00-00'
-            }
-        };
+        if(localStorage.getItem("profile"))
+        {
+            this.state = {
+                Userdata:{
+                    id: '',
+                    username: '加载中',
+                    avatar: 'https://gravatar.loli.top/avatar/avatar/bc3ac8bffa2f5b90b23b3b3f3f4396a1?s=200&d=mm&r=g',
+                    thunmbsNum: 0,
+                    collectNum: 0,
+                    createDate: '0000-00-00'
+                }
+            };
+        }
+        else
+        {
+            this.state = {
+                Userdata:{
+                    id: '',
+                    username: '未登录',
+                    avatar: 'https://gravatar.loli.top/avatar/avatar/bc3ac8bffa2f5b90b23b3b3f3f4396a1?s=200&d=mm&r=g',
+                    thunmbsNum: 0,
+                    collectNum: 0,
+                    createDate: '0000-00-00'
+                }
+            };
+        }
+
     }
 
     componentDidMount(){
         if(!localStorage.getItem("profile"))
         {
-            console.log('未登录');
             this.setState({
                 username: '未登录'
             })
