@@ -17,7 +17,7 @@ class LinkItem extends React.Component {
         //axios发送请求
         //...
         let {onDelete} = this.props;
-        onDelete(this.props.id);
+        onDelete(this.props.id, 'links');
         window.alert('删除成功');
     }
 
@@ -58,9 +58,9 @@ class LinkItem extends React.Component {
                         </div>
                     </div>
                 </a>
-                <div className={styles.delete} onClick={this.delete}>
-                    <span>删除</span>
-                </div>
+                {/*<div className={styles.delete} onClick={this.delete}>*/}
+                {/*    <span>删除</span>*/}
+                {/*</div>*/}
             </div>
         );
     }

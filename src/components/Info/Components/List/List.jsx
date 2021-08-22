@@ -28,7 +28,7 @@ class List extends React.Component {
     }
 
     display = ()=>{
-        if(this.state.type !== 'comments')
+        if(this.state.type === 'link')
             return this.state.originData.map((item, index) => {
                 return <LinkItem
                     key={index}
@@ -39,6 +39,20 @@ class List extends React.Component {
                     tag={item.w_link.tag}
                     intro={item.w_link.intro}
                     url={item.w_link.url}
+                    onDelete={this.DeleteItem.bind(this)}
+                />
+            })
+        else if(this.state.type === 'posts')
+            return this.state.originData.map((item, index)=> {
+                return <LinkItem
+                    key={index}
+                    id={item.id}
+                    title={item.term}
+                    thumbs={item.thumbNums}
+                    author={item.creatorId}
+                    tag={item.tag}
+                    intro={item.intro}
+                    url={item.url}
                     onDelete={this.DeleteItem.bind(this)}
                 />
             })

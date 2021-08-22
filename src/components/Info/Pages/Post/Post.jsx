@@ -36,6 +36,7 @@ class Post extends React.Component {
                         token: JSON.parse(localStorage.getItem("profile")).token,
                         data: r.data.data
                     });
+
                 })
                 .catch(e=>{
                     console.log(e);
@@ -47,7 +48,7 @@ class Post extends React.Component {
         if(this.state.status){
             if(this.state.data.length === 0)
                 return <p className={common.notice}>还什么都没有噢</p>
-            return <Sortbar data={this.state.data} displayType={"link"}/>;
+            return <Sortbar data={this.state.data} displayType={"posts"}/>;
         }
 
         return <p className={common.notice}>请先登录~</p>
