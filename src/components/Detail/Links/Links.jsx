@@ -73,18 +73,9 @@ function Links(props) {
 
   /**
    * 添加链接
-   * TODO:还没实现
    */
   const addLink = () => {
     console.log("cntAddLinkData", cntAddLinkData);
-    // {
-    //       "creator":"test12newa1",
-    //       "creatorId":100003,
-    //       "term":"tes23t",
-    //       "url":"http:32//www.baidu.com",
-    //       "tag": "test32",
-    //       "intro":"简介32"
-    // }
     dispatch(createLinkAction({
       "creator":JSON.parse(localStorage.getItem("profile")).user.username,
       "creatorId":JSON.parse(localStorage.getItem("profile")).user.id,
@@ -97,8 +88,10 @@ function Links(props) {
   };
 
   // 点赞链接
-  const thumbLink = (id) => {
-    dispatch(likeLinkActionk(id));
+  const thumbLink = (id,hasThumbed) => {
+    if(!hasThumbed){
+      dispatch(likeLinkActionk(props.cntTerm,props.cntTab,id));
+    }
   };
 
   // 渲染链接列表
@@ -119,10 +112,10 @@ function Links(props) {
                 onClick={() => copyUrl(link.url)}
               />
               <img
-                src={cntLink === "1123" ? goodActive : good}
+                src={link.hasThumbed ? goodActive : good}
                 alt="good"
                 className={commonStyles.icon}
-                onClick={()=>thumbLink(link.id)}
+                onClick={()=>thumbLink(link.id,link.hasThumbed)}
               />
               <span className={commonStyles.smallText}>{link.thumbNums}</span>
               <img src={star} alt="star" className={commonStyles.icon} />
