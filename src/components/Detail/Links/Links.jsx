@@ -91,7 +91,7 @@ function Links(props) {
       "tag":cntAddLinkData.tab,
       "url":cntAddLinkData.url,
       "intro":cntAddLinkData.desc,
-      "term":props.cntTab
+      "term":props.cntTerm
     }))
     setIsModalVisible(false);
   };
