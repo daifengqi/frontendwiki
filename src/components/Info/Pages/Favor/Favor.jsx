@@ -9,6 +9,7 @@ import Sortbar from "../../Components/Sortbar/Sortbar.jsx";
 
 import styles from './Favor.module.css';
 import common from "../../info.module.css";
+import {Skeleton} from "antd";
 
 
 class Favor extends React.Component {
@@ -18,13 +19,15 @@ class Favor extends React.Component {
             this.state = {
                 status: true,
                 token: '',
-                data: []
+                data: [],
+                gotData: false
             };
         } else {
             this.state = {
                 status: false,
                 token: '',
-                data: []
+                data: [],
+                gotData: true
             };
         }
     }
@@ -36,7 +39,8 @@ class Favor extends React.Component {
                 .then(r=>{
                     this.setState({
                         token: JSON.parse(localStorage.getItem("profile")).token,
-                        data: r.data.data
+                        data: r.data.data,
+                        gotData: true
                     });
                 })
                 .catch(e=>{
@@ -47,8 +51,8 @@ class Favor extends React.Component {
 
     display = ()=>{
         if(this.state.status){
-            if(this.state.data.length === 0)
-                return <p className={common.notice}>还什么都没有噢</p>
+            if(this.state.gotData === false)
+                return <Skeleton active />;
             return <Sortbar data={this.state.data} displayType={"link"}/>;
         }
 
