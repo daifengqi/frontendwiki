@@ -119,6 +119,13 @@ const getOneLinkAction = (id) => (dispatch) => {
  */
 
 const likeLinkActionk=(id)=>(dispatch)=>{
+  if (!JSON.parse(localStorage.getItem("profile"))) {
+    dispatch({
+      type:"authError",
+      code:-2
+    })
+    return;
+  }
   dispatch({
     type:"likeLinkStart",
     payload:{
@@ -145,6 +152,13 @@ const likeLinkActionk=(id)=>(dispatch)=>{
   })
 }
 const collectLinkAction=(id)=>(dispatch)=>{
+  if (!JSON.parse(localStorage.getItem("profile"))) {
+    dispatch({
+      type:"authError",
+      code:-2
+    })
+    return;
+  }
   dispatch({
     type:"collectLinkStart",
     payload:{
