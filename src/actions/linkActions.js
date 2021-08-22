@@ -80,7 +80,10 @@ const createLinkAction = (data) => (dispatch) => {
   createLink(data)
     .then((res) => {
       dispatch({ type: "createLinkListSuccess", payload: { createLink: 1,
-        data:res.data.link } });
+        data:{
+          newData:res.data.link,
+          thisData:data
+        } } });
     })
     .catch((e) => {
       console.error("createLinkListFail", e);
@@ -142,6 +145,7 @@ const likeLinkActionk=(id)=>(dispatch)=>{
   })
   thumbLink(id)
   .then(res=>{
+    console.log('res',res )
     dispatch({
       type:"likeLinkSuccess",
       payload:{
@@ -175,6 +179,7 @@ const collectLinkAction=(id)=>(dispatch)=>{
   })
   collectLink(id)
   .then(res=>{
+    console.log('res',res )
     dispatch({
       type:"collectLinkSuccess",
       payload:{
