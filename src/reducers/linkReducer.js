@@ -31,7 +31,14 @@ const linkReducer = (state = initState, action) => {
       let tag=action.payload.success.tag
       let term=action.payload.success.term
       let id=action.payload.success.id
-      state.linkList[term][tag][id][action.type=="likeLinkSuccess"?'hasThumbed':'hasCollect']=true;
+      let index=null;
+      state.linkList[term].data[tag].filter((item,i)=>{
+        if(item.id==id) index=i;
+      })
+      if (index!=null) {
+        state.linkList[term].data[tag][index][action.type=="likeLinkSuccess"?'hasThumbed':'hasCollect']=true;
+        state.linkList[term].data[tag][index][action.type=="likeLinkSuccess"?'thumbNums':'collectNums']++;
+      }
       return JSON.parse(JSON.stringify(state));
     case "createLinkListStart":
     case "createLinkListFail":

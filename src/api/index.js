@@ -35,16 +35,16 @@ export const getCommentByUid = (id) => API.get(`/comment/${id}/publish`);
 /**
  * @param {*} formData {linkId}
  */
-export const thumbLink = (formData, id) =>
-  API.post(`/user/${id}/thumbLink`, formData);
-export const collectLink = (formData, id) =>
-  API.post(`/user/${id}/collectLink`, formData);
-export const visitLink = (formData, id) =>
-  API.post(`/user/${id}/visitLink`, formData);
+export const thumbLink = (formData) =>
+  API.post(`/user/${JSON.parse(localStorage.getItem("profile")).user.id}/thumbLink`, formData);
+export const collectLink = (formData) =>
+  API.post(`/user/${JSON.parse(localStorage.getItem("profile")).user.id}/collectLink`, formData);
+export const visitLink = (formData) =>
+  API.post(`/user/${JSON.parse(localStorage.getItem("profile")).user.id}/visitLink`, formData);
 
 /* 用户对评论的行为：点赞 */
-export const thumbComment = (formData, id) =>
-  API.post(`/user/${id}/thumbComment`, formData);
+export const thumbComment = (formData) =>
+  API.post(`/user/${JSON.parse(localStorage.getItem("profile")).user.id}/thumbComment`, formData);
 
 /**
  *  links
