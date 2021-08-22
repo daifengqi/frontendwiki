@@ -17,8 +17,10 @@ const commentReducer = (state = initState, action) => {
       state.code=1
       state.id=action.payload.id
       return {...state};
+    case 'likeCommentSuccess':
+      console.log('likeSuccess',action.type )
     default:
-      return state;
+      return {...state};
   }
 };
 export default commentReducer;

@@ -50,14 +50,6 @@ export const thumbComment = (formData, id) =>
  *  links
  */
 export const getLinksbyTerm = (term) => {
-  console.log(
-    "getLinke",
-    `/link?term=${term}${
-      localStorage.getItem("profile")
-        ? "&userid=" + JSON.parse(localStorage.getItem("profile")).user.id
-        : ""
-    }`
-  );
   return API.get(
     `/link?term=${term}${
       localStorage.getItem("profile")
@@ -76,7 +68,11 @@ export const deleteLink = (formData) => API.delete("/link/delete", formData);
 /**
  * @param {*} id {linkId}
  */
-export const getComment = (id) => API.get(`/comment/${id}`);
+export const getComment = (id) => API.get(`/comment/${id}${
+  localStorage.getItem("profile")
+    ? "&userid=" + JSON.parse(localStorage.getItem("profile")).user.id
+    : ""
+}`);
 /**
  * @param {*} formData {commentID}
  */

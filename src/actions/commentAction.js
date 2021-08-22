@@ -88,7 +88,8 @@ const likeCommentAction=(id)=>(dispatch)=>{
     dispatch({
       type:"likeCommentSuccess",
       payload:{
-        likeComment:1
+        likeComment:1,
+        id
       }
     })
   })
