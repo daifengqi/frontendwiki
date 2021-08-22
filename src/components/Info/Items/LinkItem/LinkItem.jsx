@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './LinkItem.module.css';
 import "animate.css";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import {getUserInfo} from "../../../../api";
 import classNames from "classnames";
 
