@@ -87,7 +87,7 @@ class Tree extends React.Component {
         this.setState({
           data: [
             {
-              content: "CSS",
+              content: "css",
               id: "1",
               level: 0,
               childrens: [

@@ -21,9 +21,7 @@ function HomeMain(props) {
         <PopupLeft popupData={popupData} popupControl={popupControl}/>
       </div>
       <div className={styles.homeMain}>
-        {
-          popupData.id?<></>:<Tree popupControl={popupControl}/>
-        }
+        <Tree popupControl={popupControl} hidden={popupData.id}/>
       </div>
     </div>
     {
