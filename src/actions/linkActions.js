@@ -145,6 +145,7 @@ const likeLinkActionk=(id)=>(dispatch)=>{
   })
   thumbLink(id)
   .then(res=>{
+    console.log('likeLinkSuccess',res )
     dispatch({
       type:"likeLinkSuccess",
       payload:{
@@ -178,6 +179,7 @@ const collectLinkAction=(id)=>(dispatch)=>{
   })
   collectLink(id)
   .then(res=>{
+    console.log('collectLinkAction',res )
     dispatch({
       type:"collectLinkSuccess",
       payload:{
