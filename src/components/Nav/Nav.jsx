@@ -2,19 +2,14 @@ import React from "react";
 import classNames from 'classnames';
 import styles from "./nav.module.css";
 
-import {HashRouter as Router, Link, useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import Menu from "./menu.jsx";
 
 function Nav() {
     let navStyle = [styles.nav];
-    let loginDisplay = 'none';
 
     try {
         let Location = useLocation();
-        if(!localStorage.getItem("profile"))
-        {
-            loginDisplay = 'inline-block';
-        }
         navStyle.push(styles.dark)
     }
     catch (error){
@@ -67,14 +62,6 @@ function Nav() {
                             <a href="./user.html">个人</a>
                             {showMenu()}
                         </span>
-
-                        <Router>
-                            <Link
-                                to="/login"
-                                className={classNames(styles.navElement, styles.right)}
-                                style={{display: loginDisplay}}
-                            >登录/注册</Link>
-                        </Router>
                     </div>
                 </div>
             </div>
