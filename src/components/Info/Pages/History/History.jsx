@@ -12,28 +12,35 @@ import common from "../../info.module.css";
 class History extends React.Component {
     constructor(props) {
         super(props);
-        if(!localStorage.getItem("profile")) {
+
+        if(localStorage.getItem("profile")) {
+            this.state = {
+                status: true,
+                token: '',
+                data: []
+            };
+        } else {
             this.state = {
                 status: false,
                 token: '',
                 data: []
             };
-        } else {
+        }
+    }
+
+    componentDidMount(){
+        if(localStorage.getItem("profile")) {
             //axios获取数据
-            let data = [];
             getVisitedLinks(JSON.parse(localStorage.getItem('profile')).user.id)
                 .then(r=>{
-                    console.log(r.data.data);
-                    data = r.data.data;
+                    this.setState({
+                        token: JSON.parse(localStorage.getItem("profile")).token,
+                        data: r.data.data
+                    });
                 })
                 .catch(e=>{
                     console.log(e);
                 })
-            this.state = {
-                status: true,
-                token: JSON.parse(localStorage.getItem("profile")).token,
-                data: data
-            };
         }
     }
 

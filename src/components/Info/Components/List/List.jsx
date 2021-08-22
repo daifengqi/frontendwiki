@@ -23,23 +23,36 @@ class List extends React.Component {
         };
     }
 
-    DeleteItem = (id) =>{
-        this.props.onDelete(id);
+    DeleteItem = (id, type) =>{
+        this.props.onDelete(id, type);
     }
 
     display = ()=>{
-        if(this.state.type !== 'comments')
+        if(this.state.type === 'link')
             return this.state.originData.map((item, index) => {
-                console.log(item);
                 return <LinkItem
                     key={index}
                     id={item.w_link.id}
                     title={item.w_link.term}
-                    thumbs={item.w_link.thumbs}
-                    author={item.w_link.author}
+                    thumbs={item.thumbNums}
+                    author={item.w_link.creatorId}
                     tag={item.w_link.tag}
                     intro={item.w_link.intro}
                     url={item.w_link.url}
+                    onDelete={this.DeleteItem.bind(this)}
+                />
+            })
+        else if(this.state.type === 'posts')
+            return this.state.originData.map((item, index)=> {
+                return <LinkItem
+                    key={index}
+                    id={item.id}
+                    title={item.term}
+                    thumbs={item.thumbNums}
+                    author={item.creatorId}
+                    tag={item.tag}
+                    intro={item.intro}
+                    url={item.url}
                     onDelete={this.DeleteItem.bind(this)}
                 />
             })

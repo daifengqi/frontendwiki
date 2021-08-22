@@ -7,25 +7,39 @@ import styles from './Comment.module.css';
 import Sortbar from "../../Components/Sortbar/Sortbar.jsx";
 import classNames from "classnames";
 import common from "../../info.module.css";
+import {getCommentByUid} from "../../../../api";
 
 class Comment extends React.Component {
     constructor(props) {
         super(props);
-        if(!localStorage.getItem("profile")) {
+        if(localStorage.getItem("profile")) {
+            this.state = {
+                status: true,
+                token: '',
+                data: []
+            };
+        } else {
             this.state = {
                 status: false,
                 token: '',
                 data: []
             };
-        } else {
-            //axios获取数据
-            let data = [];
+        }
+    }
 
-            this.state = {
-                status: true,
-                token: JSON.parse(localStorage.getItem("profile")).token,
-                data: data
-            };
+    componentDidMount(){
+        if(localStorage.getItem("profile")) {
+            //axios获取数据
+            getCommentByUid(JSON.parse(localStorage.getItem('profile')).user.id)
+                .then(r=>{
+                    this.setState({
+                        token: JSON.parse(localStorage.getItem("profile")).token,
+                        data: r.data.data
+                    });
+                })
+                .catch(e=>{
+                    console.log(e);
+                })
         }
     }
 
