@@ -79,7 +79,8 @@ const createLinkAction = (data) => (dispatch) => {
   dispatch({ type: "createLinkListStart", payload: { createLink: 0 } });
   createLink(data)
     .then((res) => {
-      dispatch({ type: "createLinkListSuccess", payload: { createLink: 1 } });
+      dispatch({ type: "createLinkListSuccess", payload: { createLink: 1,
+        data:res.data.link } });
     })
     .catch((e) => {
       console.error("createLinkListFail", e);
