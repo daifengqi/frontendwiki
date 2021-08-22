@@ -3,7 +3,7 @@
  * @date 2021-08-18
  */
 import React from "react";
-import {getCollectedLinks, getThumbedLinks} from "../../../../api";
+import {getCollectedLinks} from "../../../../api";
 import classNames from "classnames";
 import Sortbar from "../../Components/Sortbar/Sortbar.jsx";
 
