@@ -44,7 +44,7 @@ const linkReducer = (state = initState, action) => {
       })
       if (index!=null) {
         state.linkList[term].data[tag][index][action.type=="likeLinkSuccess"?'hasThumbed':'hasCollect']=true;
-        state.linkList[term].data[tag][index][action.type=="likeLinkSuccess"?'thumbNums':'collectNums']++;
+        //state.linkList[term].data[tag][index][action.type=="likeLinkSuccess"?'thumbNums':'collectNums']++;
       }
       console.log('actionType',action.type )
       return JSON.parse(JSON.stringify(state));

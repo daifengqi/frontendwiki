@@ -19,8 +19,6 @@ const commentReducer = (state = initState, action) => {
       return {...state};
     case 'likeCommentSuccess':
       console.log('likeSuccess',action.payload ,state)
-      state.data[action.payload.index].hasThumbed=true;
-      state.data[action.payload.index].thumbNums++;
       state.data=[...state.data]
       return {...state}
     case 'cleanCommentAction':
