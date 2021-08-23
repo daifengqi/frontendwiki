@@ -60,7 +60,7 @@ class Post extends React.Component {
 
     render() {
         return (
-            <div className={classNames(common.subPageTitle, styles.MyPost)}>
+            <div className={classNames(common.subPageTitle, styles.MyPost,"animate__animated", "animate__fadeIn")}>
                 <h3>我的发布👋</h3>
                 {this.display()}
             </div>
