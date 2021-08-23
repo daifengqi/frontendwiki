@@ -66,7 +66,7 @@ class Update extends React.Component {
       console.log('Bearer ' + JSON.parse(localStorage.getItem("profile")).token)
       axios({
         method: 'patch',
-        url: 'https://frontendwiki.herokuapp.com/api/v1/user',
+        url: 'http://t.mitsuha.space:8001/api/v1/user',
         data: updateData,
         headers: {
           Authorization: 'Bearer ' + JSON.parse(localStorage.getItem("profile")).token

@@ -14,7 +14,7 @@ class CommentItem extends React.Component {
         //axios发送请求
         axios({
             method: 'delete',
-            url: 'http://t.mitsuha.space/api/v1/comment/delete',
+            url: 'http://t.mitsuha.space:8001/api/v1/comment/delete',
             headers: {
                 'authorization': `Bearer ${JSON.parse(localStorage.getItem("profile")).token}`,
             },
