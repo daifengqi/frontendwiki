@@ -44,12 +44,12 @@ function Comments(props) {
   };
   // 点赞评论
   const thumbComment = (index, id, hasThumbed, thumbNums) => {
-    console.log(hasThumbed,thumbNums,id);
+    console.log(hasThumbed, thumbNums, id);
     if (hasThumbed == false) {
       commentList[index].hasThumbed = true;
       commentList[index].thumbNums = thumbNums + 1;
       setCommentList([...commentList]);
-      dispatch(likeCommentAction(id));
+      dispatch(likeCommentAction(index, id));
     }
   };
   // 格式化显示时间
