@@ -15,6 +15,7 @@ class Update extends React.Component {
       this.handleChangeName = this.handleChangeName.bind(this);
       this.handleChangeEmail = this.handleChangeEmail.bind(this);
       this.handleChangePassword = this.handleChangePassword.bind(this);
+      this.handleChangePhoto = this.handleChangePhoto.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
     //读取输入的内容
@@ -26,6 +27,9 @@ class Update extends React.Component {
     }
     handleChangePassword(event) {
       this.setState({password: event.target.value});
+    }
+    handleChangePhoto(event) {
+      this.setState({avatar: event.target.value});
     }
 
     handleSubmit(event) {
@@ -48,7 +52,8 @@ class Update extends React.Component {
 
     updateRequest() {
 
-      if(this.state.username === '' && this.state.password === '' && this.state.email === '') {
+      if(this.state.username === '' && this.state.password === ''
+        && this.state.email === '' && this.state.avatar === '') {
         message.warning('输入不能为空');
         return
       }
@@ -62,11 +67,15 @@ class Update extends React.Component {
       if (this.state.password !== '') {
         updateData['password'] = this.state.password
       }
+      if (this.state.avatar !== '') {
+        updateData['avatar'] = this.state.avatar
+      }
+
       console.log(updateData)
       console.log('Bearer ' + JSON.parse(localStorage.getItem("profile")).token)
       axios({
         method: 'patch',
-        url: 'http://t.mitsuha.space:8001/api/v1/user',
+        url: 'https://frontendwiki.mitsuha.space/api/v1/user',
         data: updateData,
         headers: {
           Authorization: 'Bearer ' + JSON.parse(localStorage.getItem("profile")).token
@@ -75,7 +84,6 @@ class Update extends React.Component {
       .then(function(response) {
         // let ret = response.data
         message.success('更新成功');
-        
         window.location.href = "/user.html"
       })
       .catch(function (error) {
@@ -107,6 +115,13 @@ class Update extends React.Component {
                         placeholder="输入密码(可选)"
                         className={styles.formInput}
                         password={this.state.password} onChange={this.handleChangePassword}
+                      ></input>
+                    </div>
+                    <div>
+                      <input type="link"
+                        placeholder="输入头像链接(可选)"
+                        className={styles.formInput}
+                        avatar={this.state.avatar} onChange={this.handleChangePhoto}
                       ></input>
                     </div>
                   </div>
