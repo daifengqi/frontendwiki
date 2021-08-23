@@ -5,12 +5,19 @@
   display: flex;
   background-color: transparent;
   overflow-x: auto;
+  background: url("../../../images/wallhaven-4o511l.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  background-attachment: fixed;
+  height: 100vh;
 }
 .homeMain {
   width: 100vw;
   display: flex;
   margin-top: 18vh;
   /* flex-direction: row; */
+  
   z-index: 99;
 }
 .animTrans {
