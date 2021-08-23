@@ -148,7 +148,7 @@ function Links(props) {
               />
               <span className={commonStyles.smallText}>{link.thumbNums}</span>
               <img
-                src={star}
+                src={link.hasCollect ? starActive : star}
                 alt="star"
                 className={commonStyles.icon}
                 onClick={() => collectLink(index, link.id, link.hasCollect)}

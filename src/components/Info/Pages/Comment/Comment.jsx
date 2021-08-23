@@ -59,7 +59,7 @@ class Comment extends React.Component {
 
     render() {
         return (
-            <div className={classNames(styles.MyPost, common.subPageTitle)}>
+            <div className={classNames(styles.MyPost, common.subPageTitle,"animate__animated", "animate__fadeIn")}>
                 <h3>我的评论💬</h3>
                 {this.display()}
             </div>
