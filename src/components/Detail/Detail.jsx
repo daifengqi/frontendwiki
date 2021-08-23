@@ -7,7 +7,10 @@ import Links from "./Links/Links.jsx";
 import Comments from "./Comments/Comments.jsx";
 
 import { getLinkListAction } from "@/src/actions/linkActions.js";
-import { getCommentListAction } from "@/src/actions/commentAction.js";
+import {
+  getCommentListAction,
+  cleanCommentAction,
+} from "@/src/actions/commentAction.js";
 function Detail(props) {
   const dispatch = useDispatch();
   // 链接列表
@@ -25,23 +28,23 @@ function Detail(props) {
   useEffect(() => {
     // 初始化链接列表，标签列表
     dispatch(getLinkListAction(props.data.content));
+    dispatch(cleanCommentAction);
   }, []);
 
   // 更新评论列表
   useEffect(() => {
-    updateCommentList()
-  }, [cntUrl,cntTab]);
+    updateCommentList();
+  }, [cntUrl, cntTab]);
 
   // 更新链接列表
   useEffect(() => {
-    try{
+    try {
       if (cntTab !== "") {
-        console.log(cntTab)
+        console.log(cntTab);
         setLinkList(storeLinksList[props.data.content].data[cntTab]);
       }
-    }
-    catch(e){
-      console.error(e)
+    } catch (e) {
+      console.error(e);
     }
   }, [cntTab]);
 
@@ -55,17 +58,30 @@ function Detail(props) {
     setCntUrl(ID);
   };
 
-  const updateCommentList = ()=>{
+  const updateCommentList = () => {
     if (cntUrl !== "") {
       dispatch(getCommentListAction(cntUrl));
     }
-  }
+  };
 
   return (
     <div className={styles.detailPage}>
-      <Tabs title={props.data.content} tabs={storeLinksList} changeTab={changeTab} />
-      <Links linkList={linksList} changeLink={changeLink} cntTerm={props.data.content} cntTab={cntTab}/>
-      <Comments commentList={commentList} cntUrl={cntUrl} updateCommentList={updateCommentList}/>
+      <Tabs
+        title={props.data.content}
+        tabs={storeLinksList}
+        changeTab={changeTab}
+      />
+      <Links
+        linkList={linksList}
+        changeLink={changeLink}
+        cntTerm={props.data.content}
+        cntTab={cntTab}
+      />
+      <Comments
+        commentList={commentList}
+        cntUrl={cntUrl}
+        updateCommentList={updateCommentList}
+      />
     </div>
   );
 }
