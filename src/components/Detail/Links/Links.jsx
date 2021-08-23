@@ -24,7 +24,7 @@ import {
 
 function Links(props) {
   const dispatch = useDispatch();
-
+  const [linkList, setLinkList] = useState([]);
   // 当前选择的链接
   const [cntLink, setCntLink] = useState("");
   // 显示对话框
@@ -32,7 +32,7 @@ function Links(props) {
   // 新添加链接的信息
   const [cntAddLinkData, setAddLinkData] = useState({});
 
-  const likeLink = useSelector((state) => state.linkReducer.likeLink);
+  // const likeLink = useSelector((state) => state.linkReducer.likeLink);
 
   // 改变当前激活标签
   function changeLink(id) {
@@ -90,37 +90,45 @@ function Links(props) {
         term: props.cntTerm,
       })
     );
+    // props.updateLinkList()
     setIsModalVisible(false);
   };
 
   // 点赞链接
-  const thumbLink = (id, hasThumbed) => {
-    if (!hasThumbed) {
+  const thumbLink = (index, id, hasThumbed) => {
+    if (hasThumbed == false) {
       console.log(props.cntTerm, props.cntTab, id);
+      linkList[index].hasThumbed = true;
+      linkList[index].thumbNums += 1;
+      setLinkList([...linkList])
       dispatch(likeLinkActionk(props.cntTerm, props.cntTab, id));
+      // props.linkList[index].hasThumbed=true
     }
   };
   // 收藏链接
   const collectLink = (id, hasCollect) => {
-    if (!hasCollect) {
+    if (hasCollect == false) {
       dispatch(collectLinkAction(props.cntTerm, props.cntTab, id));
     }
   };
+
+  // useEffect(() => {
+  //   setCntLink([...props.linkList]);
+  // }, []);
 
   useEffect(() => {
     if (props.linkList[0]) {
       changeLink(props.linkList[0].id);
     }
+    console.log("有改变",props.linkList)
+    setLinkList([...props.linkList]);
   }, [props.linkList]);
+
   // 渲染链接列表
   const RenderList = () => {
-    return props.linkList.map((link) => {
+    return linkList.map((link,index) => {
       return (
-        <li
-          key={link.id}
-          onClick={() => changeLink(link.id)}
-          className={styles.link}
-        >
+        <li key={link.id} className={styles.link}>
           <div className={styles.linkContent}>
             <div className={styles.iconBox}>
               <img
@@ -133,7 +141,7 @@ function Links(props) {
                 src={link.hasThumbed ? goodActive : good}
                 alt="good"
                 className={commonStyles.icon}
-                onClick={() => thumbLink(link.id, link.hasThumbed)}
+                onClick={() => thumbLink(index,link.id, link.hasThumbed)}
               />
               <span className={commonStyles.smallText}>{link.thumbNums}</span>
               <img
@@ -144,7 +152,10 @@ function Links(props) {
               />
               <span className={commonStyles.smallText}>{link.collectNums}</span>
             </div>
-            <div>
+            <div
+              onClick={() => changeLink(link.id)}
+              className={styles.linkContentIn}
+            >
               <div className={styles.linkDesc}>{link.intro}</div>
               <div className={styles.linkText}>{link.url}</div>
             </div>
