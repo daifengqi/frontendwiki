@@ -12,10 +12,6 @@ function Detail(props) {
   const dispatch = useDispatch();
   // 链接列表
   const storeLinksList = useSelector((state) => state.linkReducer.linkList);
-  // 标签列表
-  const [tabsList, setTabsList] = useState([]);
-  // 词条title
-  const [title, setTitle] = useState(props.data.content);
   // 评论
   const commentList = useSelector((state) => state.commentReducer);
   // 当前选择的标签
@@ -34,7 +30,7 @@ function Detail(props) {
   // 更新评论列表
   useEffect(() => {
     updateCommentList()
-  }, [cntUrl]);
+  }, [cntUrl,cntTab]);
 
   // 更新链接列表
   useEffect(() => {
@@ -67,8 +63,8 @@ function Detail(props) {
 
   return (
     <div className={styles.detailPage}>
-      <Tabs title={title} tabs={storeLinksList} changeTab={changeTab} />
-      <Links linkList={linksList} changeLink={changeLink} cntTerm={title} cntTab={cntTab}/>
+      <Tabs title={props.data.content} tabs={storeLinksList} changeTab={changeTab} />
+      <Links linkList={linksList} changeLink={changeLink} cntTerm={props.data.content} cntTab={cntTab}/>
       <Comments commentList={commentList} cntUrl={cntUrl} updateCommentList={updateCommentList}/>
     </div>
   );

@@ -41,7 +41,7 @@ function Comments(props) {
                 <div className={styles.title}>{comment.publisher}</div>
                 <div className={styles.smallTitle}>{comment.updateTime}</div>
                 <img src={good} alt="good" className={commonStyles.icon} />
-                <div className={commonStyles.smallText}>12312</div>
+                <div className={commonStyles.smallText}>0</div>
               </div>
               <div className={styles.content}>{comment.content}</div>
             </li>

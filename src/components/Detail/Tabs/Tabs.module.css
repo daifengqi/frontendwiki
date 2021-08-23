@@ -21,7 +21,12 @@
 .tabLink > label{
     cursor: pointer;
 }
-.tabLink > input[type="radio"]:checked + label{
+/* .tabLink > input[type="radio"]:checked + label{
+    color: #409EFF;
+    transition: .36s ease color;
+} */
+
+.activeTab{
     color: #409EFF;
     transition: .36s ease color;
 }
