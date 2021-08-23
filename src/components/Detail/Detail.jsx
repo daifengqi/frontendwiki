@@ -33,6 +33,8 @@ function Detail(props) {
 
   // 更新评论列表
   useEffect(() => {
+    console.log(cntTab,cntUrl)
+    dispatch(cleanCommentAction);
     updateCommentList();
   }, [cntUrl, cntTab]);
 

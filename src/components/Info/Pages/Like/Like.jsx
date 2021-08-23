@@ -59,7 +59,7 @@ class Like extends React.Component {
 
     render() {
         return (
-            <div className={classNames(styles.MyLike, common.subPageTitle)}>
+            <div className={classNames(styles.MyLike, common.subPageTitle,"animate__animated", "animate__fadeIn")}>
                 <h3>我的点赞👍</h3>
                 {this.display()}
             </div>

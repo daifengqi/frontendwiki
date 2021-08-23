@@ -18,7 +18,7 @@ function InfoSidebar() {
                 <div className={styles.Item}>
                     <ul>
                         <li><Link to="/my/comment">我的评论</Link></li>
-                        <li><Link to="/my/history">浏览历史</Link></li>
+                        <li ><Link to="/my/history">浏览历史</Link></li>
                     </ul>
                 </div>
             </div>

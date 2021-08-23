@@ -3,6 +3,13 @@ const initState = {
 };
 const linkReducer = (state = initState, action) => {
   switch (action.type) {
+    case "createLinkListFail":
+    case "likeLinkFail":
+    case "authError":
+      return { ...state, ...action.payload };
+    case "createLinkListStart":
+    case "likeLinkStart":
+      return {...state};
     case "getLinkListSuccess":
       state.linkList = { ...state.linkList, ...action.payload };
       return { ...state };
@@ -39,13 +46,8 @@ const linkReducer = (state = initState, action) => {
         state.linkList[term].data[tag][index][action.type=="likeLinkSuccess"?'hasThumbed':'hasCollect']=true;
         state.linkList[term].data[tag][index][action.type=="likeLinkSuccess"?'thumbNums':'collectNums']++;
       }
+      console.log('actionType',action.type )
       return JSON.parse(JSON.stringify(state));
-    case "createLinkListFail":
-    case "likeLinkFail":
-    case "authError":
-      return { ...state, ...action.payload };
-    case "createLinkListStart":
-    case "likeLinkStart":
     default:
       return state;
   }

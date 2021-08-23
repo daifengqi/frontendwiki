@@ -8,7 +8,7 @@ body {
 
   width: 800px;
   margin: 20px auto 50px;
-  padding-bottom: 50px;
+  padding-bottom: 500px;
 }
 
 
@@ -41,4 +41,11 @@ body {
   font-size: 24px;
   font-weight: 400;
   margin: 10px 0 10px;
+}
+
+.alert {
+  width: 50%;
+  margin: 0 auto;
+  background-color: rgba(0,0,0,0);
+  border: none;
 }
