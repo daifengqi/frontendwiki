@@ -36,6 +36,10 @@
 
 ![](https://lx-1259807090.cos.ap-guangzhou.myqcloud.com/blog/2.gif)
 
+- 点赞、收藏、发布评论
+
+![](https://lx-1259807090.cos.ap-guangzhou.myqcloud.com/blog/3.gif)
+
 ### 个人页面
 
 个人页面作为用户接触的页面，我们需要给用户尽量完善的功能与舒适的体验。作为个人信息展示的地方，我们实现了以下功能：
