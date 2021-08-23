@@ -1,8 +1,10 @@
 .homeMainContain {
-  width: 100%;
+  width: 100vw;
   position: relative;
   min-height: 100vh;
+  display: flex;
   background-color: transparent;
+  overflow-x: auto;
 }
 .homeMain {
   width: 100vw;
