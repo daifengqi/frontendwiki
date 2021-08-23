@@ -83,7 +83,7 @@ class Sortbar extends React.Component {
             <div className={styles.Sortbar}>
                 <div className={styles.header}>
                     <div className={styles.left}>
-                        <span onClick={this.switch2Thumb.bind(this)} style={{display: ((this.displayType === 'comments') ? 'none' : 'inline-block')}}>最多收藏</span>
+                        <span onClick={this.switch2Thumb.bind(this)} style={{display: ((this.displayType === 'comments') ? 'none' : 'inline-block')}}>最多点赞</span>
                         <span onClick={this.switch2Default.bind(this)}>默认排序</span>
                     </div>
                     <div className={styles.right}>
