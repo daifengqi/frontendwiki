@@ -10,8 +10,35 @@
 
 ### 主页
 
-- 待补充
-- ...
+主页作为用户/游客直接接触到的部分，是我们整个FrontendWiki的核心部分。为了给用户提供尽量简洁明了的体验，主页向用户以树的形式展示词条
+
+### 树
+
+- 树的两种展现形式（横向或是竖向生长）
+
+![](https://lx-1259807090.cos.ap-guangzhou.myqcloud.com/blog/a92b31f15942475db7c807fc5d9979e8_tplv-k3u1fbpfcp-watermark.awebp)
+
+![](https://lx-1259807090.cos.ap-guangzhou.myqcloud.com/blog/71872a7a0cae4ab42a0174d6f1d77b1.png)
+
+- 点击树节点的点按反馈
+
+![](https://lx-1259807090.cos.ap-guangzhou.myqcloud.com/blog/9f407da8b3fd4f25993da3962535d324_tplv-k3u1fbpfcp-watermark.awebp)
+
+- 点击后展示详细信息，动画切屏
+
+![](https://lx-1259807090.cos.ap-guangzhou.myqcloud.com/blog/4f3f4376c74a4b4ca3fae9d038b53f43_tplv-k3u1fbpfcp-watermark.awebp)
+
+### 三栏
+
+这一块允许用户发布链接、发布评论（需要登录），同时可以通过选中不同标签、链接查看对应项的子项目。
+
+- 发布链接
+
+![](https://lx-1259807090.cos.ap-guangzhou.myqcloud.com/blog/2.gif)
+
+- 点赞、收藏、发布评论
+
+![](https://lx-1259807090.cos.ap-guangzhou.myqcloud.com/blog/3.gif)
 
 ### 个人页面
 

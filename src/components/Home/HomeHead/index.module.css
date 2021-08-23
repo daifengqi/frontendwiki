@@ -23,7 +23,7 @@
 }
 
 .backBlock {
-  background: url("../../../images/frontendWiki.jpg");
+  /* background: url("../../../images/frontendWiki.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
