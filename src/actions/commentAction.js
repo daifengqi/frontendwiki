@@ -105,5 +105,10 @@ const likeCommentAction=(id)=>(dispatch)=>{
     })
   })
 }
+const cleanCommentAction=()=>(dispatch)=>{
+  dispatch({
+    type:"cleanCommentAction"
+  })
+}
 
-export { getCommentListAction,createCommentAction,likeCommentAction };
+export { getCommentListAction,createCommentAction,likeCommentAction,cleanCommentAction };

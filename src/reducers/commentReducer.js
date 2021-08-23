@@ -19,6 +19,12 @@ const commentReducer = (state = initState, action) => {
       return {...state};
     case 'likeCommentSuccess':
       console.log('likeSuccess',action.type )
+    case 'cleanCommentAction':
+      return{
+        code: -3,
+        data: [],
+        createComment:-1
+      };
     default:
       return {...state};
   }

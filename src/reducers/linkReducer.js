@@ -25,7 +25,7 @@ const linkReducer = (state = initState, action) => {
         console.error('listTestError',action.payload,error )
       }
       state.linkList={...state.linkList}
-      return { ...state };
+      return JSON.parse(JSON.stringify(state));
     case "likeLinkSuccess":
     case "collectLinkSuccess":
       let tag=action.payload.success.tag
