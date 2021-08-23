@@ -5,10 +5,10 @@
   background-color: transparent;
 }
 .homeMain {
-  width: 80vw;
+  width: 100vw;
   display: flex;
-  margin-top: 8vh;
-  flex-direction: column;
+  margin-top: 18vh;
+  /* flex-direction: row; */
   z-index: 99;
 }
 .animTrans {

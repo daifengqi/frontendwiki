@@ -8,6 +8,8 @@
     position: relative;
     overflow: hidden;
     z-index: 501;
+    text-align: center;
+    white-space: nowrap;
     backdrop-filter: blur(.3125rem);
     box-shadow: inset var(--shadowColor--) 0px 0px 6px 3px;
     transition: ease .36s box-shadow,ease .36s opacity;
@@ -41,7 +43,7 @@
 }
 .nodeContain{
     position: relative;
-    display: flex;
+    /* display: flex; */
     margin-left: .6rem;
     margin-top: .9rem;
 }

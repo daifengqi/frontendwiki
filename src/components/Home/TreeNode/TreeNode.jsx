@@ -22,7 +22,7 @@ class TreeNode extends React.Component {
           }}
           className={
             styles.treeNodeMain +
-            " flexCenter " +
+            " " +
             (this.props.data.id === this.props.showNodeID
               ? styles.treeNodeMainActive
               : "")
@@ -78,14 +78,14 @@ class Tree extends React.Component {
   getNode(data) {
     return data.map((item) => {
       return (
-        <div key={item.id} className="flexColumnNone">
+        <div key={item.id}>
           <TreeNode
             data={item}
             showNodeID={this.state.showNodeID}
             lastID={this.state.lastID}
             changeNodeID={this.changeNodeID.bind(this)}
           />
-          <div>{this.getNode(item.childrens)}</div>
+          <div className="flexRowNone">{this.getNode(item.childrens)}</div>
         </div>
       );
     });

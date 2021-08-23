@@ -36,6 +36,7 @@
 *::-webkit-scrollbar{
   /* background-color: rgba(0, 0, 0, 0.8); */
   width: .36rem;
+  height: .72rem;
   border-radius: .3rem;
 }
 *::-webkit-scrollbar-track{
@@ -45,9 +46,9 @@
   display: none;
 }
 *::-webkit-scrollbar-thumb{
-  background-color: rgba(209, 209, 209, 0.24);
+  background-color: rgba(66, 66, 66, 0.6);
   border-radius: .3rem;
 }
 #root{
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
