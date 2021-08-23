@@ -18,8 +18,9 @@ const commentReducer = (state = initState, action) => {
       state.id=action.payload.id
       return {...state};
     case 'likeCommentSuccess':
-      console.log('likeSuccess',action.type ,state)
-      
+      console.log('likeSuccess',action.payload ,state)
+      state.data=[...state.data]
+      return {...state}
     case 'cleanCommentAction':
       return{
         code: -3,

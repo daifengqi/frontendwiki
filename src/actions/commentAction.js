@@ -68,7 +68,7 @@ const createCommentAction = (data) => (dispatch) => {
       });
   })
 };
-const likeCommentAction=(id)=>(dispatch)=>{
+const likeCommentAction=(index,id)=>(dispatch)=>{
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
       type:"authError",
@@ -76,12 +76,6 @@ const likeCommentAction=(id)=>(dispatch)=>{
     })
     return;
   }
-  dispatch({
-    type:"likeCommentStart",
-    payload:{
-      likeComment:0
-    }
-  })
   thumbComment({
     commentId:id
   })
@@ -91,7 +85,7 @@ const likeCommentAction=(id)=>(dispatch)=>{
       type:"likeCommentSuccess",
       payload:{
         likeComment:1,
-        id
+        id,index
       }
     })
   })
