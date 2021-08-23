@@ -42,3 +42,10 @@ body {
   font-weight: 400;
   margin: 10px 0 10px;
 }
+
+.alert {
+  width: 50%;
+  margin: 0 auto;
+  background-color: rgba(0,0,0,0);
+  border: none;
+}
