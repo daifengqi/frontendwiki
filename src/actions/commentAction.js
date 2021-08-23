@@ -82,7 +82,9 @@ const likeCommentAction=(id)=>(dispatch)=>{
       likeComment:0
     }
   })
-  thumbComment(id)
+  thumbComment({
+    linkId:id
+  })
   .then(res=>{
     console.log('likeCommentSuccess',res )
     dispatch({
