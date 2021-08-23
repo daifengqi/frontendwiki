@@ -100,14 +100,17 @@ function Links(props) {
       console.log(props.cntTerm, props.cntTab, id);
       linkList[index].hasThumbed = true;
       linkList[index].thumbNums += 1;
-      setLinkList([...linkList])
+      setLinkList([...linkList]);
       dispatch(likeLinkActionk(props.cntTerm, props.cntTab, id));
       // props.linkList[index].hasThumbed=true
     }
   };
   // 收藏链接
-  const collectLink = (id, hasCollect) => {
-    if (hasCollect == false) {
+  const collectLink = (index, id, hasCollect) => {
+    if (hasCollect == false || hasCollect == null) {
+      linkList[index].hasCollect = true;
+      linkList[index].collectNums += 1;
+      setLinkList([...linkList]);
       dispatch(collectLinkAction(props.cntTerm, props.cntTab, id));
     }
   };
@@ -120,13 +123,13 @@ function Links(props) {
     if (props.linkList[0]) {
       changeLink(props.linkList[0].id);
     }
-    console.log("有改变",props.linkList)
+    console.log("有改变", props.linkList);
     setLinkList([...props.linkList]);
   }, [props.linkList]);
 
   // 渲染链接列表
   const RenderList = () => {
-    return linkList.map((link,index) => {
+    return linkList.map((link, index) => {
       return (
         <li key={link.id} className={styles.link}>
           <div className={styles.linkContent}>
@@ -141,14 +144,14 @@ function Links(props) {
                 src={link.hasThumbed ? goodActive : good}
                 alt="good"
                 className={commonStyles.icon}
-                onClick={() => thumbLink(index,link.id, link.hasThumbed)}
+                onClick={() => thumbLink(index, link.id, link.hasThumbed)}
               />
               <span className={commonStyles.smallText}>{link.thumbNums}</span>
               <img
                 src={star}
                 alt="star"
                 className={commonStyles.icon}
-                onClick={() => collectLink(link.id, link.hasCollect)}
+                onClick={() => collectLink(index, link.id, link.hasCollect)}
               />
               <span className={commonStyles.smallText}>{link.collectNums}</span>
             </div>
