@@ -36,15 +36,30 @@ class Update extends React.Component {
       event.preventDefault();
       //验证输入的有效性和格式
       if(this.state.username.length >= 10) {
-        message.warning('用户名不能超过10个字符');
+        message.warning({
+              content: '用户名不能超过10个字符',
+                  style: {
+                  marginTop: '5rem',
+              },
+          });
       }
       let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
       if(this.state.email !== '') {
         if(!reg.test(this.state.email)) {
-          message.warning('请输入有效邮箱');
+          message.warning({
+                content: '请输入有效邮箱',
+                    style: {
+                    marginTop: '5rem',
+                },
+            });
         }
         if(this.state.email.length >= 20) {
-          message.warning('邮箱长度不能超过20个字符');
+          message.warning({
+                content: '邮箱长度不能超过20个字符',
+                    style: {
+                    marginTop: '5rem',
+                },
+            });
         }
       }
       this.updateRequest()
@@ -54,7 +69,12 @@ class Update extends React.Component {
 
       if(this.state.username === '' && this.state.password === ''
         && this.state.email === '' && this.state.avatar === '') {
-        message.warning('输入不能为空');
+        message.warning({
+              content: '输入不能为空',
+                  style: {
+                  marginTop: '5rem',
+              },
+          });
         return
       }
       let updateData = {}
@@ -75,7 +95,7 @@ class Update extends React.Component {
       console.log('Bearer ' + JSON.parse(localStorage.getItem("profile")).token)
       axios({
         method: 'patch',
-        url: 'https://frontendwiki.mitsuha.space/api/v1/user',
+        url: 'http://t.mitsuha.space:8001/api/v1/user',
         data: updateData,
         headers: {
           Authorization: 'Bearer ' + JSON.parse(localStorage.getItem("profile")).token
