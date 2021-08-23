@@ -33,7 +33,9 @@ const getLinkListAction = (term) => (dispatch) => {
           thumbNums:element.thumbNums,
           id: element.id,
           hasThumbed: element.hasThumbed,
-          url:element.url
+          url:element.url,
+          hasCollect:element.hasCollect,
+          collectNums:element.collectNums
         })
       });
       dispatch({
@@ -129,7 +131,7 @@ const getOneLinkAction = (id) => (dispatch) => {
  * @returns 
  */
 
-const likeLinkActionk=(temp,tag,id)=>(dispatch)=>{
+const likeLinkActionk=(term,tag,id)=>(dispatch)=>{
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
       type:"authError",
@@ -143,7 +145,9 @@ const likeLinkActionk=(temp,tag,id)=>(dispatch)=>{
       likeLink:0
     }
   })
-  thumbLink(id)
+  thumbLink({
+    linkId:id
+  })
   .then(res=>{
     console.log('res',res )
     dispatch({
@@ -151,7 +155,7 @@ const likeLinkActionk=(temp,tag,id)=>(dispatch)=>{
       payload:{
         likeLink:1,
         success:{
-          temp,tag,id
+          term,tag,id
         }
       }
     })
@@ -166,7 +170,7 @@ const likeLinkActionk=(temp,tag,id)=>(dispatch)=>{
     })
   })
 }
-const collectLinkAction=(id)=>(dispatch)=>{
+const collectLinkAction=(term,tag,id)=>(dispatch)=>{
   if (!JSON.parse(localStorage.getItem("profile"))) {
     dispatch({
       type:"authError",
@@ -180,17 +184,21 @@ const collectLinkAction=(id)=>(dispatch)=>{
       collectLink:0
     }
   })
-  collectLink(id)
-  .then(res=>{
-    console.log('res',res )
+  collectLink({
+    linkId:id
+  })
+  .then(()=>{
     dispatch({
       type:"collectLinkSuccess",
       payload:{
-        collectLink:1
+        collectLink:1,
+        success:{
+          term,tag,id
+        }
       }
     })
   })
-  .catch(e=>{
+  .catch(()=>{
     console.log('collectLinkFail',e )
     dispatch({
       type:"collectLinkFail",

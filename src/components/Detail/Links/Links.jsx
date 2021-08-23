@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./Links.module.css";
 import commonStyles from "../common.module.css";
@@ -16,7 +16,11 @@ import { message, Modal } from "antd";
 // 添加链接对话框
 import AddLinkModal from "../addLinkModal/AddLinkModal.jsx";
 
-import { likeLinkActionk ,createLinkAction} from "@/src/actions/linkActions.js";
+import {
+  likeLinkActionk,
+  createLinkAction,
+  collectLinkAction,
+} from "@/src/actions/linkActions.js";
 
 function Links(props) {
   const dispatch = useDispatch();
@@ -76,30 +80,44 @@ function Links(props) {
    */
   const addLink = () => {
     console.log("cntAddLinkData", cntAddLinkData);
-    dispatch(createLinkAction({
-      "creator":JSON.parse(localStorage.getItem("profile")).user.username,
-      "creatorId":JSON.parse(localStorage.getItem("profile")).user.id,
-      "tag":cntAddLinkData.tab,
-      "url":cntAddLinkData.url,
-      "intro":cntAddLinkData.desc,
-      "term":props.cntTerm
-    }))
+    dispatch(
+      createLinkAction({
+        creator: JSON.parse(localStorage.getItem("profile")).user.username,
+        creatorId: JSON.parse(localStorage.getItem("profile")).user.id,
+        tag: cntAddLinkData.tab,
+        url: cntAddLinkData.url,
+        intro: cntAddLinkData.desc,
+        term: props.cntTerm,
+      })
+    );
     setIsModalVisible(false);
   };
 
   // 点赞链接
-  const thumbLink = (id,hasThumbed) => {
-    if(!hasThumbed){
-      dispatch(likeLinkActionk(props.cntTerm,props.cntTab,id));
+  const thumbLink = (id, hasThumbed) => {
+    if (!hasThumbed) {
+      console.log(props.cntTerm, props.cntTab, id);
+      dispatch(likeLinkActionk(props.cntTerm, props.cntTab, id));
+    }
+  };
+  // 收藏链接
+  const collectLink = (id, hasCollect) => {
+    if (!hasCollect) {
+      dispatch(collectLinkAction(props.cntTerm, props.cntTab, id));
     }
   };
 
+  useEffect(() => {
+    if (props.linkList[0]) {
+      changeLink(props.linkList[0].id);
+    }
+  }, [props.linkList]);
   // 渲染链接列表
   const RenderList = () => {
     return props.linkList.map((link) => {
       return (
         <li
-          key={link.url}
+          key={link.id}
           onClick={() => changeLink(link.id)}
           className={styles.link}
         >
@@ -115,11 +133,16 @@ function Links(props) {
                 src={link.hasThumbed ? goodActive : good}
                 alt="good"
                 className={commonStyles.icon}
-                onClick={()=>thumbLink(link.id,link.hasThumbed)}
+                onClick={() => thumbLink(link.id, link.hasThumbed)}
               />
               <span className={commonStyles.smallText}>{link.thumbNums}</span>
-              <img src={star} alt="star" className={commonStyles.icon} />
-              <span className={commonStyles.smallText}>0</span>
+              <img
+                src={star}
+                alt="star"
+                className={commonStyles.icon}
+                onClick={() => collectLink(link.id, link.hasCollect)}
+              />
+              <span className={commonStyles.smallText}>{link.collectNums}</span>
             </div>
             <div>
               <div className={styles.linkDesc}>{link.intro}</div>
@@ -141,7 +164,11 @@ function Links(props) {
   return (
     <>
       <ul className={styles.linksList}>
-        {props.linkList.length !== 0 ? RenderList() : <li>当前还没有链接呢</li>}
+        {props.linkList && props.linkList.length !== 0 ? (
+          RenderList()
+        ) : (
+          <li>当前还没有链接呢</li>
+        )}
         <img
           src={edit}
           alt="edit-icon"

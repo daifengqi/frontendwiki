@@ -38,8 +38,14 @@ function Detail(props) {
 
   // 更新链接列表
   useEffect(() => {
-    if (cntTab !== "") {
-      setLinkList(storeLinksList[props.data.content].data[cntTab]);
+    try{
+      if (cntTab !== "") {
+        console.log(cntTab)
+        setLinkList(storeLinksList[props.data.content].data[cntTab]);
+      }
+    }
+    catch(e){
+      console.error(e)
     }
   }, [cntTab]);
 

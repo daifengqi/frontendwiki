@@ -8,7 +8,7 @@
   flex-direction: row !important;
 }
 .flexColumn,
-.flexCenter {
+.flexCenter,.flexColumnNone {
   flex-direction: column;
 }
 
@@ -19,7 +19,9 @@
   display: flex;
   flex-direction: row;
 }
-
+.flexColumnNone{
+  display: flex;
+}
 .main {
   width: 100%;
 }
