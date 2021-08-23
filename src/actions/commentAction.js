@@ -76,12 +76,6 @@ const likeCommentAction=(id)=>(dispatch)=>{
     })
     return;
   }
-  dispatch({
-    type:"likeCommentStart",
-    payload:{
-      likeComment:0
-    }
-  })
   thumbComment({
     commentId:id
   })
