@@ -83,11 +83,21 @@ class Update extends React.Component {
       })
       .then(function(response) {
         // let ret = response.data
-        message.success('更新成功');
+        message.success({
+            content: '更新成功',
+            style: {
+                marginTop: '5rem',
+            },
+        });
         window.location.href = "/user.html"
       })
       .catch(function (error) {
-        message.error('更新失败');
+        message.error({
+            content: '更新失败',
+            style: {
+                marginTop: '5rem',
+            },
+        });
       });
     }
 

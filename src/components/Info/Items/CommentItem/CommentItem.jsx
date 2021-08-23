@@ -24,7 +24,12 @@ class CommentItem extends React.Component {
         }).then(r=>{
             if(r.data.data.message === this.props.id+'评论删除成功')
             {
-                message.success('删除成功');
+                message.success({
+                    content: '评论删除成功',
+                    style: {
+                        marginTop: '5rem',
+                    },
+                });
                 let {onDelete} = this.props;
                 onDelete(this.props.id, 'comments');
             }

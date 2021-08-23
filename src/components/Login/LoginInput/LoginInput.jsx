@@ -36,11 +36,21 @@ class LoginInput extends React.Component {
 
       //验证输入的有效性和格式
       if(username === '' || password === '') {
-        message.warning('输入不能为空');
+        message.warning({
+              content: '输入不能为空',
+                  style: {
+                  marginTop: '5rem',
+              },
+          });
         return
       }
       if(username.length >= 10) {
-        message.warning('用户名不能超过10个字符');
+        message.warning({
+              content: '用户名不能超过10个字符',
+                  style: {
+                  marginTop: '5rem',
+              },
+          });
         return
       }
       this.loginRequest();
@@ -54,16 +64,31 @@ class LoginInput extends React.Component {
 
       //验证输入的有效性和格式
       if(username === '' || password === '' || email === '') {
-        message.warning('输入不能为空');
+        message.warning({
+              content: '输入不能为空',
+              style: {
+                  marginTop: '5rem',
+              },
+          });
         return
       }
       let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
       if(!reg.test(email)) {
-        message.warning('请输入有效邮箱');
+        message.warning({
+              content: '请输入有效邮箱',
+              style: {
+                  marginTop: '5rem',
+              },
+          });
         return
       }
       if(email.length >= 20) {
-        message.warning('邮箱长度不能超过20个字符');
+        message.warning({
+              content: '邮箱长度不能超过20个字符',
+                  style: {
+                  marginTop: '5rem',
+              },
+          });
         return
       }
       this.registerRequest();
@@ -83,7 +108,12 @@ class LoginInput extends React.Component {
       .then(function(response) {
         let ret = response.data
         if (ret.message === "注册成功") {
-          message.success(ret.message + '，即将跳转到个人主页');
+          message.success({
+                content: ret.message + '，即将跳转到个人主页',
+                    style: {
+                    marginTop: '5rem',
+                },
+            });
           localStorage.setItem('profile', JSON.stringify(ret))
           //跳转到个人页面
           window.location.href = "/user.html"
@@ -92,7 +122,12 @@ class LoginInput extends React.Component {
         }
       })
       .catch(function (error) {
-        alert("用户名已存在，换个名字吧")
+          message.info({
+              content: '用户名已存在，换个名字吧',
+              style: {
+                  marginTop: '5rem',
+              },
+          });
       });
     }
 
@@ -111,13 +146,23 @@ class LoginInput extends React.Component {
         console.log(ret)
         if (ret.message === "登录成功") {
           localStorage.setItem('profile', JSON.stringify(ret))
-          message.success(ret.message + '，即将跳转到个人主页');
+          message.success({
+                content: ret.message + '，即将跳转到个人主页',
+                    style: {
+                    marginTop: '5rem',
+                },
+            });
           //跳转到个人页面
           window.location.href = "/user.html"
         }
       })
       .catch(function (error) {
-        message.error('用户名不存在或密码错误');
+        message.error({
+              content: '用户名不存在或密码错误',
+                  style: {
+                  marginTop: '5rem',
+              },
+          });
       });
     }
 
