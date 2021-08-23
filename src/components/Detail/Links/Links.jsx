@@ -194,6 +194,7 @@ function Links(props) {
           visible={isModalVisible}
           onOk={addLink}
           onCancel={handleCancel}
+          destroyOnClose
         >
           <AddLinkModal changeAddLinkData={changeAddLinkData} />
         </Modal>
