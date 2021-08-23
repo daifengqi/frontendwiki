@@ -2,7 +2,7 @@ import axios from "axios";
 
 /* dev: "http://localhost:8001"  */
 const API = axios.create({
-  baseURL: "https://t.mitsuha.space:8001/api/v1",
+  baseURL: "http://t.mitsuha.space:8001/api/v1",
 });
 API.interceptors.request.use((req) => {
   // add token
