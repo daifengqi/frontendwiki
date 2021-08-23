@@ -3,13 +3,15 @@ import styles from "./Tabs.module.css";
 
 function Tabs(props) {
   const [cntTab, setCntTab] = useState("");
+  const [TabsList, setTabsList] = useState([]);
 
+  // 更改当前选择的标签
   const changeTab = (value) => {
     setCntTab(value);
     props.changeTab(value);
   };
-  const [TabsList, setTabsList] = useState([]);
 
+  // 标签更改时
   useEffect(() => {
     let termList = [];
     console.log("tabsList", props.tabs);
@@ -30,7 +32,8 @@ function Tabs(props) {
       console.log("没有标签");
     }
   }, [props.tabs]);
-
+  
+  // 渲染列表
   const RenderList = () => {
     return TabsList.map((tab) => {
       return (
