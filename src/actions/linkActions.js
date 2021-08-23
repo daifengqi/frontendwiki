@@ -178,12 +178,6 @@ const collectLinkAction=(term,tag,id)=>(dispatch)=>{
     })
     return;
   }
-  dispatch({
-    type:"collectLinkStart",
-    payload:{
-      collectLink:0
-    }
-  })
   collectLink({
     linkId:id
   })

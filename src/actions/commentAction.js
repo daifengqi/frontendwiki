@@ -83,7 +83,7 @@ const likeCommentAction=(id)=>(dispatch)=>{
     }
   })
   thumbComment({
-    linkId:id
+    commentId:id
   })
   .then(res=>{
     console.log('likeCommentSuccess',res )
@@ -96,7 +96,7 @@ const likeCommentAction=(id)=>(dispatch)=>{
     })
   })
   .catch(e=>{
-    console.log('thumbLink',e )
+    console.log('likeCommentFail',e )
     dispatch({
       type:"likeCommentFail",
       payload:{

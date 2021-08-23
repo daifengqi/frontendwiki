@@ -93,7 +93,7 @@ class Update extends React.Component {
 
     render() {
         return (
-            <div className="Update">
+            <div className="Update animate__animated animate__fadeIn">
                 <form onSubmit={this.handleSubmit}>
                   <div>
                     <div>

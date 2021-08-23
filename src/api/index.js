@@ -2,7 +2,7 @@ import axios from "axios";
 
 /* dev: "http://localhost:8001"  */
 const API = axios.create({
-  baseURL: "http://t.mitsuha.space:8001/api/v1",
+  baseURL: "https://t.mitsuha.space:8001/api/v1",
 });
 API.interceptors.request.use((req) => {
   // add token
@@ -36,15 +36,27 @@ export const getCommentByUid = (id) => API.get(`/comment/${id}/publish`);
  * @param {*} formData {linkId}
  */
 export const thumbLink = (formData) =>
-  API.post(`/user/${JSON.parse(localStorage.getItem("profile")).user.id}/thumbLink`, formData);
+  API.post(
+    `/user/${JSON.parse(localStorage.getItem("profile")).user.id}/thumbLink`,
+    formData
+  );
 export const collectLink = (formData) =>
-  API.post(`/user/${JSON.parse(localStorage.getItem("profile")).user.id}/collectLink`, formData);
+  API.post(
+    `/user/${JSON.parse(localStorage.getItem("profile")).user.id}/collectLink`,
+    formData
+  );
 export const visitLink = (formData) =>
-  API.post(`/user/${JSON.parse(localStorage.getItem("profile")).user.id}/visitLink`, formData);
+  API.post(
+    `/user/${JSON.parse(localStorage.getItem("profile")).user.id}/visitLink`,
+    formData
+  );
 
 /* 用户对评论的行为：点赞 */
 export const thumbComment = (formData) =>
-  API.post(`/user/${JSON.parse(localStorage.getItem("profile")).user.id}/thumbComment`, formData);
+  API.post(
+    `/user/${JSON.parse(localStorage.getItem("profile")).user.id}/thumbComment`,
+    formData
+  );
 
 /**
  *  links
@@ -68,11 +80,14 @@ export const deleteLink = (formData) => API.delete("/link/delete", formData);
 /**
  * @param {*} id {linkId}
  */
-export const getComment = (id) => API.get(`/comment/${id}${
-  localStorage.getItem("profile")
-    ? "&userid=" + JSON.parse(localStorage.getItem("profile")).user.id
-    : ""
-}`);
+export const getComment = (id) =>
+  API.get(
+    `/comment/${id}${
+      localStorage.getItem("profile")
+        ? "&userid=" + JSON.parse(localStorage.getItem("profile")).user.id
+        : ""
+    }`
+  );
 /**
  * @param {*} formData {commentID}
  */

@@ -11,6 +11,7 @@ import InfoSidebar from "./Components/SideBar/InfoSidebar.jsx";
 import styles from "./info.module.css";
 import Statusbar from "./Components/Statusbar/Statusbar.jsx";
 import 'antd/dist/antd.css'
+import classNames from "classnames";
 
 class Info extends React.Component{
     constructor(props) {
@@ -76,7 +77,7 @@ class Info extends React.Component{
                     <InfoSidebar/>
                     <div className={styles.content}>
                         <Statusbar data={this.state.Userdata}/>
-                        <div className={styles.main}>
+                        <div className={classNames(styles.main,"animate__animated", "animate__fadeIn")}>
                             <Router>
                                 { renderRoutes(route.routes) }
                             </Router>
