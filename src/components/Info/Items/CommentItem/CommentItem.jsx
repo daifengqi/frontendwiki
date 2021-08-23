@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './CommentItem.module.css';
 import axios from "axios";
 import classNames from "classnames";
+import { Popconfirm, message } from 'antd';
 
 class CommentItem extends React.Component {
     constructor(props) {
@@ -10,14 +11,12 @@ class CommentItem extends React.Component {
     }
 
     delete = ()=> {
-        if(!window.confirm("确定要删除吗？"))
-            return ;
         //axios发送请求
         axios({
             method: 'delete',
-            url: 'https://frontendwiki.herokuapp.com/api/v1/comment/delete',
+            url: 'http://t.mitsuha.space:8001/api/v1/comment/delete',
             headers: {
-                'authorization': `Bearer ${JSON.parse(localStorage.getItem("profile")).token}`
+                'authorization': `Bearer ${JSON.parse(localStorage.getItem("profile")).token}`,
             },
             data: {
                 commentId: this.props.id,
@@ -25,11 +24,14 @@ class CommentItem extends React.Component {
         }).then(r=>{
             if(r.data.data.message === this.props.id+'评论删除成功')
             {
-                window.alert('删除成功');
+                message.success('删除成功');
                 let {onDelete} = this.props;
                 onDelete(this.props.id, 'comments');
             }
-        }).catch(e=>{console.log(e)})
+        }).catch(e=>{
+            console.log(e)
+            message.error('删除失败'+e);
+        })
     }
 
     render() {
@@ -46,7 +48,14 @@ class CommentItem extends React.Component {
                 <div className={styles.comment_footer}>
                     <span>#{id}</span>
                     <div>
-                        <span className={styles.comment_delete} onClick={this.delete}>删除</span>
+                        <Popconfirm
+                            title="确定要删除吗"
+                            onConfirm={this.delete}
+                            okText="是"
+                            cancelText="否"
+                        >
+                            <span className={styles.comment_delete} onClick={this.toDelete}>删除</span>
+                        </Popconfirm>
                         <span>{author}</span>
                     </div>
                 </div>

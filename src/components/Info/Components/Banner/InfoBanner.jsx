@@ -1,7 +1,15 @@
 import React from "react";
 import styles from "./InfoBanner.module.css";
+import {Skeleton} from "antd";
 
 function InfoBanner(props) {
+    function loading(){
+        if (props.Userdata.username === '加载中')
+            return <Skeleton.Input style={{ width: 200 }} active />
+        else
+            return <h3>{props.Userdata.username}<span>#{props.Userdata.id}</span></h3>
+    }
+
     return (
         <>
             <div className={styles.InfoBanner}>
@@ -13,7 +21,7 @@ function InfoBanner(props) {
                             className={styles.Avatar}
                         />
                         <div className={styles.UserInfo}>
-                            <h3>{props.Userdata.username}<span>#{props.Userdata.id}</span></h3>
+                            {loading()}
                             <p>Talk is cheap, show me your code.</p>
                         </div>
                     </div>
